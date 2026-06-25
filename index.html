@@ -145,14 +145,14 @@
     <span class="pg-txt pg-r">STUDIO</span>
   </a>
   <style>
-    .pg-switch{ position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:9999;
+    .pg-switch{ position:fixed; top:max(6px, calc(clamp(24px,5vw,52px) - 34px)); left:50vw; transform:translateX(-50%); z-index:9999;
       display:inline-flex; align-items:center; width:230px; height:38px; padding:4px;
       border-radius:999px; background:rgba(20,20,20,.72); backdrop-filter:blur(8px);
       border:1px solid rgba(255,255,255,.18); box-shadow:0 6px 22px rgba(0,0,0,.35);
       text-decoration:none; cursor:pointer; user-select:none;
       font-family:'Inter','Pretendard',sans-serif; transition:background .25s; }
     .pg-switch:hover{ background:rgba(30,30,30,.85); }
-    .pg-knob{ position:absolute; top:4px; left:4px; width:111px; height:30px; border-radius:999px;
+    .pg-knob{ position:absolute; top:3px; left:4px; width:111px; height:30px; border-radius:999px;
       background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.35);
       transition:transform .32s cubic-bezier(.4,1.3,.5,1); }
     .pg-txt{ flex:1; text-align:center; z-index:1; font-size:11px; font-weight:700;
