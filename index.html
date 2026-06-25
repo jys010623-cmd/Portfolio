@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J.Youngsim — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Figtree:wght@600;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+  :root{ --ink:#0c0c0c; --paper:#ffffff; --disp:'Poppins'; }
+  body.figtree{ --disp:'Figtree'; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Pretendard','Inter',sans-serif; background:var(--ink); overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+
+  .scroll-wrap{ height:300vh; position:relative; }
+  .stage{ height:100vh; width:100%; position:relative; overflow:hidden; background:var(--ink);
+    display:flex; flex-direction:column; justify-content:center; gap:clamp(6px,1.4vw,18px); }
+
+  /* the ribbon lines — text on one nowrap line, blended so it reads on any bg */
+  .line{ white-space:nowrap; font-family:var(--disp),sans-serif; line-height:1;
+    color:#fff; mix-blend-mode:difference; will-change:transform; }
+  .line .seg{ display:inline-block; }
+  .big{ font-weight:800; font-size:clamp(64px,15vw,210px); letter-spacing:-0.04em; }
+  .thin{ font-weight:600; font-size:clamp(18px,3.2vw,44px); letter-spacing:0.02em; opacity:0.9; }
+  .sep{ display:inline-block; margin:0 0.35em; font-weight:400; }
+
+  /* fixed editorial labels */
+  .label{ position:absolute; font-family:var(--disp),sans-serif; font-weight:700; font-size:clamp(11px,1.1vw,13px);
+    letter-spacing:0.2em; text-transform:uppercase; color:#fff; mix-blend-mode:difference; z-index:3; }
+  .lab-tl{ top:clamp(24px,5vw,52px); left:clamp(24px,5vw,52px); }
+  .lab-tr{ top:clamp(24px,5vw,52px); right:clamp(24px,5vw,52px); text-align:right; }
+  .cue{ position:absolute; bottom:clamp(22px,4vw,42px); left:50%; transform:translateX(-50%); z-index:3;
+    color:#fff; mix-blend-mode:difference; font-family:'Inter'; font-size:11px; letter-spacing:0.22em; }
+
+  /* preview-only font toggle */
+  .ctrl{ position:fixed; top:14px; right:14px; z-index:60; display:flex; gap:6px; align-items:center;
+    background:rgba(20,20,20,.72); backdrop-filter:blur(6px); padding:6px; border-radius:24px; border:1px solid rgba(255,255,255,.16); }
+  .ctrl .lbl{ color:#aeaeae; font-size:11px; padding:0 4px 0 8px; }
+  .ctrl button{ font-family:'Inter',sans-serif; font-size:12px; font-weight:500; color:#fff; background:transparent; border:none; border-radius:18px; padding:6px 12px; cursor:pointer; }
+  .ctrl button.active{ background:#fff; color:#111; }
+
+  /* ===== About ===== */
+  .about-sec{ background:var(--paper); color:var(--ink); padding:clamp(60px,9vw,140px) clamp(26px,5vw,72px); }
+  .inner{ max-width:1440px; margin:0 auto; }
+  .about-top{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; border-bottom:1px solid #e6e6e1; padding-bottom:18px;
+    font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.06em; color:#9a9a92; text-transform:uppercase; }
+
+  .intro-grid{ display:grid; grid-template-columns:0.55fr 1.45fr; gap:clamp(30px,5vw,76px); align-items:center;
+    margin:clamp(40px,6vw,84px) 0 clamp(52px,7vw,104px); }
+  .photo{ aspect-ratio:4/5; max-width:280px; width:100%; border-radius:6px; background:#d2d2cc; position:relative; }
+  .photo::after{ content:'PHOTO'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:0.2em; color:#a2a29a; }
+  .statement{ font-family:var(--disp); font-weight:800; font-size:clamp(30px,4.6vw,62px); letter-spacing:-0.025em; line-height:1.08; }
+  .lead2{ font-size:clamp(15px,1.5vw,17px); color:#555; line-height:1.85; margin-top:22px; max-width:none; }
+  .quickmeta{ display:flex; flex-wrap:wrap; gap:34px; margin-top:32px; }
+  .quickmeta .k{ font-family:var(--disp); font-weight:700; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#9a9a92; margin-bottom:6px; }
+  .quickmeta .v{ font-size:14px; color:#333; }
+  @media(max-width:680px){ .intro-grid{ grid-template-columns:1fr; align-items:start; } .photo{ max-width:300px; } }
+
+  .cred-lab{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#9a9a92; margin-bottom:30px; display:flex; align-items:center; gap:9px; }
+  .cred-lab::before{ content:''; width:7px; height:7px; background:var(--ink); display:inline-block; }
+  .cred-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,72px); max-width:none; }
+  .blkh{ font-family:var(--disp); font-weight:700; font-size:clamp(16px,1.8vw,20px); letter-spacing:-0.01em; margin:26px 0 2px; }
+  .blkh:first-child{ margin-top:0; }
+  .rowlist{ width:100%; border-collapse:collapse; }
+  .rowlist td{ padding:11px 0; border-top:1px solid #e9e9e4; font-size:14px; vertical-align:top; line-height:1.4; }
+  .rowlist tr:first-child td{ border-top:none; }
+  .rowlist .org{ font-family:var(--disp); font-weight:700; }
+  .rowlist .sub{ display:block; color:#a2a29a; font-size:13px; margin-top:3px; }
+  .yr{ color:#a2a29a; white-space:nowrap; text-align:right; padding-left:16px; font-variant-numeric:tabular-nums; }
+  .skills{ margin-top:clamp(40px,5vw,70px); border-top:1px solid #e6e6e1; padding-top:34px; display:grid; grid-template-columns:200px 1fr; gap:24px; align-items:center; }
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ display:inline-flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; border:1px solid #ececec; border-radius:14px; padding:15px 10px 11px; font-size:11.5px; color:#444; background:#fff; box-shadow:0 3px 12px rgba(0,0,0,0.04); min-width:76px; text-align:center; }
+  .chip img{ width:28px; height:28px; display:block; object-fit:contain; }
+  .skillset{ display:flex; flex-direction:column; gap:15px; }
+  .skill-row{ display:grid; grid-template-columns:70px 1fr; gap:14px; align-items:center; min-height:44px; }
+  .sk-cat{ font-family:var(--disp); font-weight:700; font-size:11px; letter-spacing:0.12em; line-height:1.35; text-transform:uppercase; color:#9a9a92; white-space:nowrap; }
+  @media(max-width:680px){ .skill-row{ grid-template-columns:1fr; gap:8px; } }
+  .skillgrid{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+  .skillcard{ background:#fff; border:1px solid #ececec; border-radius:18px; padding:26px 10px 16px; display:flex; flex-direction:column; align-items:center; gap:14px; box-shadow:0 4px 16px rgba(0,0,0,0.05); }
+  .skillcard img{ width:38px; height:38px; object-fit:contain; }
+  .skillcard span{ font-family:var(--disp); font-weight:600; font-size:13px; color:#333; }
+  @media(max-width:860px){ .skillgrid{ grid-template-columns:repeat(4,1fr); } }
+  @media(max-width:560px){ .skillgrid{ grid-template-columns:repeat(3,1fr); } }
+  @media(max-width:680px){ .cred-grid{ grid-template-columns:1fr; } .skills{ grid-template-columns:1fr; gap:16px; } }
+
+  /* ===== Works (featured large cards + preview grid) ===== */
+  .wks-feat{ background:var(--paper); color:var(--ink); padding:0 clamp(26px,5vw,72px) clamp(40px,6vw,90px); }
+  .wks-more{ background:#f5f5f1; color:var(--ink); padding:clamp(56px,8vw,120px) clamp(26px,5vw,72px); }
+  .seclab{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#9a9a92; display:flex; align-items:center; gap:9px; }
+  .wks-feat .seclab{ border-top:1px solid #e6e6e1; padding-top:clamp(40px,6vw,80px); }
+  .seclab::before{ content:''; width:7px; height:7px; background:var(--ink); display:inline-block; }
+  .seclab .count{ margin-left:auto; color:#bdbdb6; font-weight:600; letter-spacing:0.04em; }
+  .imgph{ background:#d6d6d0; position:relative; overflow:hidden; }
+  .imgph::after{ content:attr(data-l); position:absolute; left:15px; bottom:13px; font-family:var(--disp); font-weight:700; font-size:11px; letter-spacing:0.05em; color:#8c8c84; }
+  .featured{ margin-top:38px; }
+  .big-row{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(26px,4vw,60px); align-items:center; padding:clamp(30px,4vw,48px) 0; border-top:1px solid #ececec; }
+  .big-row:last-child{ border-bottom:1px solid #ececec; }
+  .big-row.flip .txt{ order:2; }
+  .big-row .imgph{ aspect-ratio:16/10; border-radius:10px; }
+  .br-num{ font-family:var(--disp); font-weight:800; font-size:14px; color:#b8b8b2; letter-spacing:0.05em; }
+  .br-title{ font-family:var(--disp); font-weight:800; font-size:clamp(30px,4.4vw,58px); letter-spacing:-0.03em; line-height:0.98; margin:8px 0 14px; }
+  .br-desc{ font-size:clamp(14px,1.5vw,16px); color:#555; line-height:1.7; max-width:42ch; }
+  .br-tags{ display:flex; flex-wrap:wrap; gap:7px; margin-top:16px; }
+  .br-tag{ border:1px solid #e3e3df; border-radius:16px; padding:4px 12px; font-size:12px; color:#777; }
+  .br-meta{ font-size:13px; color:#8a8a86; margin-top:14px; line-height:1.7; }
+  .br-view{ font-family:var(--disp); font-weight:600; font-size:13px; margin-top:20px; display:inline-block; border-bottom:1.5px solid var(--ink); padding-bottom:2px; cursor:pointer; }
+  @media(max-width:720px){ .big-row{ grid-template-columns:1fr; } .big-row.flip .txt{ order:0; } }
+  .filterbar{ display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
+  .filterbar button{ font-family:var(--disp); font-weight:600; font-size:12.5px; color:#777; background:transparent; border:1px solid #dededa; border-radius:20px; padding:7px 16px; cursor:pointer; transition:all .15s ease; }
+  .filterbar button:hover{ color:#111; border-color:#b8b8b2; }
+  .filterbar button.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px; }
+  .pcard.hide{ display:none; }
+  .pcard .imgph{ aspect-ratio:4/3; border-radius:10px; transition:transform .3s ease; }
+  .pcard:hover .imgph{ transform:translateY(-4px); }
+  .pcard .pt{ font-family:var(--disp); font-weight:700; font-size:17px; margin-top:13px; letter-spacing:-0.01em; }
+  .pcard .pc{ font-size:13px; color:#8a8a86; margin-top:3px; }
+  @media(max-width:720px){ .grid3{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:460px){ .grid3{ grid-template-columns:1fr; } }
+
+  /* project detail overlay (example 4 — minimal centered) */
+  .pdetail{ position:fixed; inset:0; z-index:200; background:var(--paper); color:var(--ink); overflow-y:auto; display:none; }
+  .pdetail.open{ display:block; }
+  .pd-close{ position:fixed; top:18px; left:22px; z-index:210; display:inline-flex; align-items:center; gap:7px; height:42px; padding:0 18px 0 13px; border-radius:24px; border:1px solid #dcdcd6; background:#fff; color:#111; font-family:var(--disp); font-weight:600; font-size:13px; cursor:pointer; }
+  .pd-close:hover{ background:#f3f3ef; }
+  .pd-close .ar{ font-size:17px; line-height:1; }
+  .pd-inner{ max-width:1440px; margin:0 auto; padding:clamp(72px,9vw,130px) clamp(26px,5vw,64px) clamp(60px,8vw,110px); text-align:center; }
+  .pd-num{ font-family:var(--disp); font-weight:700; font-size:13px; color:#9a9a92; letter-spacing:0.08em; }
+  .pd-title{ font-family:var(--disp); font-weight:800; font-size:clamp(40px,7vw,96px); letter-spacing:-0.035em; line-height:0.98; margin:12px 0 18px; }
+  .pd-meta{ font-size:14px; color:#777; }
+  .pd-meta b{ color:#222; font-weight:600; }
+  .pd-stack{ margin-top:clamp(44px,6vw,72px); display:flex; flex-direction:column; gap:18px; }
+  .pd-stack .imgph{ aspect-ratio:16/9; border-radius:10px; }
+
+  .rise{ opacity:0; transform:translateY(26px); }
+</style>
+</head>
+<body>
+  <!-- page switch toggle (iOS style) -->
+  <a class="pg-switch" href="index2.html" aria-label="스튜디오 페이지로 이동" title="STUDIO로 전환">
+    <span class="pg-knob"></span>
+    <span class="pg-txt pg-l">PORTFOLIO</span>
+    <span class="pg-txt pg-r">STUDIO</span>
+  </a>
+  <style>
+    .pg-switch{ position:fixed; top:14px; left:50%; transform:translateX(-50%); z-index:9999;
+      display:inline-flex; align-items:center; width:230px; height:38px; padding:4px;
+      border-radius:999px; background:rgba(20,20,20,.72); backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.18); box-shadow:0 6px 22px rgba(0,0,0,.35);
+      text-decoration:none; cursor:pointer; user-select:none;
+      font-family:'Inter','Pretendard',sans-serif; transition:background .25s; }
+    .pg-switch:hover{ background:rgba(30,30,30,.85); }
+    .pg-knob{ position:absolute; top:4px; left:4px; width:111px; height:30px; border-radius:999px;
+      background:#fff; box-shadow:0 2px 8px rgba(0,0,0,.35);
+      transition:transform .32s cubic-bezier(.4,1.3,.5,1); }
+    .pg-txt{ flex:1; text-align:center; z-index:1; font-size:11px; font-weight:700;
+      letter-spacing:.12em; transition:color .25s; }
+    /* index.html = left active */
+    .pg-l{ color:#111; }
+    .pg-r{ color:#cfcfcf; }
+  </style>
+  <div class="scroll-wrap" id="scrollWrap">
+    <div class="stage" id="stage">
+      <span class="label lab-tl">J.Youngsim</span>
+      <span class="label lab-tr">Selected works<br>2024 — 2026</span>
+
+      <!-- thin line drifts right -->
+      <div class="line thin" id="lineThin"><span class="seg" id="segThin"></span></div>
+      <!-- big line flows left -->
+      <div class="line big" id="lineBig"><span class="seg" id="segBig"></span></div>
+
+      <div class="cue" id="cue">SCROLL →</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-sec">
+    <div class="inner">
+      <div class="about-top rise"><span>About</span><span>J.Youngsim — Advertising &amp; UX/UI Designer</span><span>2026</span></div>
+
+      <!-- intro: photo + statement + key meta -->
+      <div class="intro-grid">
+        <div class="photo rise"></div>
+        <div>
+          <div class="statement rise">메시지를 설계하고,<br>경험으로 잇다.</div>
+          <p class="lead2 rise">광고·홍보 커뮤니케이션을 공부하며 ‘어떻게 전할 것인가’를 고민해 왔습니다. 지금은 그 메시지가 화면 위에서 매끄럽게 작동하도록, 반응형 웹 UI/UX를 배우고 있습니다. 사람을 향한 메시지와 그 메시지를 담아내는 경험을 하나로 잇는 디자이너를 지향합니다.</p>
+          <div class="quickmeta rise">
+            <div><div class="k">Name</div><div class="v">정영심</div></div>
+            <div><div class="k">Age</div><div class="v">2001.06.23 · 26살(만 25세)</div></div>
+            <div><div class="k">Focus</div><div class="v">UX/UI · Web Design · Marketing</div></div>
+            <div><div class="k">Email</div><div class="v">jys010623@gmail.com</div></div>
+            <div><div class="k">Based</div><div class="v">경기도 성남시 분당구</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- background: 2-column credentials -->
+      <div class="cred-lab rise">Background</div>
+      <div class="cred-grid">
+        <div class="rise">
+          <div class="blkh">Training</div>
+          <table class="rowlist">
+            <tr><td><span class="org">성남 그린컴퓨터아카데미</span><span class="sub">기업맞춤형 프로젝트 : AI 활용 반응형 웹 UI/UX 제작</span></td><td class="yr">2026.02–07</td></tr>
+          </table>
+
+          <div class="blkh">Education</div>
+          <table class="rowlist">
+            <tr><td colspan="2"><span class="org" style="display:flex; justify-content:space-between; gap:16px; align-items:baseline;"><span>목원대학교 졸업</span><span style="font-family:'Pretendard','Inter',sans-serif; font-weight:400; color:#a2a29a; white-space:nowrap; font-variant-numeric:tabular-nums;">2020.03–2025.02</span></span><span class="sub" style="display:flex; justify-content:space-between; gap:16px;"><span>광고홍보커뮤니케이션학부</span><span style="white-space:nowrap;">학점 · 3.96 / 4.5</span></span><span class="sub" style="display:flex; justify-content:space-between; gap:16px;"><span>주전공 · 광고홍보전공 &nbsp;|&nbsp; 복수전공 · 언론영상콘텐츠전공</span><span style="white-space:nowrap;">학위 · 광고언론학사</span></span></td></tr>
+            <tr><td style="border-top:none;"><span class="org">강일여자고등학교 졸업</span><span class="sub">문과</span></td><td class="yr" style="border-top:none;">2019.12</td></tr>
+          </table>
+
+          <div class="blkh">Experience</div>
+          <table class="rowlist">
+            <tr><td><span class="org">워킹홀리데이</span><span class="sub">호주 · 시드니</span></td><td class="yr">2023.09–2024.04</td></tr>
+          </table>
+
+          <div class="blkh">Awards</div>
+          <table class="rowlist">
+            <tr><td><span class="org">제1회 전국 대학생 대상 메타버스 기반 홍보 마케팅 공모전 은상</span><span class="sub">(사)한국글로컬마케터양성협회</span></td><td class="yr">2022.07.27</td></tr>
+          </table>
+        </div>
+        <div class="rise">
+          <div class="blkh">Certificate</div>
+          <table class="rowlist">
+            <tr><td><span class="org">GTQ 그래픽기술자격 1급</span><span class="sub">kpc 한국생산성본부</span></td><td class="yr">2026.03.20</td></tr>
+          </table>
+
+          <div class="blkh">Skills</div>
+          <div class="skillset">
+            <div class="skill-row">
+              <span class="sk-cat">Design</span>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="">Figma</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="">Photoshop</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" alt="">Illustrator</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="sk-cat">Web</span>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML5</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">CSS3</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="sk-cat">AI</span>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.simpleicons.org/googlegemini" alt="">Gemini</span>
+                <span class="chip"><img src="https://cdn.simpleicons.org/openai" alt="">ChatGPT</span>
+                <span class="chip"><img src="https://cdn.simpleicons.org/midjourney" alt="">Midjourney</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="sk-cat">Vibe<br>Coding</span>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.simpleicons.org/claude" alt="">Claude</span>
+                <span class="chip"><img src="https://cdn.simpleicons.org/openai" alt="">Codex</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="">GitHub</span>
+                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="">VS Code</span>
+              </div>
+            </div>
+            <div class="skill-row">
+              <span class="sk-cat">Backend<br>&amp; Deploy</span>
+              <div class="chips">
+                <span class="chip"><img src="https://cdn.simpleicons.org/supabase" alt="">Supabase</span>
+                <span class="chip"><img src="https://cdn.simpleicons.org/vercel" alt="">Vercel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS — featured large cards -->
+  <section class="wks-feat">
+    <div class="inner">
+      <div class="seclab rise">Selected works <span class="count">Featured</span></div>
+      <div class="featured">
+        <div class="big-row">
+          <div class="txt rise">
+            <div class="br-num">01 — Featured</div>
+            <div class="br-title">마이 스타 캘린더</div>
+            <div class="br-desc">사용자의 감정과 실시간 날씨를 기반으로 ‘지금 가기 좋은 장소’를 추천하는 앱. 한 번의 감정 선택으로 결과에 도달하도록 플로우를 단순화했습니다.</div>
+            <div class="br-meta">Role · Product Designer&nbsp;&nbsp;|&nbsp;&nbsp;WebApp · UX/UI&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
+            <span class="br-view" data-open="pd-mystar">View project →</span>
+          </div>
+          <div class="imgph rise" data-l="MOODAY — COVER 16:10"></div>
+        </div>
+        <div class="big-row flip">
+          <div class="txt rise">
+            <div class="br-num">02 — Featured</div>
+            <div class="br-title">HOLO</div>
+            <div class="br-desc">알고리즘 바깥의 취향을 큐레이션하는 독립 브랜드의 아이덴티티. 강한 타이포와 CMYK 컬러로 ‘반(反)알고리즘’의 태도를 시각화했습니다.</div>
+            <div class="br-meta">Role · BX Designer&nbsp;&nbsp;|&nbsp;&nbsp;App&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
+            <span class="br-view" data-open="pd-holo">View project →</span>
+          </div>
+          <div class="imgph rise" data-l="ANTI-ALGORITHM — COVER 16:10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS — the rest as a preview grid -->
+  <section class="wks-more">
+    <div class="inner">
+      <div class="seclab rise">More works <span class="count">12</span></div>
+      <div class="filterbar rise" id="filterbar">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="web">Web</button>
+        <button data-filter="banner">Banner</button>
+      </div>
+      <div class="grid3" id="worksGrid">
+        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 01"></div><div class="pt">웹 프로젝트 01</div><div class="pc">Web · 반응형</div></div>
+        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 02"></div><div class="pt">웹 프로젝트 02</div><div class="pc">Web · 랜딩페이지</div></div>
+        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 03"></div><div class="pt">웹 프로젝트 03</div><div class="pc">Web Design</div></div>
+        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 04"></div><div class="pt">웹 프로젝트 04</div><div class="pc">Web · UI</div></div>
+        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 05"></div><div class="pt">웹 프로젝트 05</div><div class="pc">Web · 반응형</div></div>
+        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 06"></div><div class="pt">웹 프로젝트 06</div><div class="pc">Web Design</div></div>
+        <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 01"></div><div class="pt">배너 작업 01</div><div class="pc">Banner</div></div>
+        <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 02"></div><div class="pt">배너 작업 02</div><div class="pc">Banner · 상세페이지</div></div>
+        <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 03"></div><div class="pt">배너 작업 03</div><div class="pc">Banner · 이벤트</div></div>
+        <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 04"></div><div class="pt">배너 작업 04</div><div class="pc">Banner</div></div>
+        <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 05"></div><div class="pt">배너 작업 05</div><div class="pc">Banner · 프로모션</div></div>
+        <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 06"></div><div class="pt">배너 작업 06</div><div class="pc">Banner · SNS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECT DETAIL OVERLAYS (example 4 — minimal centered) -->
+  <div class="pdetail" id="pd-mystar" role="dialog" aria-modal="true" aria-label="마이 스타 캘린더 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd-inner">
+      <div class="pd-num">01 — Featured</div>
+      <div class="pd-title">마이 스타 캘린더</div>
+      <div class="pd-meta"><b>Product Designer</b> &nbsp;·&nbsp; WebApp · UX/UI &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Figma · After Effects</div>
+      <div class="pd-stack">
+        <div class="imgph" data-l="COVER 16:9"></div>
+        <div class="imgph" data-l="MAIN FLOW 16:9"></div>
+        <div class="imgph" data-l="DETAIL 16:9"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-holo" role="dialog" aria-modal="true" aria-label="HOLO 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd-inner">
+      <div class="pd-num">02 — Featured</div>
+      <div class="pd-title">HOLO</div>
+      <div class="pd-meta"><b>BX Designer</b> &nbsp;·&nbsp; App &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Illustrator · Photoshop</div>
+      <div class="pd-stack">
+        <div class="imgph" data-l="COVER 16:9"></div>
+        <div class="imgph" data-l="IDENTITY 16:9"></div>
+        <div class="imgph" data-l="APPLICATION 16:9"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const unitBig  = 'J.Youngsim <span class="sep">—</span> Portfolio <span class="sep">—</span> ';
+    const unitThin = 'Brand &amp; UX &nbsp;·&nbsp; Editorial &nbsp;·&nbsp; UI/UX &nbsp;·&nbsp; ';
+    document.getElementById('segBig').innerHTML  = unitBig.repeat(8);
+    document.getElementById('segThin').innerHTML = unitThin.repeat(10);
+
+    gsap.set('#lineBig',  { xPercent:-12 });
+    gsap.set('#lineThin', { xPercent:-40 });
+
+    const tl = gsap.timeline({
+      scrollTrigger:{ trigger:'#scrollWrap', start:'top top', end:'bottom bottom', pin:'#stage', scrub:0.6 }
+    });
+    tl.to('#stage', { backgroundColor:'#ffffff', ease:'none', duration:1 }, 0);
+    tl.to('#lineBig',  { xPercent:-62, ease:'none', duration:1 }, 0);
+    tl.to('#lineThin', { xPercent:-8,  ease:'none', duration:1 }, 0);
+    tl.to('#cue', { autoAlpha:0, ease:'none', duration:0.4 }, 0);
+
+    /* About reveal on scroll */
+    gsap.utils.toArray('.rise').forEach((el)=>{
+      gsap.to(el, { scrollTrigger:{ trigger:el, start:'top 90%' }, opacity:1, y:0, duration:0.8, ease:'power2.out' });
+    });
+
+    /* More works — category filter toggle */
+    const fbar = document.getElementById('filterbar');
+    const cards = document.querySelectorAll('#worksGrid .pcard');
+    fbar.addEventListener('click', (e)=>{
+      const b = e.target.closest('button'); if(!b) return;
+      const f = b.dataset.filter;
+      fbar.querySelectorAll('button').forEach(x=>x.classList.toggle('active', x===b));
+      cards.forEach(c=>{
+        const hide = (f!=='all' && c.dataset.cat!==f);
+        c.classList.toggle('hide', hide);
+        if(!hide){ c.style.opacity='1'; c.style.transform='none'; }
+      });
+    });
+
+    /* project detail overlays — open on "View project", close on ×/ESC */
+    const overlays = document.querySelectorAll('.pdetail');
+    function closeDetail(){ overlays.forEach(o=>o.classList.remove('open')); document.body.style.overflow=''; }
+    document.querySelectorAll('[data-open]').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const ov = document.getElementById(btn.dataset.open);
+        if(ov){ ov.scrollTop=0; ov.classList.add('open'); document.body.style.overflow='hidden'; }
+      });
+    });
+    document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', closeDetail));
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDetail(); });
+  </script>
+</body>
+</html>
