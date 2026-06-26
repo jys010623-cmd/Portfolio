@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>추가 요소 예시 — Process · Before/After · OG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+  :root{ --ink:#0c0c0c; --paper:#ffffff; --disp:'Poppins'; --mut:#8a8a86; --mut2:#a2a29a; --line:#e6e6e1; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Pretendard','Inter',sans-serif; background:#dcdcd8; color:var(--ink); padding:46px 20px 100px; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1140px; margin:0 auto; }
+  .h{ text-align:center; font-family:var(--disp); font-weight:800; font-size:28px; letter-spacing:-0.02em; }
+  .lead{ text-align:center; color:#6a6a64; font-size:14px; margin:8px 0 44px; }
+
+  .grp{ margin-bottom:46px; }
+  .grptag{ display:flex; align-items:baseline; gap:12px; margin-bottom:14px; flex-wrap:wrap; }
+  .grpnum{ font-family:var(--disp); font-weight:800; font-size:14px; color:#8a8a86; }
+  .grpname{ font-family:var(--disp); font-weight:700; font-size:19px; }
+  .grpdesc{ font-size:13px; color:#6a6a64; }
+  .frame{ background:var(--paper); border-radius:14px; box-shadow:0 14px 40px rgba(0,0,0,0.12); padding:clamp(30px,5vw,60px); }
+
+  .seclab{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--mut2); display:flex; align-items:center; gap:9px; }
+  .seclab::before{ content:''; width:7px; height:7px; background:var(--ink); display:inline-block; }
+  .ovh{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--mut2); margin-bottom:12px; }
+  .body-t{ font-size:15px; line-height:1.75; color:#3c3c38; }
+  .cap{ font-family:var(--disp); font-weight:700; font-size:10.5px; letter-spacing:0.06em; color:#9a9a92; text-transform:uppercase; }
+
+  /* Process */
+  .pc-intro{ font-family:var(--disp); font-weight:800; font-size:clamp(22px,3vw,34px); letter-spacing:-0.02em; line-height:1.25; margin:18px 0 36px; max-width:24ch; }
+  .pc-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(16px,2.5vw,30px); }
+  .pc-step{ border-top:2px solid var(--ink); padding-top:16px; }
+  .pc-step .no{ font-family:var(--disp); font-weight:800; font-size:13px; color:#b8b8b2; }
+  .pc-step .ti{ font-family:var(--disp); font-weight:700; font-size:17px; margin:10px 0 8px; }
+  .pc-step .de{ font-size:13px; color:#6a6a64; line-height:1.65; }
+  @media(max-width:680px){ .pc-steps{ grid-template-columns:1fr 1fr; gap:20px; } }
+
+  /* Before / After */
+  .ba-top{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:24px; }
+  .ba-title{ font-family:var(--disp); font-weight:800; font-size:clamp(24px,3.4vw,40px); letter-spacing:-0.025em; }
+  .ba-meta{ font-size:13px; color:var(--mut); }
+  .ba{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:18px; }
+  .ba .shot{ aspect-ratio:16/11; border-radius:10px; position:relative; }
+  .ba .before .shot{ background:#dad7d0; }
+  .ba .after .shot{ background:#cfe6dd; }
+  .ba .shot .tg{ position:absolute; left:13px; top:12px; font-family:var(--disp); font-weight:700; font-size:10.5px; letter-spacing:0.08em; padding:4px 10px; border-radius:13px; background:rgba(255,255,255,.85); color:#444; }
+  .ba .arrow{ font-family:var(--disp); font-weight:800; color:#b8b8b2; font-size:24px; }
+  .ba-notes{ margin-top:30px; padding-top:24px; border-top:1px solid var(--line); display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,4vw,56px); }
+  .ba-notes .row{ display:flex; gap:12px; align-items:flex-start; font-size:14.5px; color:#3c3c38; line-height:1.6; margin-bottom:10px; }
+  .ba-notes .row b{ font-family:var(--disp); font-weight:700; color:#1d9e75; font-size:13px; min-width:54px; }
+  @media(max-width:680px){ .ba{ grid-template-columns:1fr; } .ba .arrow{ transform:rotate(90deg); } .ba-notes{ grid-template-columns:1fr; } }
+
+  /* OG card */
+  .og-row{ display:flex; gap:26px; flex-wrap:wrap; }
+  .og-card{ width:330px; border:1px solid #e2e2dc; border-radius:12px; overflow:hidden; background:#fff; }
+  .og-thumb{ aspect-ratio:1.91/1; background:var(--ink); position:relative; display:flex; align-items:center; justify-content:center; }
+  .og-thumb .nm{ font-family:var(--disp); font-weight:800; color:#fff; font-size:30px; letter-spacing:-0.02em; }
+  .og-thumb .sub{ position:absolute; bottom:14px; left:16px; font-family:var(--disp); font-weight:600; font-size:11px; letter-spacing:0.1em; color:#8f8f8b; }
+  .og-meta{ padding:12px 14px; }
+  .og-meta .u{ font-size:11px; color:#9a9a92; text-transform:uppercase; letter-spacing:0.04em; }
+  .og-meta .t{ font-family:var(--disp); font-weight:700; font-size:14px; margin:4px 0 3px; }
+  .og-meta .d{ font-size:12px; color:#6a6a64; line-height:1.5; }
+  .og-note{ font-size:13px; color:#6a6a64; max-width:30ch; line-height:1.7; align-self:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="h">추가 요소 예시</div>
+  <p class="lead">Process 섹션 · 상세페이지 Before/After · 공유 카드(OG) 미리보기 · 내용은 샘플</p>
+
+  <!-- 1. Process -->
+  <div class="grp">
+    <div class="grptag"><span class="grpnum">01</span><span class="grpname">작업 방식 — Process</span><span class="grpdesc">About 다음에 들어갈 섹션</span></div>
+    <div class="frame">
+      <div class="seclab">Process</div>
+      <div class="pc-intro">메시지를 이해하고, 경험으로 옮기는 4단계로 일합니다.</div>
+      <div class="pc-steps">
+        <div class="pc-step"><div class="no">01</div><div class="ti">Research</div><div class="de">타깃과 문제를 정의하고, 설문·레퍼런스로 인사이트를 모읍니다.</div></div>
+        <div class="pc-step"><div class="no">02</div><div class="ti">Define</div><div class="de">정보 구조와 핵심 메시지를 정해 방향을 한 줄로 좁힙니다.</div></div>
+        <div class="pc-step"><div class="no">03</div><div class="ti">Design</div><div class="de">와이어프레임 → UI → 반응형까지 일관된 시스템으로 설계합니다.</div></div>
+        <div class="pc-step"><div class="no">04</div><div class="ti">Validate</div><div class="de">사용 흐름을 점검하고 Before/After로 개선을 검증합니다.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Before / After -->
+  <div class="grp">
+    <div class="grptag"><span class="grpnum">02</span><span class="grpname">상세페이지 — Before / After</span><span class="grpdesc">리디자인 상세에 추가</span></div>
+    <div class="frame">
+      <div class="ba-top"><span class="ba-title">네이버 리디자인</span><span class="ba-meta">Web · 리디자인 · 2026</span></div>
+      <div class="ba">
+        <div class="before"><div class="cap" style="margin-bottom:8px;">기존</div><div class="shot"><span class="tg">BEFORE</span></div></div>
+        <div class="arrow">→</div>
+        <div class="after"><div class="cap" style="margin-bottom:8px;">개선</div><div class="shot"><span class="tg">AFTER</span></div></div>
+      </div>
+      <div class="ba-notes">
+        <div>
+          <div class="ovh">무엇을 바꿨나</div>
+          <div class="row"><b>위계</b> 정보가 빽빽하던 메인을 우선순위 중심으로 재정렬</div>
+          <div class="row"><b>가독성</b> 타이포·여백을 정리해 한눈에 읽히도록 개선</div>
+        </div>
+        <div>
+          <div class="ovh">결과</div>
+          <div class="row"><b>동선</b> 핵심 기능까지의 클릭 수를 단축</div>
+          <div class="row"><b>일관성</b> 그리드 시스템으로 전체 화면 통일</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. OG card -->
+  <div class="grp">
+    <div class="grptag"><span class="grpnum">03</span><span class="grpname">공유 카드 — OG 미리보기</span><span class="grpdesc">링크를 카톡·메일로 보낼 때</span></div>
+    <div class="frame">
+      <div class="og-row">
+        <div class="og-card">
+          <div class="og-thumb"><span class="nm">J.Youngsim</span><span class="sub">UI/UX · WEB DESIGN · MARKETING</span></div>
+          <div class="og-meta">
+            <div class="u">jys010623-cmd.github.io</div>
+            <div class="t">J.Youngsim — Portfolio</div>
+            <div class="d">메시지를 설계하고, 경험으로 잇다. UX·UI 웹디자이너 정영심 포트폴리오.</div>
+          </div>
+        </div>
+        <p class="og-note">링크를 공유하면 이렇게 썸네일·제목·설명이 함께 떠요. 지금은 아무 설정이 없어 밋밋한 주소만 보이는데, 메타 태그(파비콘·OG)를 넣으면 위 카드처럼 보입니다. 실제 표지 이미지를 넣으면 더 좋아져요.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
