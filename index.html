@@ -50,7 +50,7 @@
   .intro-grid{ display:grid; grid-template-columns:0.55fr 1.45fr; gap:clamp(30px,5vw,76px); align-items:center;
     margin:clamp(40px,6vw,84px) 0 clamp(52px,7vw,104px); }
   .photo{ aspect-ratio:4/5; max-width:280px; width:100%; border-radius:6px; background:#d2d2cc; position:relative; }
-  .photo::after{ content:'PHOTO'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:0.2em; color:#a2a29a; }
+  .photo::after{ content:''; display:none; }
   .statement{ font-family:var(--disp); font-weight:800; font-size:clamp(30px,4.6vw,62px); letter-spacing:-0.025em; line-height:1.08; }
   .lead2{ font-size:clamp(15px,1.5vw,17px); color:#555; line-height:1.85; margin-top:22px; max-width:none; }
   .quickmeta{ display:flex; flex-wrap:wrap; gap:34px; margin-top:32px; }
@@ -85,6 +85,10 @@
   @media(max-width:560px){ .skillgrid{ grid-template-columns:repeat(3,1fr); } }
   @media(max-width:680px){ .cred-grid{ grid-template-columns:1fr; } .skills{ grid-template-columns:1fr; gap:16px; } }
 
+  .feat-tag{ position:absolute; right:11px; top:11px; z-index:2; background:var(--ink); color:#fff; font-family:var(--disp); font-weight:600; font-size:10px; letter-spacing:0.08em; padding:4px 9px; border-radius:14px; }
+  .pcard[data-open]{ cursor:pointer; }
+  .team-tag{ position:absolute; left:11px; top:11px; z-index:2; background:rgba(255,255,255,.92); color:#444; font-family:var(--disp); font-weight:700; font-size:10px; letter-spacing:0.08em; padding:4px 9px; border-radius:14px; border:1px solid #e0e0da; }
+
   /* ===== Works (featured large cards + preview grid) ===== */
   .wks-feat{ background:var(--paper); color:var(--ink); padding:0 clamp(26px,5vw,72px) clamp(40px,6vw,90px); }
   .wks-more{ background:#f5f5f1; color:var(--ink); padding:clamp(56px,8vw,120px) clamp(26px,5vw,72px); }
@@ -93,9 +97,11 @@
   .seclab::before{ content:''; width:7px; height:7px; background:var(--ink); display:inline-block; }
   .seclab .count{ margin-left:auto; color:#bdbdb6; font-weight:600; letter-spacing:0.04em; }
   .imgph{ background:#d6d6d0; position:relative; overflow:hidden; }
-  .imgph::after{ content:attr(data-l); position:absolute; left:15px; bottom:13px; font-family:var(--disp); font-weight:700; font-size:11px; letter-spacing:0.05em; color:#8c8c84; }
+  a.imgph{ display:block; cursor:pointer; }
+  .imgph[data-open]{ cursor:pointer; }
+  .imgph::after{ content:''; display:none; }
   .featured{ margin-top:38px; }
-  .big-row{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(26px,4vw,60px); align-items:center; padding:clamp(30px,4vw,48px) 0; border-top:1px solid #ececec; }
+  .big-row{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(26px,4vw,60px); align-items:center; padding:clamp(30px,4vw,48px) 0; border-top:1px solid #ececec; }
   .big-row:last-child{ border-bottom:1px solid #ececec; }
   .big-row.flip .txt{ order:2; }
   .big-row .imgph{ aspect-ratio:16/10; border-radius:10px; }
@@ -105,18 +111,23 @@
   .br-tags{ display:flex; flex-wrap:wrap; gap:7px; margin-top:16px; }
   .br-tag{ border:1px solid #e3e3df; border-radius:16px; padding:4px 12px; font-size:12px; color:#777; }
   .br-meta{ font-size:13px; color:#8a8a86; margin-top:14px; line-height:1.7; }
-  .br-view{ font-family:var(--disp); font-weight:600; font-size:13px; margin-top:20px; display:inline-block; border-bottom:1.5px solid var(--ink); padding-bottom:2px; cursor:pointer; }
+  .br-view{ font-family:var(--disp); font-weight:600; font-size:13px; margin-top:20px; display:inline-block; border-bottom:1.5px solid var(--ink); padding-bottom:2px; cursor:pointer; color:inherit; text-decoration:none; }
   @media(max-width:720px){ .big-row{ grid-template-columns:1fr; } .big-row.flip .txt{ order:0; } }
   .filterbar{ display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
   .filterbar button{ font-family:var(--disp); font-weight:600; font-size:12.5px; color:#777; background:transparent; border:1px solid #dededa; border-radius:20px; padding:7px 16px; cursor:pointer; transition:all .15s ease; }
   .filterbar button:hover{ color:#111; border-color:#b8b8b2; }
   .filterbar button.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
   .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px; }
+  .pcard{ display:block; text-decoration:none; color:inherit; }
   .pcard.hide{ display:none; }
   .pcard .imgph{ aspect-ratio:4/3; border-radius:10px; transition:transform .3s ease; }
   .pcard:hover .imgph{ transform:translateY(-4px); }
   .pcard .pt{ font-family:var(--disp); font-weight:700; font-size:17px; margin-top:13px; letter-spacing:-0.01em; }
   .pcard .pc{ font-size:13px; color:#8a8a86; margin-top:3px; }
+  .pcard .pdate{ display:flex; align-items:baseline; gap:8px; margin-top:7px; font-family:var(--disp); font-variant-numeric:tabular-nums; }
+  .pcard .py{ font-weight:700; font-size:11px; letter-spacing:0.1em; color:#6e6e68; }
+  .pcard .pd{ font-weight:600; font-size:11px; letter-spacing:0.04em; color:#b2b2ac; }
+  .pcard .pd::before{ content:''; display:inline-block; width:1px; height:9px; background:#dcdcd6; margin-right:8px; transform:translateY(1px); }
   @media(max-width:720px){ .grid3{ grid-template-columns:1fr 1fr; } }
   @media(max-width:460px){ .grid3{ grid-template-columns:1fr; } }
 
@@ -131,7 +142,45 @@
   .pd-title{ font-family:var(--disp); font-weight:800; font-size:clamp(40px,7vw,96px); letter-spacing:-0.035em; line-height:0.98; margin:12px 0 18px; }
   .pd-meta{ font-size:14px; color:#777; }
   .pd-meta b{ color:#222; font-weight:600; }
+  .pd-visit{ display:inline-flex; align-items:center; gap:8px; margin-top:28px; padding:0 22px; height:48px; border-radius:26px; background:var(--ink); color:#fff; font-family:var(--disp); font-weight:600; font-size:14px; text-decoration:none; transition:opacity .15s ease; }
+  .pd-visit:hover{ opacity:0.82; }
+  .pd-visit .ar{ font-size:16px; line-height:1; }
   .pd-stack{ margin-top:clamp(44px,6vw,72px); display:flex; flex-direction:column; gap:18px; }
+  .pd-note{ max-width:620px; margin:clamp(40px,5vw,64px) auto 0; padding-top:clamp(32px,4vw,44px); border-top:1px solid #ececec; }
+  .pd-note-lab{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#9a9a92; }
+  .pd-note-txt{ font-size:clamp(15px,1.6vw,17px); color:#444; line-height:1.7; margin-top:14px; }
+  .pd-note-date{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.08em; color:#b2b2ac; margin-top:12px; font-variant-numeric:tabular-nums; }
+
+  /* project detail — EX2 editorial split */
+  .pd2-inner{ max-width:1440px; margin:0 auto; padding:clamp(72px,9vw,120px) clamp(26px,5vw,64px) clamp(60px,8vw,110px); }
+  .pd2-top{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(28px,4vw,56px); align-items:end; }
+  .pd2-num{ font-family:var(--disp); font-weight:700; font-size:13px; color:#9a9a92; letter-spacing:0.06em; }
+  .pd2-title{ font-family:var(--disp); font-weight:800; font-size:clamp(34px,5vw,68px); letter-spacing:-0.03em; line-height:0.98; margin:10px 0 18px; }
+  .pd2-meta{ font-size:13.5px; color:#666; line-height:2; }
+  .pd2-meta span{ color:#a2a29a; display:inline-block; width:64px; }
+  .pd2-cover{ aspect-ratio:16/10; border-radius:8px; }
+  .pd2-row2{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,56px); margin-top:clamp(40px,5vw,70px); }
+  .pd2-inner .ovh{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#9a9a92; margin-bottom:14px; }
+  .pd2-inner .body-t{ font-size:clamp(15px,1.6vw,18px); line-height:1.75; color:#3c3c38; }
+  .pd2-inner .pd-visit{ margin-top:24px; }
+  @media(max-width:680px){ .pd2-top, .pd2-row2{ grid-template-columns:1fr; align-items:start; } }
+
+  /* project detail — EX3 long-scroll case study (use inside .pd2-inner) */
+  .pd3-hero{ aspect-ratio:16/8; border-radius:10px; position:relative; }
+  .pd3-badge{ position:absolute; left:24px; bottom:22px; color:#fff; }
+  .pd3-badge .pt{ font-family:var(--disp); font-weight:800; font-size:clamp(30px,5vw,60px); letter-spacing:-0.03em; line-height:1; }
+  .pd3-badge .pc{ font-size:13px; opacity:0.9; margin-top:6px; }
+  .pd3-blk{ margin-top:clamp(40px,5vw,64px); }
+  .pd3-wide{ aspect-ratio:16/9; border-radius:10px; margin-top:22px; }
+  .pd3-two{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:22px; }
+  .pd3-two .imgph{ aspect-ratio:4/3; border-radius:10px; }
+  @media(max-width:680px){ .pd3-two{ grid-template-columns:1fr; } }
+
+  /* project detail — marketing 기획서 (document-centric, use inside .pd2-inner) */
+  .pd-mkt-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(24px,3.5vw,40px); margin-top:clamp(36px,5vw,56px); }
+  .pd-slides{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px; }
+  .pd-slides .imgph{ aspect-ratio:16/10; border-radius:8px; }
+  @media(max-width:680px){ .pd-mkt-grid{ grid-template-columns:1fr; } .pd-slides{ grid-template-columns:repeat(2,1fr); } }
   .pd-stack .imgph{ aspect-ratio:16/9; border-radius:10px; }
 
   .rise{ opacity:0; transform:translateY(26px); }
@@ -288,17 +337,17 @@
             <div class="br-meta">Role · Product Designer&nbsp;&nbsp;|&nbsp;&nbsp;WebApp · UX/UI&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
             <span class="br-view" data-open="pd-mystar">View project →</span>
           </div>
-          <div class="imgph rise" data-l="MOODAY — COVER 16:10"></div>
+          <div class="imgph rise" data-open="pd-mystar" data-l="My Star Calendar — COVER 16:10"></div>
         </div>
         <div class="big-row flip">
           <div class="txt rise">
             <div class="br-num">02 — Featured</div>
             <div class="br-title">HOLO</div>
             <div class="br-desc">알고리즘 바깥의 취향을 큐레이션하는 독립 브랜드의 아이덴티티. 강한 타이포와 CMYK 컬러로 ‘반(反)알고리즘’의 태도를 시각화했습니다.</div>
-            <div class="br-meta">Role · BX Designer&nbsp;&nbsp;|&nbsp;&nbsp;App&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
+            <div class="br-meta">Role · Team Lead · BX Designer&nbsp;&nbsp;|&nbsp;&nbsp;WebApp&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
             <span class="br-view" data-open="pd-holo">View project →</span>
           </div>
-          <div class="imgph rise" data-l="ANTI-ALGORITHM — COVER 16:10"></div>
+          <div class="imgph rise" data-open="pd-holo" data-l="HOLO — COVER 16:10"></div>
         </div>
       </div>
     </div>
@@ -307,19 +356,29 @@
   <!-- WORKS — the rest as a preview grid -->
   <section class="wks-more">
     <div class="inner">
-      <div class="seclab rise">More works <span class="count">12</span></div>
+      <div class="seclab rise">More works <span class="count">19</span></div>
       <div class="filterbar rise" id="filterbar">
         <button data-filter="all" class="active">All</button>
         <button data-filter="web">Web</button>
+        <button data-filter="webapp">WebApp</button>
+        <button data-filter="team">Project</button>
+        <button data-filter="marketing">Marketing</button>
         <button data-filter="banner">Banner</button>
       </div>
       <div class="grid3" id="worksGrid">
-        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 01"></div><div class="pt">웹 프로젝트 01</div><div class="pc">Web · 반응형</div></div>
-        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 02"></div><div class="pt">웹 프로젝트 02</div><div class="pc">Web · 랜딩페이지</div></div>
-        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 03"></div><div class="pt">웹 프로젝트 03</div><div class="pc">Web Design</div></div>
-        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 04"></div><div class="pt">웹 프로젝트 04</div><div class="pc">Web · UI</div></div>
-        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 05"></div><div class="pt">웹 프로젝트 05</div><div class="pc">Web · 반응형</div></div>
-        <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 06"></div><div class="pt">웹 프로젝트 06</div><div class="pc">Web Design</div></div>
+        <div class="pcard rise" data-cat="webapp" data-open="pd-mystar"><div class="imgph" data-l="My Star Calendar"><span class="feat-tag">FEATURED ↑</span></div><div class="pt">마이 스타 캘린더</div><div class="pc">WebApp · 1인 프로젝트</div><div class="pdate"><span class="py">2026</span><span class="pd">03 · 06.06 – 06.12</span></div></div>
+        <div class="pcard rise" data-cat="webapp" data-open="pd-rhythm"><div class="imgph" data-l="RHYTHM CAMEMBERT"></div><div class="pt">리듬벨리</div><div class="pc">WebApp · 게임</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="webapp" data-open="pd-truth"><div class="imgph" data-l="진실의 옥상"><span class="team-tag">TEAM</span></div><div class="pt">진실의 옥상</div><div class="pc">WebApp · 팀</div><div class="pdate"><span class="py">2026</span><span class="pd">진행 중</span></div></div>
+        <div class="pcard rise" data-cat="web" data-open="pd-naver"><div class="imgph" data-l="NAVER"></div><div class="pt">네이버</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="web" data-open="pd-smtown"><div class="imgph" data-l="SMTOWN&amp;STORE"></div><div class="pt">SMTOWN&amp;STORE</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="web" data-open="pd-nintendo"><div class="imgph" data-l="NINTENDO — ZELDA"></div><div class="pt">NINTENDO — ZELDA</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="web" data-open="pd-cosmetic"><div class="imgph" data-l="COSMETIC"></div><div class="pt">화장품 리디자인</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="team" data-open="pd-khan"><div class="imgph" data-l="KHAN ACADEMY"><span class="team-tag">TEAM</span></div><div class="pt">칸 아카데미</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">03.30 – 04.03</span></div></div>
+        <div class="pcard rise" data-cat="team" data-open="pd-holo"><div class="imgph" data-l="HOLO"><span class="team-tag">TEAM</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">HOLO</div><div class="pc">WebApp · 제작</div><div class="pdate"><span class="py">2026</span><span class="pd">04.21(예상) – 05.22</span></div></div>
+        <div class="pcard rise" data-cat="team" data-open="pd-sangsang"><div class="imgph" data-l="상상의 문"><span class="team-tag">TEAM</span></div><div class="pt">상상의 문</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">05.29 – 06.08(예상) · 06.23 발표</span></div></div>
+        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing"><div class="imgph" data-l="AD/PR PLAN"><span class="team-tag">TEAM</span></div><div class="pt">광고·홍보 기획서</div><div class="pc">Marketing · 기획</div><div class="pdate"><span class="py">2022</span></div></div>
+        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing2"><div class="imgph" data-l="MARKETING 02"><span class="team-tag">TEAM</span></div><div class="pt">마케팅 기획 02</div><div class="pc">Marketing · 기획</div><div class="pdate"><span class="py">2022</span></div></div>
+        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing3"><div class="imgph" data-l="MARKETING 03"><span class="team-tag">TEAM</span></div><div class="pt">마케팅 기획 03</div><div class="pc">Marketing · 기획</div><div class="pdate"><span class="py">2022</span></div></div>
         <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 01"></div><div class="pt">배너 작업 01</div><div class="pc">Banner</div></div>
         <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 02"></div><div class="pt">배너 작업 02</div><div class="pc">Banner · 상세페이지</div></div>
         <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 03"></div><div class="pt">배너 작업 03</div><div class="pc">Banner · 이벤트</div></div>
@@ -336,7 +395,8 @@
     <div class="pd-inner">
       <div class="pd-num">01 — Featured</div>
       <div class="pd-title">마이 스타 캘린더</div>
-      <div class="pd-meta"><b>Product Designer</b> &nbsp;·&nbsp; WebApp · UX/UI &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Figma · After Effects</div>
+      <div class="pd-meta"><b>Product Designer</b> &nbsp;·&nbsp; WebApp · UX/UI &nbsp;·&nbsp; 2026.03 기획 · 06.06 개발 → 06.12 오픈 베타 &nbsp;·&nbsp; Figma · After Effects</div>
+      <div><a class="pd-visit" href="https://mystarzip.com/" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a></div>
       <div class="pd-stack">
         <div class="imgph" data-l="COVER 16:9"></div>
         <div class="imgph" data-l="MAIN FLOW 16:9"></div>
@@ -350,11 +410,298 @@
     <div class="pd-inner">
       <div class="pd-num">02 — Featured</div>
       <div class="pd-title">HOLO</div>
-      <div class="pd-meta"><b>BX Designer</b> &nbsp;·&nbsp; App &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Illustrator · Photoshop</div>
+      <div class="pd-meta"><b>Team Lead · BX Designer</b> &nbsp;·&nbsp; WebApp &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Illustrator · Photoshop</div>
+      <div><a class="pd-visit" href="https://3team-holo.vercel.app/" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a></div>
       <div class="pd-stack">
         <div class="imgph" data-l="COVER 16:9"></div>
         <div class="imgph" data-l="IDENTITY 16:9"></div>
         <div class="imgph" data-l="APPLICATION 16:9"></div>
+      </div>
+      <div class="pd-note">
+        <div class="pd-note-lab">User Research · 설문조사</div>
+        <p class="pd-note-txt">‘나만의 아바타로 만나는 동네 이웃, HOLO’ 프로젝트 설문조사를 구글 폼으로 진행하여 타깃 사용자의 니즈를 수집했습니다.</p>
+        <div class="pd-note-date">2026.04.24 – 04.30</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-naver" role="dialog" aria-modal="true" aria-label="네이버 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Web Redesign</div>
+          <div class="pd2-title">네이버</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>UX/UI · 개인</div>
+            <div><span>Type</span>Web · 리디자인</div>
+            <div><span>Year</span>2026</div>
+            <div><span>Tools</span>Figma · HTML/CSS</div>
+          </div>
+          <a class="pd-visit" href="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
+        </div>
+        <div class="imgph pd2-cover" data-l="NAVER — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">정보가 빽빽한 네이버 메인을 정보 위계 중심으로 다시 정리한 리디자인입니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">그리드와 타이포를 정돈해 가독성과 탐색 동선을 개선했습니다.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-smtown" role="dialog" aria-modal="true" aria-label="SMTOWN&amp;STORE 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Web Redesign</div>
+          <div class="pd2-title">SMTOWN&amp;STORE</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>UX/UI · 개인</div>
+            <div><span>Type</span>Web · 리디자인</div>
+            <div><span>Year</span>2026</div>
+            <div><span>Tools</span>Figma · HTML/CSS</div>
+          </div>
+          <a class="pd-visit" href="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
+        </div>
+        <div class="imgph pd2-cover" data-l="SMTOWN&amp;STORE — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">아티스트 IP 커머스인 SMTOWN&amp;STORE의 쇼핑 경험을 리디자인했습니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">비주얼 중심 레이아웃으로 IP 무드를 강화하고 구매 동선을 단순화했습니다.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-nintendo" role="dialog" aria-modal="true" aria-label="NINTENDO ZELDA 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Web Redesign</div>
+          <div class="pd2-title">NINTENDO — ZELDA</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>UX/UI · 개인</div>
+            <div><span>Type</span>Web · 리디자인</div>
+            <div><span>Year</span>2026</div>
+            <div><span>Tools</span>Figma · HTML/CSS</div>
+          </div>
+          <a class="pd-visit" href="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
+        </div>
+        <div class="imgph pd2-cover" data-l="ZELDA — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">젤다 IP의 세계관 무드를 살린 닌텐도 페이지 리디자인입니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">몰입형 비주얼과 인터랙션으로 게임의 분위기를 웹에서 전달했습니다.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-cosmetic" role="dialog" aria-modal="true" aria-label="화장품 리디자인 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Web Redesign</div>
+          <div class="pd2-title">화장품 리디자인</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>UX/UI · 개인</div>
+            <div><span>Type</span>Web · 리디자인</div>
+            <div><span>Year</span>2026</div>
+            <div><span>Tools</span>Figma · HTML/CSS</div>
+          </div>
+        </div>
+        <div class="imgph pd2-cover" data-l="COSMETIC — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">화장품 브랜드 페이지를 제품 중심으로 리디자인했습니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">제품 비주얼을 강조하고 구매 동선을 단순화했습니다.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-khan" role="dialog" aria-modal="true" aria-label="칸 아카데미 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Team Project</div>
+          <div class="pd2-title">칸 아카데미</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>Team Lead · UX/UI</div>
+            <div><span>Type</span>Web · 리디자인</div>
+            <div><span>Year</span>2026</div>
+            <div><span>Tools</span>Figma · HTML/CSS</div>
+          </div>
+        </div>
+        <div class="imgph pd2-cover" data-l="KHAN ACADEMY — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">교육 플랫폼 칸 아카데미를 팀 단위로 리디자인했습니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">학습 흐름과 내비게이션 구조를 개선해 콘텐츠 접근성을 높였습니다.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-sangsang" role="dialog" aria-modal="true" aria-label="상상의 문 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Team Project</div>
+          <div class="pd2-title">상상의 문</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>UX/UI · 팀</div>
+            <div><span>Type</span>Web · 리디자인</div>
+            <div><span>Year</span>2026.05.29 – 06.08(예상) · 06.23 발표</div>
+            <div><span>Tools</span>Figma · HTML/CSS</div>
+          </div>
+          <a class="pd-visit" href="https://doorlove1234-coder.github.io/sangsangDoor/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
+        </div>
+        <div class="imgph pd2-cover" data-l="상상의 문 — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">‘상상의 문’ 웹을 팀으로 리디자인한 프로젝트입니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">브랜드 톤에 맞춰 레이아웃과 비주얼을 재구성했습니다.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-marketing" role="dialog" aria-modal="true" aria-label="광고·홍보 기획서 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Marketing · Team</div>
+          <div class="pd2-title">광고·홍보 기획서</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>기획 · 팀</div>
+            <div><span>Type</span>Marketing · 기획서</div>
+            <div><span>Year</span>2022</div>
+            <div><span>Tools</span>PowerPoint · Keynote</div>
+          </div>
+        </div>
+        <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"></div>
+      </div>
+      <div class="pd-mkt-grid">
+        <div><div class="ovh">Objective · 목표</div><p class="body-t">캠페인이 풀려는 문제와 도달하려는 목표를 한 줄로 정의합니다.</p></div>
+        <div><div class="ovh">Target · 타깃</div><p class="body-t">핵심 타깃과 인사이트(왜 이들에게 통하는가)를 정리합니다.</p></div>
+        <div><div class="ovh">Strategy · 핵심 전략</div><p class="body-t">메시지·채널·실행안을 묶은 핵심 아이디어를 보여줍니다.</p></div>
+        <div><div class="ovh">Result · 성과</div><p class="body-t">수상·성과·반응 등 결과를 숫자나 한 줄로 마무리합니다.</p></div>
+      </div>
+      <div class="pd3-blk">
+        <div class="ovh">기획서 슬라이드</div>
+        <div class="pd-slides">
+          <div class="imgph"></div><div class="imgph"></div><div class="imgph"></div><div class="imgph"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-marketing2" role="dialog" aria-modal="true" aria-label="마케팅 기획 02 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Marketing</div>
+          <div class="pd2-title">마케팅 기획 02</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>기획</div>
+            <div><span>Type</span>Marketing · 기획서</div>
+            <div><span>Year</span>2022</div>
+            <div><span>Tools</span>PowerPoint · Keynote</div>
+          </div>
+        </div>
+        <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"></div>
+      </div>
+      <div class="pd-mkt-grid">
+        <div><div class="ovh">Objective · 목표</div><p class="body-t">캠페인이 풀려는 문제와 도달하려는 목표를 한 줄로 정의합니다.</p></div>
+        <div><div class="ovh">Target · 타깃</div><p class="body-t">핵심 타깃과 인사이트를 정리합니다.</p></div>
+        <div><div class="ovh">Strategy · 핵심 전략</div><p class="body-t">메시지·채널·실행안을 묶은 핵심 아이디어를 보여줍니다.</p></div>
+        <div><div class="ovh">Result · 성과</div><p class="body-t">성과·반응 등 결과로 마무리합니다.</p></div>
+      </div>
+      <div class="pd3-blk">
+        <div class="ovh">기획서 슬라이드</div>
+        <div class="pd-slides">
+          <div class="imgph"></div><div class="imgph"></div><div class="imgph"></div><div class="imgph"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-marketing3" role="dialog" aria-modal="true" aria-label="마케팅 기획 03 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">Marketing</div>
+          <div class="pd2-title">마케팅 기획 03</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>기획</div>
+            <div><span>Type</span>Marketing · 기획서</div>
+            <div><span>Year</span>2022</div>
+            <div><span>Tools</span>PowerPoint · Keynote</div>
+          </div>
+        </div>
+        <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"></div>
+      </div>
+      <div class="pd-mkt-grid">
+        <div><div class="ovh">Objective · 목표</div><p class="body-t">캠페인이 풀려는 문제와 도달하려는 목표를 한 줄로 정의합니다.</p></div>
+        <div><div class="ovh">Target · 타깃</div><p class="body-t">핵심 타깃과 인사이트를 정리합니다.</p></div>
+        <div><div class="ovh">Strategy · 핵심 전략</div><p class="body-t">메시지·채널·실행안을 묶은 핵심 아이디어를 보여줍니다.</p></div>
+        <div><div class="ovh">Result · 성과</div><p class="body-t">성과·반응 등 결과로 마무리합니다.</p></div>
+      </div>
+      <div class="pd3-blk">
+        <div class="ovh">기획서 슬라이드</div>
+        <div class="pd-slides">
+          <div class="imgph"></div><div class="imgph"></div><div class="imgph"></div><div class="imgph"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-rhythm" role="dialog" aria-modal="true" aria-label="리듬벨리 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">WebApp · Game</div>
+          <div class="pd2-title">리듬벨리 <span style="font-weight:700; font-size:0.5em; color:#9a9a92; letter-spacing:0;">Rhythm Camembert</span></div>
+          <div class="pd2-meta">
+            <div><span>Role</span>1인 · 기획·개발</div>
+            <div><span>Type</span>WebApp · 게임</div>
+            <div><span>Year</span>2026</div>
+            <div><span>Tools</span>JavaScript · 바이브코딩</div>
+          </div>
+        </div>
+        <div class="imgph pd2-cover" data-l="RHYTHM CAMEMBERT — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">박자에 맞춰 즐기는 리듬 게임 ‘리듬벨리(Rhythm Camembert)’입니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">간단한 조작과 경쾌한 피드백으로 누구나 바로 즐길 수 있게 만들었습니다.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pdetail" id="pd-truth" role="dialog" aria-modal="true" aria-label="진실의 옥상 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">WebApp · Team · 진행 중</div>
+          <div class="pd2-title">진실의 옥상</div>
+          <div class="pd2-meta">
+            <div><span>Role</span>팀</div>
+            <div><span>Type</span>WebApp</div>
+            <div><span>Year</span>2026 · 진행 중</div>
+            <div><span>Tools</span>Figma · JavaScript</div>
+          </div>
+        </div>
+        <div class="imgph pd2-cover" data-l="진실의 옥상 — COVER 16:10"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">팀으로 제작 중인 웹앱 ‘진실의 옥상’입니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">현재 기획·디자인·개발을 진행 중이며, 완성되는 대로 내용을 업데이트할 예정입니다.</p></div>
       </div>
     </div>
   </div>
@@ -393,7 +740,8 @@
       const f = b.dataset.filter;
       fbar.querySelectorAll('button').forEach(x=>x.classList.toggle('active', x===b));
       cards.forEach(c=>{
-        const hide = (f!=='all' && c.dataset.cat!==f);
+        const cats = (c.dataset.cat||'').split(/\s+/);
+        const hide = (f!=='all' && !cats.includes(f));
         c.classList.toggle('hide', hide);
         if(!hide){ c.style.opacity='1'; c.style.transform='none'; }
       });
