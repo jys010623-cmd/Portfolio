@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://jys010623-cmd.github.io/Portfolio/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Figtree:wght@600;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Figtree:wght@600;700;800;900&family=Inter:wght@400;500&family=Fredoka:wght@600&display=swap" rel="stylesheet">
 <style>
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
   :root{ --ink:#0c0c0c; --paper:#ffffff; --disp:'Poppins'; }
@@ -114,6 +114,7 @@
   .seclab::before{ content:''; width:7px; height:7px; background:var(--ink); display:inline-block; }
   .seclab .count{ margin-left:auto; color:#bdbdb6; font-weight:600; letter-spacing:0.04em; }
   .imgph{ background:#d6d6d0; position:relative; overflow:hidden; }
+  .imgph img{ width:100%; height:100%; object-fit:cover; display:block; }
   a.imgph{ display:block; cursor:pointer; }
   .imgph[data-open]{ cursor:pointer; }
   .imgph::after{ content:''; display:none; }
@@ -154,7 +155,7 @@
   /* project detail overlay (example 4 — minimal centered) */
   .pdetail{ position:fixed; inset:0; z-index:200; background:var(--paper); color:var(--ink); overflow-y:auto; display:none; }
   .pdetail.open{ display:block; }
-  .pd-close{ position:fixed; top:18px; left:22px; z-index:210; display:inline-flex; align-items:center; gap:7px; height:42px; padding:0 18px 0 13px; border-radius:24px; border:1px solid #dcdcd6; background:#fff; color:#111; font-family:var(--disp); font-weight:600; font-size:13px; cursor:pointer; }
+  .pd-close{ position:fixed; top:18px; left:max(22px, calc((100vw - 1440px) / 2 + clamp(26px,5vw,64px))); z-index:210; display:inline-flex; align-items:center; gap:7px; height:42px; padding:0 18px 0 13px; border-radius:24px; border:1px solid #dcdcd6; background:#fff; color:#111; font-family:var(--disp); font-weight:600; font-size:13px; cursor:pointer; }
   .pd-close:hover{ background:#f3f3ef; }
   .pd-close .ar{ font-size:17px; line-height:1; }
   .pd-inner{ max-width:1440px; margin:0 auto; padding:clamp(72px,9vw,130px) clamp(26px,5vw,64px) clamp(60px,8vw,110px); text-align:center; }
@@ -209,6 +210,61 @@
   .pd-slides .imgph{ aspect-ratio:16/10; border-radius:8px; }
   @media(max-width:680px){ .pd-mkt-grid{ grid-template-columns:1fr; } .pd-slides{ grid-template-columns:repeat(2,1fr); } }
   .pd-stack .imgph{ aspect-ratio:16/9; border-radius:10px; }
+  /* ===== My Star Calendar — 상세(포스터형 재현) ===== */
+  @font-face{
+    font-family:'OkMallangB';
+    src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2603-1@1.0/OkMallangB-Regular.woff2') format('woff2');
+    font-weight:normal; font-display:swap;
+  }
+  .msc{ font-family:var(--disp),sans-serif; color:#1b1b1b; }
+  .msc-hero{ position:relative; background:#eef0f2; padding:clamp(72px,8vw,100px) clamp(26px,5vw,72px) clamp(48px,6vw,84px); }
+  .msc-bar{ max-width:1180px; margin:0 auto clamp(36px,5vw,80px); display:flex; justify-content:space-between; align-items:center; gap:16px; }
+  .msc-logo{ font-family:'OkMallangB', var(--disp), sans-serif; font-weight:normal; font-size:clamp(16px,1.7vw,21px); letter-spacing:0; display:inline-flex; align-items:center; gap:8px; }
+  .msc-logo svg{ width:1.3em; height:1.3em; }
+  .msc-kicker{ font-weight:600; font-size:clamp(11px,1.1vw,13px); letter-spacing:0.14em; color:#9a9aa2; white-space:nowrap; }
+  .msc-grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:0.82fr 1.18fr; gap:clamp(24px,4vw,56px); align-items:center; }
+  .msc-left{ position:relative; }
+  .msc-star{ position:absolute; right:-6%; top:-19%; width:clamp(160px,19vw,260px); opacity:0.55; pointer-events:none; z-index:0; }
+  .msc-left > *:not(.msc-star){ position:relative; z-index:1; }
+  .msc-sub{ font-weight:600; font-size:clamp(13px,1.3vw,15px); color:#6f6f77; margin-bottom:clamp(14px,1.6vw,20px); }
+  .msc-title{ font-weight:800; font-size:clamp(44px,6vw,80px); line-height:1.03; letter-spacing:-0.01em; margin:0; }
+  .msc-desc{ font-weight:500; font-size:clamp(14px,1.4vw,16px); line-height:1.7; color:#7c7c84; margin:clamp(18px,2.2vw,26px) 0 0; max-width:25em; }
+  .msc-divider{ height:1px; background:#d6d8dd; margin:clamp(26px,3.2vw,38px) 0; max-width:300px; }
+  .msc-info{ display:flex; flex-direction:column; gap:clamp(12px,1.4vw,16px); }
+  .msc-info .r{ display:flex; align-items:center; gap:clamp(22px,3vw,40px); }
+  .msc-info .k{ font-weight:600; font-size:13px; color:#a6a6ad; min-width:42px; }
+  .msc-info .v{ font-weight:600; font-size:clamp(13px,1.3vw,15px); color:#3a3a40; }
+  .msc-tools{ display:flex; flex-wrap:wrap; gap:10px; width:246px; }
+  .msc-tools .tl{ flex:0 0 auto; width:54px; height:54px; background:#fff; border-radius:14px; box-shadow:0 3px 12px rgba(0,0,0,0.05); display:inline-flex; align-items:center; justify-content:center; }
+  .msc-tools .tl img{ width:28px; height:28px; object-fit:contain; }
+  .msc-qr{ display:flex; align-items:center; gap:16px; margin-top:clamp(26px,3.2vw,40px); text-decoration:none; color:inherit; width:fit-content; }
+  .msc-qr:hover b{ text-decoration:underline; }
+  .msc-qr img{ width:clamp(78px,7vw,94px); height:clamp(78px,7vw,94px); border-radius:6px; }
+  .msc-qr b{ font-weight:700; font-size:clamp(13px,1.3vw,15px); color:#1b1b1b; display:block; line-height:1.35; }
+  .msc-qr span{ display:block; font-size:13px; color:#8a8a90; margin-top:4px; }
+  .msc-right{ position:relative; }
+  .msc-devices{ display:flex; align-items:flex-end; justify-content:center; }
+  .msc-mon{ width:86%; height:auto; display:block; position:relative; z-index:1; }
+  .msc-phone{ width:24%; height:auto; display:block; position:relative; z-index:2; margin-left:-17%; margin-bottom:-3%; }
+  /* 모바일 앱 전용 — 폰 쇼케이스 + placeholder */
+  .msc-phones{ display:flex; align-items:flex-end; justify-content:center; gap:clamp(16px,2.6vw,40px); }
+  .msc-phones img, .msc-phones .phph{ width:clamp(140px,17vw,215px); height:auto; display:block; }
+  .msc-phones .phlift{ margin-bottom:9%; }
+  .phph{ aspect-ratio:9/19.3; background:#dcdcd6; border:7px solid #c9c9c2; border-radius:32px; }
+  .msc-qr .qr-ph{ flex:0 0 auto; width:clamp(78px,7vw,94px); height:clamp(78px,7vw,94px); border-radius:6px; background:#dcdcd6; border:1px solid #cfcfc8; }
+  .msc-features{ background:#fff; padding:clamp(34px,4vw,54px) clamp(26px,5vw,72px); }
+  .msc-flist{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(20px,3vw,44px); }
+  .msc-feat{ display:grid; grid-template-columns:auto 1fr; align-items:center; column-gap:11px; row-gap:7px; }
+  .msc-feat .fi{ display:inline-flex; align-items:center; }
+  .msc-feat .fi svg{ width:21px; height:21px; display:block; }
+  .msc-feat b{ font-weight:700; font-size:clamp(15px,1.5vw,18px); margin:0; }
+  .msc-feat p{ grid-column:1 / -1; margin:0; font-weight:500; font-size:clamp(12px,1.2vw,13.5px); line-height:1.6; color:#8a8a90; }
+  @media(max-width:860px){
+    .msc-grid{ grid-template-columns:1fr; gap:clamp(30px,5vw,44px); }
+    .msc-star{ display:none; }
+    .msc-flist{ grid-template-columns:1fr 1fr; gap:28px; }
+  }
+  @media(max-width:560px){ .msc-flist{ grid-template-columns:1fr; } }
 
   .rise{ opacity:0; transform:translateY(26px); }
 
@@ -342,7 +398,7 @@
             <div class="skill-row">
               <span class="sk-cat">AI</span>
               <div class="chips">
-                <span class="chip"><img src="assets/icons/gemini.svg" alt="">Gemini</span>
+                <span class="chip"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="">Gemini</span>
                 <span class="chip"><img src="assets/icons/chatgpt.svg" alt="">ChatGPT</span>
                 <span class="chip"><img src="assets/icons/midjourney.svg" alt="">Midjourney</span>
                 <span class="chip"><img src="https://cdn.simpleicons.org/suno" alt="" onerror="this.style.display='none'">Suno</span>
@@ -472,10 +528,55 @@
         <div class="pd-feat"><b>MY STAR PASS</b><span>나만의 덕질 멤버십 카드</span></div>
         <div class="pd-feat"><b>풍부한 꾸미기</b><span>퍼스널 컬러 추출·미니홈피·다크모드</span></div>
       </div>
-      <div class="pd-stack">
-        <div class="imgph" data-l="COVER 16:9"></div>
-        <div class="imgph" data-l="MAIN FLOW 16:9"></div>
-        <div class="imgph" data-l="DETAIL 16:9"></div>
+    </div>
+    <div class="msc">
+      <div class="msc-hero">
+        <div class="msc-bar">
+          <span class="msc-logo"><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path transform="translate(12,22) scale(0.6)" d="M50 0 C54 30 70 46 100 50 C70 54 54 70 50 100 C46 70 30 54 0 50 C30 46 46 30 50 0Z"/><circle cx="80" cy="26" r="5"/><circle cx="11" cy="80" r="4.5"/></svg>My Star Calendar</span>
+          <span class="msc-kicker">UI / UX DESIGN</span>
+        </div>
+        <div class="msc-grid">
+          <div class="msc-left">
+            <svg class="msc-star" viewBox="0 0 100 100" fill="#dfe1e6" aria-hidden="true"><path d="M50 0 C54 30 70 46 100 50 C70 54 54 70 50 100 C46 70 30 54 0 50 C30 46 46 30 50 0Z"/></svg>
+            <div class="msc-sub">나의 최애 스케줄을 기록하고 관리하는 캘린더</div>
+            <h2 class="msc-title">마이 스타<br>캘린더</h2>
+            <p class="msc-desc">마이 스타 캘린더는 개인의 덕질 활동과 일상을 한눈에 기록하고 관리할 수 있는 서비스입니다.</p>
+            <div class="msc-divider"></div>
+            <div class="msc-info">
+              <div class="r"><span class="k">Work</span><span class="v">100% Personal Project</span></div>
+              <div class="r"><span class="k">Tool</span>
+                <span class="msc-tools">
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"></span>
+                  <span class="tl"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></span>
+                  <span class="tl"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span>
+                </span>
+              </div>
+            </div>
+            <a class="msc-qr" href="https://mystarzip.com/" target="_blank" rel="noopener">
+              <img src="assets/projects/My-Star-Calendar/mystar_qr.jpg" alt="마이 스타 캘린더 사이트 QR 코드" loading="lazy">
+              <span><b>마이 스타 캘린더<br>(My Star Calendar)</b><span>https://mystarzip.com</span></span>
+            </a>
+          </div>
+          <div class="msc-right">
+            <div class="msc-devices">
+              <img class="msc-mon" src="assets/projects/My-Star-Calendar/mystar_monitor.png" alt="마이 스타 캘린더 데스크탑 메인 화면" loading="lazy">
+              <img class="msc-phone" src="assets/projects/My-Star-Calendar/mystar_phone.png" alt="마이 스타 캘린더 모바일 화면" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="msc-features">
+        <div class="msc-flist">
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0 C13 7 17 11 24 12 C17 13 13 17 12 24 C11 17 7 13 0 12 C7 11 11 7 12 0Z"/></svg></span><b>최애 중심 캘린더</b><p>최애 데뷔일 기준 D-DAY와<br>주간 캘린더로 중요한 날을 한눈에</p></div>
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21 C5 15 2 11 2 7.5 C2 5 4 3 6.5 3 C8.5 3 10.5 4.5 12 6.5 C13.5 4.5 15.5 3 17.5 3 C20 3 22 5 22 7.5 C22 11 19 15 12 21Z"/></svg></span><b>덕질 기록 대시보드</b><p>캘린더, 스케줄, 아카이브 등<br>나의 덕질 데이터를 한 곳에</p></div>
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25 L14.06 6.19 L17.81 9.94 L6.75 21 L3 21 Z M15.12 5.12 L17 3.25 C17.6 2.65 18.57 2.65 19.17 3.25 L20.75 4.83 C21.35 5.43 21.35 6.4 20.75 7 L18.88 8.88 Z"/></svg></span><b>미니홈피 모드</b><p>오늘의 기분에 따라<br>나만의 홈페이지 꾸미기</p></div>
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 L14.9 8.6 L22 9.3 L16.5 14 L18.2 21 L12 17.3 L5.8 21 L7.5 14 L2 9.3 L9.1 8.6 Z"/></svg></span><b>모바일 &amp; 웹 반응형</b><p>기기에 따른 반응형 지원으로<br>어디서든 기록하고 관리</p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -496,15 +597,63 @@
         <div class="pd-feat"><b>레벨 · 포인트</b><span>출석·활동으로 쌓는 게이미피케이션</span></div>
         <div class="pd-feat"><b>유저 리서치</b><span>구글 폼 설문으로 타깃 니즈 수집</span></div>
       </div>
-      <div class="pd-stack">
-        <div class="imgph" data-l="COVER 16:9"></div>
-        <div class="imgph" data-l="IDENTITY 16:9"></div>
-        <div class="imgph" data-l="APPLICATION 16:9"></div>
-      </div>
       <div class="pd-note">
         <div class="pd-note-lab">User Research · 설문조사</div>
         <p class="pd-note-txt">‘나만의 아바타로 만나는 동네 이웃, HOLO’ 프로젝트 설문조사를 구글 폼으로 진행하여 타깃 사용자의 니즈를 수집했습니다.</p>
         <div class="pd-note-date">2026.04.24 – 04.30</div>
+      </div>
+    </div>
+    <div class="msc">
+      <div class="msc-hero">
+        <div class="msc-bar">
+          <span class="msc-logo" style="font-family:'Fredoka',sans-serif;font-weight:600;letter-spacing:0;color:#B77CFF;font-size:27px;"><img src="assets/projects/HOLO/splash-logo.png" alt="HOLO 로고" style="height:29px;width:auto;display:block;">HOLO</span>
+          <span class="msc-kicker">UI / UX DESIGN</span>
+        </div>
+        <div class="msc-grid">
+          <div class="msc-left">
+            <div class="msc-sub">나만의 아바타로 만나는 동네 이웃</div>
+            <h2 class="msc-title">HOLO</h2>
+            <p class="msc-desc">아바타 룸을 꾸미고, 동네 소식·모임으로 가까운 이웃과 연결되는 하이퍼로컬 커뮤니티 앱입니다.</p>
+            <div class="msc-divider"></div>
+            <div class="msc-info">
+              <div class="r"><span class="k">Work</span><span class="v">Team Project · 조장(Team Lead)</span></div>
+              <div class="r"><span class="k">Tool</span>
+                <span class="msc-tools">
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"></span>
+                  <span class="tl"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"></span>
+                  <span class="tl"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"></span>
+                  <span class="tl"><img src="assets/icons/illustrator.svg" alt="Illustrator"></span>
+                  <span class="tl"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"></span>
+                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></span>
+                  <span class="tl"><img src="https://cdn.simpleicons.org/supabase" alt="Supabase"></span>
+                  <span class="tl"><img src="https://cdn.simpleicons.org/vercel" alt="Vercel"></span>
+                </span>
+              </div>
+            </div>
+            <a class="msc-qr" href="https://3team-holo.vercel.app/" target="_blank" rel="noopener">
+              <span class="qr-ph" aria-hidden="true"></span>
+              <span><b>HOLO<br>(하이퍼로컬 커뮤니티)</b><span>3team-holo.vercel.app</span></span>
+            </a>
+          </div>
+          <div class="msc-right">
+            <div class="msc-phones">
+              <span class="phph phlift" aria-hidden="true"></span>
+              <span class="phph" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="msc-features">
+        <div class="msc-flist">
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a4 4 0 100 8 4 4 0 000-8zm0 10c-4.4 0-8 2.7-8 7h16c0-4.3-3.6-7-8-7z"/></svg></span><b>아바타 룸</b><p>내 방·상태 메시지로<br>나를 표현하는 공간</p></div>
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 4h16a1 1 0 011 1v10a1 1 0 01-1 1H9l-5 4V5a1 1 0 011-1z"/></svg></span><b>동네 한 줄 소식</b><p>가까운 이웃과<br>짧은 소식을 공유</p></div>
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 11a3.2 3.2 0 100-6.4A3.2 3.2 0 008 11zm0 1.6c-3.4 0-6 1.9-6 4.8V19h12v-1.6c0-2.9-2.6-4.8-6-4.8zm9-1.6a3 3 0 100-6 3 3 0 000 6zm.5 1.7c-.5 0-1 .05-1.4.15 1.3 1 2.1 2.6 2.1 4.45V19H22v-1.6c0-2.6-2.3-4.5-4.5-4.5z"/></svg></span><b>추천 모임</b><p>근처 모임을<br>만들고 참여</p></div>
+          <div class="msc-feat"><span class="fi"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.7 7-6.3-3.7-6.3 3.7 1.7-7L2 9.3l7.1-.7z"/></svg></span><b>레벨 · 포인트</b><p>출석·활동으로 쌓는<br>게이미피케이션</p></div>
+        </div>
       </div>
     </div>
   </div>
