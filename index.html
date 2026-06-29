@@ -31,9 +31,11 @@
 
   .scroll-wrap{ height:300vh; position:relative; }
   /* 모바일: 히어로 pin 길이를 줄여 빈 화면을 오래 끌지 않음 */
-  @media(max-width:680px){ .scroll-wrap{ height:180vh; } .stage{ background:#fff; } }
+  @media(max-width:680px){ .scroll-wrap{ height:180vh; } }
   .stage{ height:100vh; width:100%; position:relative; overflow:hidden; background:var(--ink);
     display:flex; flex-direction:column; justify-content:center; gap:clamp(6px,1.4vw,18px); }
+  /* 모바일: 히어로를 처음부터 흰 배경으로 (검정 화면 제거) — base 규칙 뒤에 둬서 우선 적용 */
+  @media(max-width:680px){ .stage{ background:#fff; } }
 
   /* the ribbon lines — text on one nowrap line, blended so it reads on any bg */
   .line{ white-space:nowrap; font-family:var(--disp),sans-serif; line-height:1;
