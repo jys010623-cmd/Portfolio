@@ -731,6 +731,8 @@ body{
   /* index2.html = right active */
   .pg-l{ color:#9a9da9; }
   .pg-r{ color:#15151a; }
+  /* 상세 오버레이가 열리면 PORTFOLIO/STUDIO 토글 숨김 (Back 버튼과 겹침 방지) */
+  body:has(.pdetail.open) .pg-switch{ display:none; }
 </style>
 
 <div class="bg-orbs"><span></span><span></span><span></span></div>
