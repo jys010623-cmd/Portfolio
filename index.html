@@ -225,7 +225,7 @@
   .msc-grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:0.82fr 1.18fr; gap:clamp(24px,4vw,56px); align-items:center; }
   .msc-left{ position:relative; }
   .msc-star{ position:absolute; right:-6%; top:-19%; width:clamp(160px,19vw,260px); opacity:0.55; pointer-events:none; z-index:0; }
-  .msc-holo-wm{ aspect-ratio:516/440; height:auto; background:#dfe1e6; -webkit-mask:url('assets/projects/HOLO/HOLO_LOGO.png') center/contain no-repeat; mask:url('assets/projects/HOLO/HOLO_LOGO.png') center/contain no-repeat; }
+  .msc-holo-wm{ filter:brightness(0); opacity:0.06; right:6%; top:-19%; }
   .msc-left > *:not(.msc-star){ position:relative; z-index:1; }
   .msc-sub{ font-weight:600; font-size:clamp(13px,1.3vw,15px); color:#6f6f77; margin-bottom:clamp(14px,1.6vw,20px); }
   .msc-title{ font-weight:800; font-size:clamp(44px,6vw,80px); line-height:1.03; letter-spacing:-0.01em; margin:0; }
@@ -440,7 +440,7 @@
             <div class="br-meta">WebApp · UX/UI&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
             <span class="br-view" data-open="pd-mystar">View project →</span>
           </div>
-          <div class="imgph rise" data-open="pd-mystar" data-l="My Star Calendar — COVER 16:10"><img src="assets/projects/My-Star-Calendar/mystar_Thumbnail.jpg" alt="마이 스타 캘린더 썸네일"></div>
+          <div class="imgph rise" data-open="pd-mystar" data-l="My Star Calendar — COVER 16:10"><img src="assets/projects/My-Star-Calendar/mystar_Thumbnail_main.jpg" alt="마이 스타 캘린더 썸네일"></div>
         </div>
         <div class="big-row flip">
           <div class="txt rise">
@@ -450,7 +450,7 @@
             <div class="br-meta">Role · Team Lead&nbsp;&nbsp;|&nbsp;&nbsp;WebApp&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
             <span class="br-view" data-open="pd-holo">View project →</span>
           </div>
-          <div class="imgph rise" data-open="pd-holo" data-l="HOLO — COVER 16:10"><img src="assets/projects/HOLO/HOLO_Thumbnail.jpg" alt="HOLO 썸네일"></div>
+          <div class="imgph rise" data-open="pd-holo" data-l="HOLO — COVER 16:10"><img src="assets/projects/HOLO/HOLO_Thumbnail_main.jpg" alt="HOLO 썸네일"></div>
         </div>
       </div>
     </div>
@@ -469,18 +469,18 @@
         <button data-filter="banner">Banner</button>
       </div>
       <div class="grid3" id="worksGrid">
-        <div class="pcard rise" data-cat="web" data-open="pd-naver"><div class="imgph" data-l="NAVER"></div><div class="pt">네이버</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
-        <div class="pcard rise" data-cat="web" data-open="pd-smtown"><div class="imgph" data-l="SMTOWN&amp;STORE"></div><div class="pt">SMTOWN&amp;STORE</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
-        <div class="pcard rise" data-cat="web" data-open="pd-nintendo"><div class="imgph" data-l="NINTENDO — ZELDA"></div><div class="pt">NINTENDO — ZELDA</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="web" data-open="pd-naver"><div class="imgph" data-l="NAVER"><img src="assets/projects/NAVER/NAVER_Thumbnail.jpg" alt="네이버 리디자인 썸네일"></div><div class="pt">네이버</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="web" data-open="pd-smtown"><div class="imgph" data-l="SMTOWN&amp;STORE"><img src="assets/projects/SMTOWN_STORE/SMTOWN_STORE_Thumbnail.jpg" alt="SMTOWN&amp;STORE 리디자인 썸네일"></div><div class="pt">SMTOWN&amp;STORE</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <div class="pcard rise" data-cat="web" data-open="pd-nintendo"><div class="imgph" data-l="NINTENDO — ZELDA"><img src="assets/projects/NINTENDO/NINTENDO_Thumbnail.jpg" alt="닌텐도 젤다 리디자인 썸네일"></div><div class="pt">NINTENDO — ZELDA</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
         <div class="pcard rise" data-cat="web" data-open="pd-cosmetic"><div class="imgph" data-l="COSMETIC"></div><div class="pt">화장품 리디자인</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
         <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 05"></div><div class="pt">웹 프로젝트 05</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
         <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 06"></div><div class="pt">웹 프로젝트 06</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
-        <div class="pcard rise" data-cat="webapp" data-open="pd-mystar"><div class="imgph" data-l="My Star Calendar"><span class="feat-tag">FEATURED ↑</span></div><div class="pt">마이 스타 캘린더</div><div class="pc">WebApp · 1인 프로젝트</div><div class="pdate"><span class="py">2026</span><span class="pd">03 · 06.06 – 06.12 오픈베타 진행 중</span></div></div>
+        <div class="pcard rise" data-cat="webapp" data-open="pd-mystar"><div class="imgph" data-l="My Star Calendar"><img src="assets/projects/My-Star-Calendar/mystar_Thumbnail.jpg" alt="마이 스타 캘린더 썸네일"><span class="feat-tag">FEATURED ↑</span></div><div class="pt">마이 스타 캘린더</div><div class="pc">WebApp · 1인 프로젝트</div><div class="pdate"><span class="py">2026</span><span class="pd">03 · 06.06 – 06.12 오픈베타 진행 중</span></div></div>
         <div class="pcard rise" data-cat="webapp" data-open="pd-rhythm"><div class="imgph" data-l="RHYTHM CAMEMBERT"></div><div class="pt">리듬베르</div><div class="pc">WebApp · 1인 게임</div><div class="pdate"><span class="py">2026</span><span class="pd">진행 중</span></div></div>
         <div class="pcard rise" data-cat="webapp" data-open="pd-truth"><div class="imgph" data-l="진실의 옥상"><span class="team-tag">TEAM</span></div><div class="pt">진실의 옥상</div><div class="pc">WebApp · 팀</div><div class="pdate"><span class="py">2026</span><span class="pd">진행 중</span></div></div>
-        <div class="pcard rise" data-cat="team" data-open="pd-khan"><div class="imgph" data-l="KHAN ACADEMY"><span class="team-tag">TEAM</span></div><div class="pt">칸 아카데미</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">03.30 – 04.03</span></div></div>
-        <div class="pcard rise" data-cat="team" data-open="pd-holo"><div class="imgph" data-l="HOLO"><span class="team-tag">TEAM</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">HOLO</div><div class="pc">WebApp · 제작</div><div class="pdate"><span class="py">2026</span><span class="pd">04.21(예상) – 05.22</span></div></div>
-        <div class="pcard rise" data-cat="team" data-open="pd-sangsang"><div class="imgph" data-l="상상의 문"><span class="team-tag">TEAM</span></div><div class="pt">상상의 문</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">05.29 – 06.08(예상) · 06.23 발표</span></div></div>
+        <div class="pcard rise" data-cat="team" data-open="pd-khan"><div class="imgph" data-l="KHAN ACADEMY"><img src="assets/projects/Khan_Academy/Khan_Academy_Thumbnail.jpg" alt="칸 아카데미 리디자인 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">칸 아카데미</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">03.30 – 04.03</span></div></div>
+        <div class="pcard rise" data-cat="team" data-open="pd-holo"><div class="imgph" data-l="HOLO"><img src="assets/projects/HOLO/HOLO_Thumbnail.jpg" alt="HOLO 썸네일"><span class="team-tag">TEAM</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">HOLO</div><div class="pc">WebApp · 제작</div><div class="pdate"><span class="py">2026</span><span class="pd">04.21(예상) – 05.22</span></div></div>
+        <div class="pcard rise" data-cat="team" data-open="pd-sangsang"><div class="imgph" data-l="상상의 문"><img src="assets/projects/sangsang_door/sangsang_door_Thumbnail.jpg" alt="상상의 문 리디자인 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">상상의 문</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">05.29 – 06.08(예상) · 06.23 발표</span></div></div>
         <div class="pcard rise" data-cat="marketing" data-open="pd-marketing"><div class="imgph" data-l="AD/PR PLAN"><span class="team-tag">TEAM</span></div><div class="pt">광고·홍보 기획서</div><div class="pc">Marketing · 기획</div><div class="pdate"><span class="py">2022</span></div></div>
         <div class="pcard rise" data-cat="marketing" data-open="pd-marketing2"><div class="imgph" data-l="MARKETING 02"><span class="team-tag">TEAM</span></div><div class="pt">마케팅 기획 02</div><div class="pc">Marketing · 기획</div><div class="pdate"><span class="py">2022</span></div></div>
         <div class="pcard rise" data-cat="marketing" data-open="pd-marketing3"><div class="imgph" data-l="MARKETING 03"><span class="team-tag">TEAM</span></div><div class="pt">마케팅 기획 03</div><div class="pc">Marketing · 기획</div><div class="pdate"><span class="py">2022</span></div></div>
@@ -612,7 +612,7 @@
         </div>
         <div class="msc-grid">
           <div class="msc-left">
-            <span class="msc-star msc-holo-wm" aria-hidden="true"></span>
+            <img class="msc-star msc-holo-wm" src="assets/projects/HOLO/HOLO_LOGO.png" alt="" aria-hidden="true">
             <div class="msc-sub">나만의 아바타로 만나는 동네 이웃</div>
             <h2 class="msc-title">HOLO</h2>
             <p class="msc-desc">아바타 룸을 꾸미고, 동네 소식·모임으로 가까운 이웃과 연결되는 하이퍼로컬 커뮤니티 앱입니다.</p>
