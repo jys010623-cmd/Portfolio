@@ -225,6 +225,7 @@
   .msc-grid{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:0.82fr 1.18fr; gap:clamp(24px,4vw,56px); align-items:center; }
   .msc-left{ position:relative; }
   .msc-star{ position:absolute; right:-6%; top:-19%; width:clamp(160px,19vw,260px); opacity:0.55; pointer-events:none; z-index:0; }
+  .msc-holo-wm{ aspect-ratio:516/440; height:auto; background:#dfe1e6; -webkit-mask:url('assets/projects/HOLO/HOLO_LOGO.png') center/contain no-repeat; mask:url('assets/projects/HOLO/HOLO_LOGO.png') center/contain no-repeat; }
   .msc-left > *:not(.msc-star){ position:relative; z-index:1; }
   .msc-sub{ font-weight:600; font-size:clamp(13px,1.3vw,15px); color:#6f6f77; margin-bottom:clamp(14px,1.6vw,20px); }
   .msc-title{ font-weight:800; font-size:clamp(44px,6vw,80px); line-height:1.03; letter-spacing:-0.01em; margin:0; }
@@ -244,12 +245,12 @@
   .msc-qr span{ display:block; font-size:13px; color:#8a8a90; margin-top:4px; }
   .msc-right{ position:relative; }
   .msc-devices{ display:flex; align-items:flex-end; justify-content:center; }
-  .msc-mon{ width:86%; height:auto; display:block; position:relative; z-index:1; }
-  .msc-phone{ width:24%; height:auto; display:block; position:relative; z-index:2; margin-left:-17%; margin-bottom:-3%; }
+  .msc-mon{ width:86%; height:auto; display:block; position:relative; z-index:1; filter:drop-shadow(0 32px 52px rgba(20,20,30,0.22)); }
+  .msc-phone{ width:24%; height:auto; display:block; position:relative; z-index:2; margin-left:-17%; margin-bottom:-3%; filter:drop-shadow(0 14px 22px rgba(20,20,30,0.22)); }
   /* 모바일 앱 전용 — 폰 쇼케이스 + placeholder */
-  .msc-phones{ display:flex; align-items:flex-end; justify-content:center; gap:clamp(16px,2.6vw,40px); }
-  .msc-phones img, .msc-phones .phph{ width:clamp(140px,17vw,215px); height:auto; display:block; }
-  .msc-phones .phlift{ margin-bottom:9%; }
+  .msc-phones{ display:flex; align-items:flex-end; justify-content:center; gap:clamp(10px,1.8vw,24px); }
+  .msc-phones img, .msc-phones .phph{ width:clamp(116px,14.5vw,188px); height:auto; display:block; filter:drop-shadow(0 11px 20px rgba(20,20,30,0.13)); }
+  .msc-phones .phlift{ margin-bottom:9%; filter:drop-shadow(0 20px 32px rgba(20,20,30,0.26)); }
   .phph{ aspect-ratio:9/19.3; background:#dcdcd6; border:7px solid #c9c9c2; border-radius:32px; }
   .msc-qr .qr-ph{ flex:0 0 auto; width:clamp(78px,7vw,94px); height:clamp(78px,7vw,94px); border-radius:6px; background:#dcdcd6; border:1px solid #cfcfc8; }
   .msc-features{ background:#fff; padding:clamp(34px,4vw,54px) clamp(26px,5vw,72px); }
@@ -439,7 +440,7 @@
             <div class="br-meta">WebApp · UX/UI&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
             <span class="br-view" data-open="pd-mystar">View project →</span>
           </div>
-          <div class="imgph rise" data-open="pd-mystar" data-l="My Star Calendar — COVER 16:10"></div>
+          <div class="imgph rise" data-open="pd-mystar" data-l="My Star Calendar — COVER 16:10"><img src="assets/projects/My-Star-Calendar/mystar_Thumbnail.jpg" alt="마이 스타 캘린더 썸네일"></div>
         </div>
         <div class="big-row flip">
           <div class="txt rise">
@@ -449,7 +450,7 @@
             <div class="br-meta">Role · Team Lead&nbsp;&nbsp;|&nbsp;&nbsp;WebApp&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
             <span class="br-view" data-open="pd-holo">View project →</span>
           </div>
-          <div class="imgph rise" data-open="pd-holo" data-l="HOLO — COVER 16:10"></div>
+          <div class="imgph rise" data-open="pd-holo" data-l="HOLO — COVER 16:10"><img src="assets/projects/HOLO/HOLO_Thumbnail.jpg" alt="HOLO 썸네일"></div>
         </div>
       </div>
     </div>
@@ -558,7 +559,7 @@
               </div>
             </div>
             <a class="msc-qr" href="https://mystarzip.com/" target="_blank" rel="noopener">
-              <img src="assets/projects/My-Star-Calendar/mystar_qr.jpg" alt="마이 스타 캘린더 사이트 QR 코드" loading="lazy">
+              <img src="assets/projects/My-Star-Calendar/mystar_QR.jpg" alt="마이 스타 캘린더 사이트 QR 코드" loading="lazy">
               <span><b>마이 스타 캘린더<br>(My Star Calendar)</b><span>https://mystarzip.com</span></span>
             </a>
           </div>
@@ -606,11 +607,12 @@
     <div class="msc">
       <div class="msc-hero">
         <div class="msc-bar">
-          <span class="msc-logo" style="font-family:'Fredoka',sans-serif;font-weight:600;letter-spacing:0;color:#B77CFF;font-size:27px;"><img src="assets/projects/HOLO/splash-logo.png" alt="HOLO 로고" style="height:29px;width:auto;display:block;">HOLO</span>
+          <span class="msc-logo" style="font-family:'Fredoka',sans-serif;font-weight:600;letter-spacing:0;color:#B77CFF;font-size:27px;"><img src="assets/projects/HOLO/HOLO_LOGO.png" alt="HOLO 로고" style="height:29px;width:auto;display:block;">HOLO</span>
           <span class="msc-kicker">UI / UX DESIGN</span>
         </div>
         <div class="msc-grid">
           <div class="msc-left">
+            <span class="msc-star msc-holo-wm" aria-hidden="true"></span>
             <div class="msc-sub">나만의 아바타로 만나는 동네 이웃</div>
             <h2 class="msc-title">HOLO</h2>
             <p class="msc-desc">아바타 룸을 꾸미고, 동네 소식·모임으로 가까운 이웃과 연결되는 하이퍼로컬 커뮤니티 앱입니다.</p>
@@ -635,14 +637,15 @@
               </div>
             </div>
             <a class="msc-qr" href="https://3team-holo.vercel.app/" target="_blank" rel="noopener">
-              <span class="qr-ph" aria-hidden="true"></span>
+              <img src="assets/projects/HOLO/HOLO_QR.jpg" alt="HOLO 사이트 QR 코드" loading="lazy">
               <span><b>HOLO<br>(하이퍼로컬 커뮤니티)</b><span>3team-holo.vercel.app</span></span>
             </a>
           </div>
           <div class="msc-right">
             <div class="msc-phones">
-              <span class="phph phlift" aria-hidden="true"></span>
-              <span class="phph" aria-hidden="true"></span>
+              <img src="assets/projects/HOLO/HOLO_PHONE1.png" alt="HOLO 앱 화면 1" loading="lazy">
+              <img class="phlift" src="assets/projects/HOLO/HOLO_PHONE2.png" alt="HOLO 앱 화면 2" loading="lazy">
+              <img src="assets/projects/HOLO/HOLO_PHONE3.png" alt="HOLO 앱 화면 3" loading="lazy">
             </div>
           </div>
         </div>
@@ -943,34 +946,39 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script>
-    gsap.registerPlugin(ScrollTrigger);
+    /* GSAP CDN 로드 실패해도 콘텐츠가 보이도록 안전장치 */
+    const HAS_GSAP = (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined');
+    if(HAS_GSAP){ gsap.registerPlugin(ScrollTrigger); }
+    else { document.querySelectorAll('.rise').forEach((el)=>{ el.style.opacity='1'; el.style.transform='none'; }); }
 
     const unitBig  = 'J.Youngsim <span class="sep">—</span> Portfolio <span class="sep">—</span> ';
     const unitThin = 'Marketing &nbsp;·&nbsp; UI/UX &nbsp;·&nbsp; Web Design &nbsp;·&nbsp; ';
     document.getElementById('segBig').innerHTML  = unitBig.repeat(8);
     document.getElementById('segThin').innerHTML = unitThin.repeat(10);
 
-    gsap.set('#lineBig',  { xPercent:-12 });
-    gsap.set('#lineThin', { xPercent:-40 });
+    if(HAS_GSAP){
+      gsap.set('#lineBig',  { xPercent:-12 });
+      gsap.set('#lineThin', { xPercent:-40 });
 
-    const tl = gsap.timeline({
-      scrollTrigger:{ trigger:'#scrollWrap', start:'top top', end:'bottom bottom', pin:'#stage', scrub:0.6 }
-    });
-    tl.to('#stage', { backgroundColor:'#ffffff', ease:'none', duration:1 }, 0);
-    tl.to('#lineBig',  { xPercent:-62, ease:'none', duration:1 }, 0);
-    tl.to('#lineThin', { xPercent:-8,  ease:'none', duration:1 }, 0);
-    tl.to('#cue', { autoAlpha:0, ease:'none', duration:0.4 }, 0);
+      const tl = gsap.timeline({
+        scrollTrigger:{ trigger:'#scrollWrap', start:'top top', end:'bottom bottom', pin:'#stage', scrub:0.6 }
+      });
+      tl.to('#stage', { backgroundColor:'#ffffff', ease:'none', duration:1 }, 0);
+      tl.to('#lineBig',  { xPercent:-62, ease:'none', duration:1 }, 0);
+      tl.to('#lineThin', { xPercent:-8,  ease:'none', duration:1 }, 0);
+      tl.to('#cue', { autoAlpha:0, ease:'none', duration:0.4 }, 0);
 
-    /* About reveal on scroll */
-    gsap.utils.toArray('.rise').forEach((el)=>{
-      gsap.to(el, { scrollTrigger:{ trigger:el, start:'top 90%' }, opacity:1, y:0, duration:0.8, ease:'power2.out' });
-    });
+      /* About reveal on scroll */
+      gsap.utils.toArray('.rise').forEach((el)=>{
+        gsap.to(el, { scrollTrigger:{ trigger:el, start:'top 90%' }, opacity:1, y:0, duration:0.8, ease:'power2.out' });
+      });
+    }
 
     /* closing — horizontal marquee */
     const clMq = document.getElementById('clMqTrack');
     if(clMq){
       clMq.textContent = ('J.Youngsim — Design that connects — ').repeat(6);
-      gsap.to('#clMqTrack', { xPercent:-50, duration:36, ease:'none', repeat:-1 });
+      if(HAS_GSAP) gsap.to('#clMqTrack', { xPercent:-50, duration:36, ease:'none', repeat:-1 });
     }
 
     /* closing — share / copy portfolio link */

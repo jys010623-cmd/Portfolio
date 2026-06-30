@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>케이스 스터디 섹션 예시 — 추가 콘텐츠 제안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+  :root{ --ink:#0c0c0c; --disp:'Poppins'; --mystar:#ff6fae; --holo:#B77CFF; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Pretendard','Inter',sans-serif; color:#1b1b1b; background:#fff; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 clamp(22px,5vw,72px); }
+
+  /* 안내 배너 (예시용 — 실제 페이지엔 미포함) */
+  .guide{ background:var(--ink); color:#fff; padding:clamp(40px,6vw,72px) 0; }
+  .guide .kk{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.18em; color:#8f8f8b; text-transform:uppercase; }
+  .guide h1{ font-family:var(--disp); font-weight:800; font-size:clamp(26px,4vw,44px); letter-spacing:-0.02em; line-height:1.1; margin:14px 0 16px; }
+  .guide p{ font-size:15px; line-height:1.75; color:#c7c7c2; max-width:46em; }
+  .guide .tag{ display:inline-block; margin-top:18px; font-size:12px; color:#9a9a92; border:1px solid #33332c; border-radius:20px; padding:7px 15px; }
+
+  /* 공통 섹션 헤더 */
+  .sec{ padding:clamp(54px,7vw,96px) 0; }
+  .sec.alt{ background:#f5f6f8; }
+  .eyebrow{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#a6a6ad; }
+  .eyebrow .n{ color:var(--mystar); margin-right:10px; }
+  .sec-h{ font-family:var(--disp); font-weight:800; font-size:clamp(28px,4vw,46px); letter-spacing:-0.025em; line-height:1.08; margin:14px 0 0; }
+  .sec-sub{ font-size:clamp(14px,1.5vw,16px); line-height:1.75; color:#7c7c84; max-width:40em; margin-top:18px; }
+
+  /* 01 Problem */
+  .prob{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,3vw,40px); margin-top:clamp(36px,4vw,52px); }
+  .prob-card{ background:#fff; border:1px solid #ececef; border-radius:16px; padding:clamp(26px,3vw,38px); }
+  .prob-card.pain{ background:#fff5f9; border-color:#ffd9ea; }
+  .prob-card h3{ font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:0.04em; color:#9a9aa2; margin-bottom:18px; text-transform:uppercase; }
+  .prob-card.pain h3{ color:var(--mystar); }
+  .prob-list{ list-style:none; display:flex; flex-direction:column; gap:16px; }
+  .prob-list li{ display:flex; gap:13px; font-size:15px; line-height:1.6; color:#3c3c40; }
+  .prob-list li b{ flex:0 0 auto; width:22px; height:22px; border-radius:50%; background:#eef0f2; color:#9a9aa2; font-size:12px; font-weight:700; display:inline-flex; align-items:center; justify-content:center; margin-top:1px; }
+  .prob-card.pain .prob-list li b{ background:var(--mystar); color:#fff; }
+  .insight{ margin-top:clamp(28px,3vw,40px); padding:clamp(22px,2.6vw,30px) clamp(26px,3vw,38px); background:var(--ink); color:#fff; border-radius:16px; font-size:clamp(16px,1.9vw,21px); line-height:1.6; font-weight:600; }
+  .insight em{ font-style:normal; color:var(--mystar); }
+
+  /* 02 Persona */
+  .persona{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(20px,3vw,32px); margin-top:clamp(36px,4vw,52px); }
+  .pcard{ border:1px solid #ececef; border-radius:18px; overflow:hidden; background:#fff; }
+  .pcard-top{ display:flex; align-items:center; gap:16px; padding:24px clamp(22px,2.6vw,30px); background:#f5f6f8; }
+  .pcard-av{ width:56px; height:56px; border-radius:50%; flex:0 0 auto; display:grid; place-items:center; font-size:26px; }
+  .pcard-av.a{ background:#ffe0ee; } .pcard-av.b{ background:#e3e0ff; }
+  .pcard-name{ font-family:var(--disp); font-weight:800; font-size:19px; }
+  .pcard-role{ font-size:13px; color:#8a8a90; margin-top:3px; }
+  .pcard-body{ padding:clamp(22px,2.6vw,30px); }
+  .pcard-body .ln{ display:flex; gap:10px; font-size:14px; line-height:1.65; color:#54545a; margin-bottom:14px; }
+  .pcard-body .ln:last-child{ margin-bottom:0; }
+  .pcard-body .ln span{ flex:0 0 64px; font-weight:700; color:#a6a6ad; font-size:12px; letter-spacing:0.04em; padding-top:2px; }
+  .pcard-quote{ font-style:italic; color:#3c3c40; font-weight:500; }
+
+  /* 03 Process */
+  .flow{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:clamp(36px,4vw,52px); }
+  .step{ position:relative; background:#fff; border:1px solid #ececef; border-radius:14px; padding:24px 18px; }
+  .step .si{ font-family:var(--disp); font-weight:800; font-size:13px; color:var(--mystar); }
+  .step h4{ font-family:var(--disp); font-weight:700; font-size:16px; margin:12px 0 8px; }
+  .step p{ font-size:12.5px; line-height:1.55; color:#8a8a90; }
+  .step .ar{ position:absolute; right:-11px; top:50%; transform:translateY(-50%); color:#cfcfd4; font-size:16px; z-index:2; }
+  .step:last-child .ar{ display:none; }
+
+  /* 04 Design System */
+  .ds{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(24px,3vw,40px); margin-top:clamp(36px,4vw,52px); }
+  .ds-block{ background:#fff; border:1px solid #ececef; border-radius:16px; padding:clamp(24px,2.8vw,34px); }
+  .ds-lab{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#9a9aa2; margin-bottom:20px; }
+  .swatches{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+  .sw i{ display:block; height:64px; border-radius:10px; border:1px solid rgba(0,0,0,0.05); }
+  .sw small{ display:block; margin-top:8px; font-size:11px; color:#8a8a90; font-variant-numeric:tabular-nums; }
+  .sw b{ display:block; font-size:12px; font-weight:700; margin-top:2px; }
+  .type-row{ padding:14px 0; border-bottom:1px solid #f0f0f3; }
+  .type-row:last-child{ border-bottom:none; }
+  .type-row .meta{ font-size:11px; color:#a6a6ad; letter-spacing:0.04em; }
+  .type-h1{ font-family:var(--disp); font-weight:800; font-size:30px; letter-spacing:-0.02em; }
+  .type-h2{ font-weight:700; font-size:19px; }
+  .type-b{ font-size:14px; color:#54545a; }
+
+  /* 05 HOLO survey */
+  .holo .eyebrow .n{ color:var(--holo); }
+  .holo .sec-h em{ font-style:normal; color:var(--holo); }
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(16px,2vw,24px); margin-top:clamp(36px,4vw,52px); }
+  .stat{ background:#fff; border:1px solid #ececef; border-radius:16px; padding:clamp(24px,2.8vw,34px); text-align:center; }
+  .stat .big{ font-family:var(--disp); font-weight:800; font-size:clamp(34px,4.5vw,52px); letter-spacing:-0.02em; color:var(--holo); line-height:1; }
+  .stat .lab{ font-size:13px; color:#7c7c84; margin-top:12px; line-height:1.5; }
+  .findings{ margin-top:clamp(24px,3vw,32px); display:flex; flex-direction:column; gap:14px; }
+  .find{ display:grid; grid-template-columns:auto 1fr auto 1.1fr; align-items:center; gap:clamp(14px,2vw,24px); background:#fff; border:1px solid #ececef; border-radius:14px; padding:20px clamp(20px,2.4vw,28px); }
+  .find .fn{ font-family:var(--disp); font-weight:800; color:var(--holo); font-size:15px; }
+  .find .insight-t{ font-size:14.5px; line-height:1.55; color:#3c3c40; }
+  .find .insight-t b{ color:#1b1b1b; }
+  .find .arrow{ color:#c3a7ed; font-size:18px; font-weight:700; }
+  .find .decision{ font-size:14px; line-height:1.55; color:#6b5a8a; background:#f4efff; border-radius:10px; padding:12px 16px; }
+  .find .decision span{ display:block; font-size:11px; font-weight:700; letter-spacing:0.08em; color:var(--holo); margin-bottom:4px; }
+
+  /* 06 Learnings */
+  .learn{ background:var(--ink); color:#fff; }
+  .learn .eyebrow{ color:#7d7d78; } .learn .eyebrow .n{ color:#fff; }
+  .learn .sec-h{ color:#fff; }
+  .lgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2.4vw,28px); margin-top:clamp(36px,4vw,52px); }
+  .lcard{ border:1px solid #26261f; border-radius:16px; padding:clamp(24px,2.8vw,32px); }
+  .lcard .li{ font-family:var(--disp); font-weight:800; font-size:20px; color:#fff; }
+  .lcard h4{ font-family:var(--disp); font-weight:700; font-size:16px; margin:14px 0 10px; }
+  .lcard p{ font-size:13.5px; line-height:1.65; color:#a9a9a3; }
+
+  @media(max-width:860px){
+    .prob, .persona, .ds{ grid-template-columns:1fr; }
+    .flow{ grid-template-columns:1fr 1fr; }
+    .step .ar{ display:none; }
+    .stats, .lgrid{ grid-template-columns:1fr; }
+    .find{ grid-template-columns:1fr; gap:10px; text-align:left; }
+    .find .arrow{ transform:rotate(90deg); justify-self:start; }
+    .swatches{ grid-template-columns:repeat(3,1fr); }
+  }
+</style>
+</head>
+<body>
+
+  <!-- 안내 배너 (예시 설명용) -->
+  <header class="guide">
+    <div class="wrap">
+      <div class="kk">Content proposal · 예시</div>
+      <h1>상세페이지에 더하면 좋은 6개 섹션</h1>
+      <p>지금 페이지는 “무엇을 만들었나(기능)” 중심이라, 채용담당자가 보고 싶어 하는 “왜·어떻게”의 스토리를 더했어요. 아래는 마이 스타 캘린더를 예시로 한 추가 섹션이고, 05번만 HOLO(설문 결과)로 보여드립니다. 기존 페이지의 폰트·여백·라이트 톤을 그대로 따랐습니다.</p>
+      <span class="tag">실제 적용 시 이 검은 배너는 빼고, 기존 .pdetail 안에 섹션만 이어 붙이면 됩니다</span>
+    </div>
+  </header>
+
+  <!-- 01 Problem -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">01</span>Problem · 기획 배경</div>
+      <h2 class="sec-h">덕질의 기록은 왜<br>늘 흩어져 있을까?</h2>
+      <p class="sec-sub">캘린더 앱엔 일정, 메모장엔 위시리스트, 가계부 앱엔 지출, 갤러리엔 포카 사진. 하나의 ‘덕질’이 5개 앱에 흩어지면서, 정작 내가 얼마나 좋아했는지는 어디에도 모이지 않았습니다.</p>
+
+      <div class="prob">
+        <div class="prob-card">
+          <h3>현재 상황</h3>
+          <ul class="prob-list">
+            <li><b>1</b>일정·지출·굿즈·사진을 서로 다른 앱에 따로 기록</li>
+            <li><b>2</b>범용 앱은 덕질 맥락(최애·이벤트·포카)을 담지 못함</li>
+            <li><b>3</b>기록을 ‘모아 보는’ 경험 자체가 부재</li>
+          </ul>
+        </div>
+        <div class="prob-card pain">
+          <h3>유저 페인포인트</h3>
+          <ul class="prob-list">
+            <li><b>!</b>“티켓팅·발매일을 놓쳐서 속상했어요”</li>
+            <li><b>!</b>“이번 달 덕질에 얼마 썼는지 감이 안 와요”</li>
+            <li><b>!</b>“내 최애 취향대로 꾸밀 수 있는 공간이 없어요”</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="insight">흩어진 덕질을 <em>한 곳에 모아</em> 기록하고, 내 최애에 맞게 <em>화면까지 꾸미는</em> 덕질 전용 홈이 필요하다.</div>
+    </div>
+  </section>
+
+  <!-- 02 Persona -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">02</span>Target User · 페르소나</div>
+      <h2 class="sec-h">누구를 위해 만들었나</h2>
+
+      <div class="persona">
+        <div class="pcard">
+          <div class="pcard-top">
+            <div class="pcard-av a">🩷</div>
+            <div>
+              <div class="pcard-name">하리 · 24</div>
+              <div class="pcard-role">대학생 · 5년차 아이돌 팬</div>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <p class="pcard-quote">“좋아하는 마음은 큰데, 기록이 자꾸 새어 나가요.”</p>
+            <div class="ln" style="margin-top:18px;"><span>니즈</span><div>발매·티켓팅 일정을 놓치지 않고, 굿즈 지출을 한눈에 관리</div></div>
+            <div class="ln"><span>행동</span><div>하루에도 여러 번 SNS·커뮤니티를 확인, 포카 교환 활발</div></div>
+            <div class="ln"><span>불편</span><div>일정·지출·포카가 앱마다 흩어져 ‘총정리’가 안 됨</div></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="pcard-top">
+            <div class="pcard-av b">💜</div>
+            <div>
+              <div class="pcard-name">서연 · 29</div>
+              <div class="pcard-role">직장인 · 멀티 최애 · 꾸미기 덕후</div>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <p class="pcard-quote">“내 취향대로 꾸민 나만의 공간이 있으면 좋겠어요.”</p>
+            <div class="ln" style="margin-top:18px;"><span>니즈</span><div>최애별로 분리된 기록 + 감성적인 홈 커스터마이징</div></div>
+            <div class="ln"><span>행동</span><div>퇴근 후 ‘덕질 정산’, 미니홈피 감성에 향수</div></div>
+            <div class="ln"><span>불편</span><div>기능만 있는 앱은 정 붙일 ‘나만의 공간’이 없음</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 Process -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">03</span>Process · 디자인 프로세스</div>
+      <h2 class="sec-h">기획부터 오픈베타까지</h2>
+      <p class="sec-sub">1인 프로젝트로 리서치–설계–디자인–개발–배포 전 과정을 직접 진행했습니다.</p>
+
+      <div class="flow">
+        <div class="step"><div class="si">STEP 1</div><h4>리서치</h4><p>덕질 유형별 니즈 정리, 경쟁 앱 분석<br>2026.03</p><span class="ar">→</span></div>
+        <div class="step"><div class="si">STEP 2</div><h4>IA · 유저플로우</h4><p>홈 위젯 구조와 핵심 기능 흐름 설계</p><span class="ar">→</span></div>
+        <div class="step"><div class="si">STEP 3</div><h4>와이어프레임</h4><p>로파이로 화면 골격·내비게이션 검증</p><span class="ar">→</span></div>
+        <div class="step"><div class="si">STEP 4</div><h4>UI 디자인</h4><p>Figma 하이파이 + 디자인 시스템 구축</p><span class="ar">→</span></div>
+        <div class="step"><div class="si">STEP 5</div><h4>개발 · 배포</h4><p>바이브코딩 개발·도메인 연결, 오픈베타<br>2026.06.12</p><span class="ar">→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 Design System -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">04</span>Design System · 스타일 가이드</div>
+      <h2 class="sec-h">일관된 무드를 만드는 규칙</h2>
+      <p class="sec-sub">‘별·기록·꾸미기’의 감성을 담아 컬러·타이포·컴포넌트를 시스템화했습니다.</p>
+
+      <div class="ds">
+        <div class="ds-block">
+          <div class="ds-lab">Color Palette</div>
+          <div class="swatches">
+            <div class="sw"><i style="background:#ff6fae;"></i><b>Primary</b><small>#FF6FAE</small></div>
+            <div class="sw"><i style="background:#ffd9ea;"></i><b>Soft</b><small>#FFD9EA</small></div>
+            <div class="sw"><i style="background:#7c6cff;"></i><b>Accent</b><small>#7C6CFF</small></div>
+            <div class="sw"><i style="background:#1b1b1b;"></i><b>Ink</b><small>#1B1B1B</small></div>
+            <div class="sw"><i style="background:#f5f6f8;"></i><b>Paper</b><small>#F5F6F8</small></div>
+          </div>
+          <p style="font-size:12.5px;color:#8a8a90;line-height:1.6;margin-top:20px;">퍼스널컬러 추출 기능과 연결해, 사용자의 최애 컬러가 홈 테마로 확장됩니다.</p>
+        </div>
+        <div class="ds-block">
+          <div class="ds-lab">Typography</div>
+          <div class="type-row"><div class="type-h1">마이 스타</div><div class="meta">Display · Poppins / Pretendard 800</div></div>
+          <div class="type-row"><div class="type-h2">최애 중심 캘린더</div><div class="meta">Title · 700</div></div>
+          <div class="type-row"><div class="type-b">덕질의 모든 순간을 한 곳에 기록합니다.</div><div class="meta">Body · Pretendard 400/500</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 HOLO Survey -->
+  <section class="sec holo">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">05</span>HOLO · User Research 결과</div>
+      <h2 class="sec-h">설문이 <em>디자인 결정</em>으로<br>이어진 과정</h2>
+      <p class="sec-sub">구글 폼 설문으로 타깃의 니즈를 수집하고, 핵심 인사이트를 화면 우선순위에 반영했습니다. (2026.04.24–04.30) · 아래 수치는 예시 형식이며 실제 응답값으로 교체하세요.</p>
+
+      <div class="stats">
+        <div class="stat"><div class="big">128</div><div class="lab">설문 응답 수</div></div>
+        <div class="stat"><div class="big">72%</div><div class="lab">“동네 이웃과 부담 없이<br>연결되고 싶다”</div></div>
+        <div class="stat"><div class="big">68%</div><div class="lab">“익명·실명 사이의<br>진입장벽이 부담된다”</div></div>
+      </div>
+
+      <div class="findings">
+        <div class="find">
+          <div class="fn">F1</div>
+          <div class="insight-t"><b>아바타</b>로 나를 표현하면 실명 부담 없이 참여할 수 있다</div>
+          <div class="arrow">→</div>
+          <div class="decision"><span>DESIGN DECISION</span>아바타 룸을 첫 화면 중심에 배치, 온보딩을 아바타 생성부터 시작</div>
+        </div>
+        <div class="find">
+          <div class="fn">F2</div>
+          <div class="insight-t">가까운 거리의 <b>가벼운 소식·모임</b>에 관심이 높다</div>
+          <div class="arrow">→</div>
+          <div class="decision"><span>DESIGN DECISION</span>‘동네 한 줄 소식’과 ‘추천 모임’을 홈 상단 피드로 노출</div>
+        </div>
+        <div class="find">
+          <div class="fn">F3</div>
+          <div class="insight-t">앱에 <b>머물 동기</b>가 약하면 금방 이탈한다</div>
+          <div class="arrow">→</div>
+          <div class="decision"><span>DESIGN DECISION</span>출석·레벨·포인트 게이미피케이션으로 재방문 유도</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 Learnings -->
+  <section class="sec learn">
+    <div class="wrap">
+      <div class="eyebrow"><span class="n">06</span>Learnings · 회고</div>
+      <h2 class="sec-h">프로젝트에서 배운 것</h2>
+
+      <div class="lgrid">
+        <div class="lcard">
+          <div class="li">01</div>
+          <h4>좋았던 점</h4>
+          <p>기획부터 배포까지 직접 끌고 가며, 디자인 결정이 실제 화면으로 구현되는 전 과정을 이해하게 됐습니다.</p>
+        </div>
+        <div class="lcard">
+          <div class="li">02</div>
+          <h4>아쉬운 점</h4>
+          <p>초기 IA를 너무 크게 잡아 일정이 늘어졌습니다. 다음엔 MVP 범위를 먼저 못 박고 시작하려 합니다.</p>
+        </div>
+        <div class="lcard">
+          <div class="li">03</div>
+          <h4>다음 단계</h4>
+          <p>오픈베타 사용자 피드백을 수집해 홈 편집 UX를 개선하고, 포카 교환 플로우를 고도화할 계획입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
