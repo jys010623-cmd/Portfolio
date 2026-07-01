@@ -184,6 +184,8 @@
   .pd2-top{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(28px,4vw,56px); align-items:end; }
   .pd2-num{ font-family:var(--disp); font-weight:700; font-size:13px; color:#9a9a92; letter-spacing:0.06em; }
   .pd2-title{ font-family:var(--disp); font-weight:800; font-size:clamp(34px,5vw,68px); letter-spacing:-0.03em; line-height:0.98; margin:10px 0 18px; }
+  .pd2-title.has-tag{ margin-bottom:6px; }
+  .pd2-tag{ font-family:var(--disp); font-weight:600; font-size:clamp(15px,1.7vw,21px); color:#555; letter-spacing:-0.01em; margin:0 0 18px; }
   .pd2-meta{ font-size:13.5px; color:#666; line-height:2; }
   .pd2-meta span{ color:#a2a29a; display:inline-block; width:64px; }
   .pd2-cover{ aspect-ratio:16/10; border-radius:8px; }
@@ -211,6 +213,8 @@
   .pd-slides .imgph img{ object-fit:contain; background:#f0f0ec; }
   .pd2-cover:has(img){ aspect-ratio:16/9; }
   .pd2-cover img{ object-fit:contain; background:#f0f0ec; }
+  .award-link{ display:inline-block; margin-top:7px; font-size:12px; font-weight:600; letter-spacing:.02em; color:var(--ink); background:none; border:1px solid var(--ink); border-radius:14px; padding:3px 12px; cursor:pointer; transition:background .2s, color .2s; }
+  .award-link:hover{ background:var(--ink); color:var(--paper); }
   .pd-slides::-webkit-scrollbar{ height:8px; }
   .pd-slides::-webkit-scrollbar-thumb{ background:rgba(0,0,0,.22); border-radius:4px; }
   .pd-slides::-webkit-scrollbar-track{ background:rgba(0,0,0,.06); border-radius:4px; }
@@ -394,7 +398,7 @@
 
           <div class="blkh">Awards</div>
           <table class="rowlist">
-            <tr><td><span class="org">제1회 전국 대학생 대상 메타버스 기반 홍보 마케팅 공모전 은상</span><span class="sub">(사)한국글로컬마케터양성협회</span></td><td class="yr">2022.07.27</td></tr>
+            <tr><td><span class="org">제1회 전국 대학생 대상 메타버스 기반 홍보 마케팅 공모전 은상</span><span class="sub">(사)한국글로컬마케터양성협회</span><button class="award-link" data-open="pd-marketing">빽다방 프로젝트 보기 →</button></td><td class="yr">2022.07.27</td></tr>
           </table>
         </div>
         <div class="rise">
@@ -506,9 +510,9 @@
         <div class="pcard rise" data-cat="team" data-open="pd-khan"><div class="imgph" data-l="KHAN ACADEMY"><img src="assets/projects/Khan_Academy/Khan_Academy_Thumbnail.jpg" alt="칸 아카데미 리디자인 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">칸 아카데미</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">03.30 – 04.03</span></div></div>
         <div class="pcard rise" data-cat="team" data-open="pd-holo"><div class="imgph" data-l="HOLO"><img src="assets/projects/HOLO/HOLO_Thumbnail.jpg" alt="HOLO 썸네일"><span class="team-tag">TEAM</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">HOLO</div><div class="pc">WebApp · 제작</div><div class="pdate"><span class="py">2026</span><span class="pd">04.21(예상) – 05.22</span></div></div>
         <div class="pcard rise" data-cat="team" data-open="pd-sangsang"><div class="imgph" data-l="상상의 문"><img src="assets/projects/sangsang_door/sangsang_door_Thumbnail.jpg" alt="상상의 문 리디자인 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">상상의 문</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">05.29 – 06.08(예상) · 06.23 발표</span></div></div>
-        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing"><div class="imgph" data-l="AD/PR PLAN"><span class="team-tag">TEAM</span></div><div class="pt">빽다방</div><div class="pc">광고실무학습론 · 3-1</div><div class="pdate"><span class="py">2022</span></div></div>
-        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing2"><div class="imgph" data-l="MARKETING 02"><span class="team-tag">TEAM</span></div><div class="pt">일룸</div><div class="pc">디지털 미디어론 · 2-2</div><div class="pdate"><span class="py">2022</span></div></div>
-        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing3"><div class="imgph" data-l="MARKETING 03"><span class="team-tag">TEAM</span></div><div class="pt">금산</div><div class="pc">광고기획론 · 2-2</div><div class="pdate"><span class="py">2022</span></div></div>
+        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing2"><div class="imgph" data-l="MARKETING 02"><span class="team-tag">TEAM</span></div><div class="pt">ONLY에서 TOGETHER로</div><div class="pc">디지털 미디어론 · 2-2 · 일룸(iloom)</div><div class="pdate"><span class="py">2021</span></div></div>
+        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing3"><div class="imgph" data-l="MARKETING 03"><span class="team-tag">TEAM</span></div><div class="pt">씨전 건삼전길</div><div class="pc">광고기획론 · 2-2 · 인삼과 함께 건강해지는 거리</div><div class="pdate"><span class="py">2021</span></div></div>
+        <div class="pcard rise" data-cat="marketing" data-open="pd-marketing"><div class="imgph" data-l="AD/PR PLAN"><span class="team-tag">TEAM</span></div><div class="pt">빽 투 더 퓨처</div><div class="pc">광고실무학습론 · 3-1 · 미래를 향해 달려가는 빽다방</div><div class="pdate"><span class="py">2022</span></div></div>
         <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 01"></div><div class="pt">배너 작업 01</div><div class="pc">Banner</div></div>
         <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 02"></div><div class="pt">배너 작업 02</div><div class="pc">Banner · 상세페이지</div></div>
         <div class="pcard rise" data-cat="banner"><div class="imgph" data-l="BANNER 03"></div><div class="pt">배너 작업 03</div><div class="pc">Banner · 이벤트</div></div>
@@ -834,10 +838,12 @@
       <div class="pd2-top">
         <div>
           <div class="pd2-num">광고실무학습론 · 3-1 · Team</div>
-          <div class="pd2-title">빽다방</div>
+          <div class="pd2-title has-tag">빽 투 더 퓨처 · 빽다방</div>
+          <div class="pd2-tag">미래를 향해 달려가는 빽다방</div>
           <div class="pd2-meta">
             <div><span>Role</span>기획 · 팀</div>
-            <div><span>Type</span>Marketing · 기획서</div>
+            <div><span>Type</span>Marketing · 공모전</div>
+            <div><span>Award</span>제1회 전국 대학생 대상 메타버스 기반 홍보 마케팅 공모전 은상 · (사)한국글로컬마케터양성협회 · 2022.07.27</div>
             <div><span>Year</span>2022</div>
             <div><span>Tools</span>PowerPoint · Keynote</div>
           </div>
@@ -848,7 +854,7 @@
         <div><div class="ovh">Objective · 목표</div><p class="body-t">메가커피 등 저가 대용량 커피 경쟁이 치열한 시장에서, 백다방을 국내외 MZ세대에게 알리고 '한국을 대표하는 커피 브랜드'로 각인시키는 것을 목표로 삼았습니다.</p></div>
         <div><div class="ovh">Target · 타깃</div><p class="body-t">트렌드와 SNS 콘텐츠에 민감한 국내외 MZ세대. 우리 사회의 미래인 이들을 접점으로 삼아 해외에까지 백다방의 한국적 이미지를 전파합니다.</p></div>
         <div><div class="ovh">Strategy · 핵심 전략</div><p class="body-t">브랜드 메시지 "PAIK to the future(빽 투 더 퓨처)"를 축으로, 게더타운 가상공간 이벤트(방탈출·토크콘서트), 틱톡·쇼츠·릴스 영상 챌린지, 한국적 굿즈·다이어리를 하나로 잇는 IMC 캠페인을 설계했습니다.</p></div>
-        <div><div class="ovh">Result · 성과</div><p class="body-t">6~12월에 걸친 통합 캠페인 로드맵과 온·오프라인 실행안을 제안한 팀 프로젝트입니다. (광고실무학습론)</p></div>
+        <div><div class="ovh">Result · 성과</div><p class="body-t">광고실무학습론 <strong>공모전에 출품해 은상을 수상</strong>했습니다. 6~12월에 걸친 통합 캠페인 로드맵과 온·오프라인 실행안을 제안한 팀 프로젝트입니다.</p></div>
       </div>
       <div class="pd3-blk">
         <div class="ovh">기획서 슬라이드</div>
@@ -904,11 +910,11 @@
       <div class="pd2-top">
         <div>
           <div class="pd2-num">디지털 미디어론 · 2-2 · Team</div>
-          <div class="pd2-title">일룸</div>
+          <div class="pd2-title">ONLY에서 TOGETHER로 · 일룸(iloom)</div>
           <div class="pd2-meta">
             <div><span>Role</span>기획 · 팀</div>
             <div><span>Type</span>Marketing · 기획서</div>
-            <div><span>Year</span>2022</div>
+            <div><span>Year</span>2021</div>
             <div><span>Tools</span>PowerPoint · Keynote</div>
           </div>
         </div>
@@ -975,27 +981,57 @@
       <div class="pd2-top">
         <div>
           <div class="pd2-num">광고기획론 · 2-2 · Team</div>
-          <div class="pd2-title">금산</div>
+          <div class="pd2-title has-tag">씨전 건삼전길 · 금산</div>
+          <div class="pd2-tag">인삼과 함께 건강해지는 거리</div>
           <div class="pd2-meta">
             <div><span>Role</span>기획 · 팀</div>
             <div><span>Type</span>Marketing · 기획서</div>
-            <div><span>Year</span>2022</div>
+            <div><span>Year</span>2021</div>
             <div><span>Tools</span>PowerPoint · Keynote</div>
           </div>
         </div>
-        <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"></div>
+        <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"><img src="assets/projects/Marketing/geumsan/geumsan_page-0001.jpg" alt="금산 표지"></div>
       </div>
       <div class="pd-mkt-grid">
-        <div><div class="ovh">Objective · 목표</div><p class="body-t">캠페인이 풀려는 문제와 도달하려는 목표를 한 줄로 정의합니다.</p></div>
-        <div><div class="ovh">Target · 타깃</div><p class="body-t">핵심 타깃과 인사이트를 정리합니다.</p></div>
-        <div><div class="ovh">Strategy · 핵심 전략</div><p class="body-t">메시지·채널·실행안을 묶은 핵심 아이디어를 보여줍니다.</p></div>
-        <div><div class="ovh">Result · 성과</div><p class="body-t">성과·반응 등 결과로 마무리합니다.</p></div>
+        <div><div class="ovh">Objective · 목표</div><p class="body-t">인구 감소와 부정적 지역 이미지, 불편한 대중교통으로 침체된 금산 원도심 상권을 살리고, 도시재생 뉴딜사업을 통해 금산을 '인삼과 함께 건강해지는' 이미지로 재구축하는 것을 목표로 삼았습니다.</p></div>
+        <div><div class="ovh">Target · 타깃</div><p class="body-t">금산을 찾는 관광객과, 디지털 매체 이용이 활발한 MZ세대·젊은층. 연령별 필수매체·개인 매체 보유율 분석을 근거로 타깃을 설정했습니다.</p></div>
+        <div><div class="ovh">Strategy · 핵심 전략</div><p class="body-t">슬로건 "인삼과 함께 건강해지는 거리"를 축으로, 인삼거리축제·소원나무제(願) 등 지역 자원 기반 오프라인 프로그램과 버스정류장·인터넷 배너·인스타그램 해시태그·유튜브를 잇는 온·오프라인 커뮤니케이션을 설계했습니다.</p></div>
+        <div><div class="ovh">Result · 성과</div><p class="body-t">금산군 도시재생 뉴딜사업비 213억 원 확보를 배경으로, 온라인 금산인삼축제 SNS 조회수 100만 돌파·수삼 판매 80% 증가 등 사례를 근거로 원도심 상권 활성화 방안을 제안했습니다.</p></div>
       </div>
       <div class="pd3-blk">
         <div class="ovh">기획서 슬라이드</div>
         <div class="pd-slides-hint">← 옆으로 넘겨보고, 클릭하면 크게 볼 수 있어요 →</div>
         <div class="pd-slides">
-          <div class="imgph"></div><div class="imgph"></div><div class="imgph"></div><div class="imgph"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0001.jpg" alt="금산 슬라이드 1"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0002.jpg" alt="금산 슬라이드 2"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0003.jpg" alt="금산 슬라이드 3"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0004.jpg" alt="금산 슬라이드 4"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0005.jpg" alt="금산 슬라이드 5"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0006.jpg" alt="금산 슬라이드 6"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0007.jpg" alt="금산 슬라이드 7"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0008.jpg" alt="금산 슬라이드 8"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0009.jpg" alt="금산 슬라이드 9"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0010.jpg" alt="금산 슬라이드 10"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0011.jpg" alt="금산 슬라이드 11"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0012.jpg" alt="금산 슬라이드 12"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0013.jpg" alt="금산 슬라이드 13"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0014.jpg" alt="금산 슬라이드 14"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0015.jpg" alt="금산 슬라이드 15"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0016.jpg" alt="금산 슬라이드 16"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0017.jpg" alt="금산 슬라이드 17"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0018.jpg" alt="금산 슬라이드 18"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0019.jpg" alt="금산 슬라이드 19"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0020.jpg" alt="금산 슬라이드 20"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0021.jpg" alt="금산 슬라이드 21"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0022.jpg" alt="금산 슬라이드 22"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0023.jpg" alt="금산 슬라이드 23"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0024.jpg" alt="금산 슬라이드 24"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0025.jpg" alt="금산 슬라이드 25"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0026.jpg" alt="금산 슬라이드 26"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0027.jpg" alt="금산 슬라이드 27"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0028.jpg" alt="금산 슬라이드 28"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0029.jpg" alt="금산 슬라이드 29"></div>
+          <div class="imgph"><img src="assets/projects/Marketing/geumsan/geumsan_page-0030.jpg" alt="금산 슬라이드 30"></div>
         </div>
       </div>
     </div>
@@ -1164,18 +1200,27 @@
     const lbox = document.getElementById('lightbox');
     const lboxImg = lbox.querySelector('img');
     const lboxCount = lbox.querySelector('.lbox-count');
-    let lboxList = [], lboxIdx = 0;
+    let lboxList = [], lboxIdx = 0, lboxStrip = null;
     function lboxRender(){
       const it = lboxList[lboxIdx];
       if(!it) return;
       lboxImg.src = it.src; lboxImg.alt = it.alt || '';
       lboxCount.textContent = (lboxIdx+1) + ' / ' + lboxList.length;
     }
-    function lboxOpen(list, idx){
-      lboxList = list; lboxIdx = idx; lboxRender();
+    function scrollStripTo(strip, idx){
+      const cell = strip && strip.children[idx];
+      if(!cell) return;
+      const target = cell.offsetLeft - (strip.clientWidth - cell.clientWidth)/2;
+      strip.scrollTo({left: Math.max(0, target), behavior:'smooth'});
+    }
+    function lboxOpen(list, idx, strip){
+      lboxList = list; lboxIdx = idx; lboxStrip = strip || null; lboxRender();
       lbox.classList.add('open'); document.body.style.overflow='hidden';
     }
-    function lboxClose(){ lbox.classList.remove('open'); lboxImg.src=''; }
+    function lboxClose(){
+      lbox.classList.remove('open'); lboxImg.src='';
+      scrollStripTo(lboxStrip, lboxIdx);   /* sync carousel to the slide last viewed */
+    }
     function lboxStep(d){ if(!lboxList.length) return; lboxIdx = (lboxIdx + d + lboxList.length) % lboxList.length; lboxRender(); }
     /* each marketing detail: gather its slide images; cover opens at first slide */
     document.querySelectorAll('.pdetail').forEach(det=>{
@@ -1186,10 +1231,10 @@
       const list = imgs.map(im=>({src: im.currentSrc || im.src, alt: im.alt}));
       imgs.forEach((im, i)=>{
         const cell = im.closest('.imgph') || im;
-        cell.addEventListener('click', ()=> lboxOpen(list, i));
+        cell.addEventListener('click', ()=> lboxOpen(list, i, strip));
       });
       const cover = det.querySelector('.pd2-cover');
-      if(cover) cover.addEventListener('click', ()=> lboxOpen(list, 0));
+      if(cover) cover.addEventListener('click', ()=> lboxOpen(list, 0, strip));
 
       /* carousel: prev/next arrows + wheel + drag to scroll sideways */
       const wrap = document.createElement('div');
