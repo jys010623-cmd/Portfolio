@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banner Section — 예시</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+  :root{ --ink:#0c0c0c; --paper:#ffffff; --disp:'Poppins'; --muted:#9a9a92; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ font-family:'Pretendard','Inter',sans-serif; background:#fff; -webkit-font-smoothing:antialiased; }
+
+  /* ===== 예시 안내 바 (실제 페이지엔 안 들어감) ===== */
+  .demo-note{ background:#141414; color:#fff; font-size:13px; letter-spacing:.02em; text-align:center; padding:10px 16px; font-family:var(--disp); }
+  .demo-note b{ color:#ffd9a0; }
+
+  /* ===== Banner (Graphic works) section ===== */
+  .bnr-sec{ background:#f5f5f1; color:var(--ink); padding:clamp(56px,8vw,110px) clamp(26px,5vw,72px); }
+  .inner{ max-width:1440px; margin:0 auto; }
+  .seclab{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); display:flex; align-items:center; gap:9px; }
+  .seclab::before{ content:''; width:7px; height:7px; background:var(--ink); display:inline-block; }
+  .seclab .count{ margin-left:auto; color:#bdbdb6; font-weight:600; letter-spacing:0.04em; }
+  .sechead{ font-family:var(--disp); font-weight:800; font-size:clamp(26px,3.4vw,42px); letter-spacing:-0.02em; margin:16px 0 6px; }
+  .secsub{ font-size:14.5px; color:#7c7c76; line-height:1.7; max-width:52ch; }
+
+  .filterbar{ display:flex; flex-wrap:wrap; gap:8px; margin-top:26px; }
+  .filterbar button{ font-family:var(--disp); font-weight:600; font-size:12.5px; color:#777; background:transparent; border:1px solid #dededa; border-radius:20px; padding:7px 16px; cursor:pointer; transition:all .15s ease; }
+  .filterbar button:hover{ color:#111; border-color:#b8b8b2; }
+  .filterbar button.active{ background:var(--ink); color:#fff; border-color:var(--ink); }
+
+  /* masonry (varied banner sizes flow naturally) */
+  .bnr-grid{ margin-top:30px; column-count:4; column-gap:18px; }
+  @media(max-width:1100px){ .bnr-grid{ column-count:3; } }
+  @media(max-width:760px){ .bnr-grid{ column-count:2; } }
+  @media(max-width:460px){ .bnr-grid{ column-count:1; } }
+
+  .bnr{ break-inside:avoid; margin-bottom:18px; border-radius:12px; overflow:hidden; background:#fff; box-shadow:0 4px 16px rgba(0,0,0,0.05); cursor:zoom-in; position:relative; display:block; }
+  .bnr.hide{ display:none; }
+  .bnr .ph{ width:100%; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#e7e7e1,#d6d6cf); color:#8f8f88; font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:.04em; }
+  .bnr img{ width:100%; display:block; }
+  /* 비율별 placeholder 높이 (실제론 이미지로 대체) */
+  .r-wide .ph{ aspect-ratio:16/6; }
+  .r-web .ph{ aspect-ratio:3/1; }
+  .r-square .ph{ aspect-ratio:1/1; }
+  .r-detail .ph{ aspect-ratio:9/20; }
+  .r-event .ph{ aspect-ratio:4/5; }
+
+  .bnr .cap{ position:absolute; left:0; right:0; bottom:0; padding:26px 14px 12px; background:linear-gradient(to top,rgba(12,12,12,.72),transparent); color:#fff; opacity:0; transition:opacity .2s ease; }
+  .bnr:hover .cap{ opacity:1; }
+  .bnr:hover img, .bnr:hover .ph{ filter:brightness(.96); }
+  .cap .t{ font-family:var(--disp); font-weight:700; font-size:14px; }
+  .cap .c{ font-size:12px; opacity:.85; margin-top:2px; }
+  .bnr .tag{ position:absolute; left:11px; top:11px; z-index:2; background:rgba(255,255,255,.92); color:#444; font-family:var(--disp); font-weight:700; font-size:10px; letter-spacing:.06em; padding:4px 9px; border-radius:14px; }
+</style>
+</head>
+<body>
+  <div class="demo-note">이 페이지는 <b>예시(미리보기)</b>입니다 — 회색 칸은 실제 배너 이미지가 들어갈 자리예요. 마음에 들면 index.html에 옮겨 넣습니다.</div>
+
+  <section class="bnr-sec">
+    <div class="inner">
+      <div class="seclab">Graphic works <span class="count">Banner</span></div>
+      <h2 class="sechead">Banner &amp; Graphic</h2>
+      <p class="secsub">웹 배너부터 상세페이지, 이벤트·SNS 콘텐츠까지 — 목적과 비율에 맞춰 제작한 그래픽 작업들입니다.</p>
+
+      <div class="filterbar" id="filterbar">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="web">웹 배너</button>
+        <button data-filter="detail">상세페이지</button>
+        <button data-filter="sns">SNS</button>
+        <button data-filter="event">이벤트</button>
+      </div>
+
+      <div class="bnr-grid" id="bnrGrid">
+        <div class="bnr r-web" data-cat="web"><div class="ph">웹 배너 · 3:1</div><span class="tag">WEB</span><div class="cap"><div class="t">메인 프로모션 배너</div><div class="c">웹 배너 · 롤링</div></div></div>
+        <div class="bnr r-square" data-cat="sns"><div class="ph">SNS · 1:1</div><span class="tag">SNS</span><div class="cap"><div class="t">인스타 피드</div><div class="c">SNS · 카드뉴스</div></div></div>
+        <div class="bnr r-detail" data-cat="detail"><div class="ph">상세페이지 · 세로형</div><span class="tag">DETAIL</span><div class="cap"><div class="t">제품 상세페이지</div><div class="c">상세페이지 · 커머스</div></div></div>
+        <div class="bnr r-event" data-cat="event"><div class="ph">이벤트 · 4:5</div><span class="tag">EVENT</span><div class="cap"><div class="t">시즌 이벤트 팝업</div><div class="c">이벤트 · 팝업</div></div></div>
+        <div class="bnr r-wide" data-cat="web"><div class="ph">와이드 배너 · 16:6</div><span class="tag">WEB</span><div class="cap"><div class="t">기획전 상단 배너</div><div class="c">웹 배너 · 기획전</div></div></div>
+        <div class="bnr r-square" data-cat="sns"><div class="ph">SNS · 1:1</div><span class="tag">SNS</span><div class="cap"><div class="t">이벤트 안내</div><div class="c">SNS · 프로모션</div></div></div>
+        <div class="bnr r-web" data-cat="web"><div class="ph">웹 배너 · 3:1</div><span class="tag">WEB</span><div class="cap"><div class="t">신상품 배너</div><div class="c">웹 배너</div></div></div>
+        <div class="bnr r-detail" data-cat="detail"><div class="ph">상세페이지 · 세로형</div><span class="tag">DETAIL</span><div class="cap"><div class="t">브랜드 스토리</div><div class="c">상세페이지</div></div></div>
+        <div class="bnr r-event" data-cat="event"><div class="ph">이벤트 · 4:5</div><span class="tag">EVENT</span><div class="cap"><div class="t">쿠폰 이벤트</div><div class="c">이벤트</div></div></div>
+        <div class="bnr r-square" data-cat="sns"><div class="ph">SNS · 1:1</div><span class="tag">SNS</span><div class="cap"><div class="t">굿즈 소개</div><div class="c">SNS · 카드뉴스</div></div></div>
+        <div class="bnr r-web" data-cat="web"><div class="ph">웹 배너 · 3:1</div><span class="tag">WEB</span><div class="cap"><div class="t">시즌 세일</div><div class="c">웹 배너</div></div></div>
+        <div class="bnr r-detail" data-cat="detail"><div class="ph">상세페이지 · 세로형</div><span class="tag">DETAIL</span><div class="cap"><div class="t">이벤트 상세</div><div class="c">상세페이지</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const fbar = document.getElementById('filterbar');
+    const items = Array.from(document.querySelectorAll('#bnrGrid .bnr'));
+    fbar.addEventListener('click', (e)=>{
+      const b = e.target.closest('button'); if(!b) return;
+      const f = b.dataset.filter;
+      fbar.querySelectorAll('button').forEach(x=>x.classList.toggle('active', x===b));
+      items.forEach(it=> it.classList.toggle('hide', !(f==='all' || it.dataset.cat===f)));
+    });
+  </script>
+</body>
+</html>
