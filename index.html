@@ -66,7 +66,8 @@
 
   .intro-grid{ display:grid; grid-template-columns:clamp(240px,22vw,300px) clamp(190px,17vw,230px) 1fr; gap:clamp(28px,4vw,56px); align-items:start;
     margin:clamp(40px,6vw,84px) 0 clamp(52px,7vw,104px); }
-  .photo{ aspect-ratio:4/5; max-width:280px; width:100%; border-radius:6px; background:#d2d2cc; position:relative; }
+  .photo{ aspect-ratio:4/5; max-width:280px; width:100%; border-radius:6px; background:#d2d2cc; position:relative; overflow:hidden; }
+  .photo img{ width:100%; height:100%; object-fit:cover; display:block; }
   .photo::after{ content:''; display:none; }
   .statement{ font-family:var(--disp); font-weight:800; font-size:clamp(30px,4.6vw,62px); letter-spacing:-0.025em; line-height:1.08; }
   .lead2{ font-size:clamp(15px,1.5vw,17px); color:#555; line-height:1.85; margin-top:22px; max-width:none; }
@@ -363,7 +364,7 @@
 
       <!-- intro: photo + statement + key meta -->
       <div class="intro-grid">
-        <div class="photo rise"></div>
+        <div class="photo rise"><img src="assets/projects/photo/jeong-young-sim.jpg" alt="정영심 프로필 사진"></div>
         <div class="quickmeta rise">
           <div><div class="k">Name</div><div class="v">정영심</div></div>
           <div><div class="k">Age</div><div class="v">2001.06.23 · 26살(만 25세)</div></div>
