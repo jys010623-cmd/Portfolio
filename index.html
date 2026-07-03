@@ -212,6 +212,10 @@
   .pd-story .tags{ display:flex; flex-wrap:wrap; gap:7px; margin:8px 0 0; padding:0; list-style:none; }
   .pd-story .tags li{ font-size:13px; color:#4a4a46; background:#f2f2ee; border-radius:14px; padding:5px 12px; }
   @media(max-width:680px){ .pd-story{ grid-template-columns:1fr; } }
+  .pd-shots{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(16px,2vw,26px); margin-top:clamp(26px,3vw,44px); }
+  .pd-shots img{ width:100%; height:auto; border-radius:10px; display:block; }
+  @media(max-width:680px){ .pd-shots{ grid-template-columns:1fr; } }
+  .pd-story.textonly{ display:block; }
   @media(max-width:680px){ .pd2-top, .pd2-row2{ grid-template-columns:1fr; align-items:start; } }
 
   /* project detail — EX3 long-scroll case study (use inside .pd2-inner) */
@@ -1073,15 +1077,37 @@
             <div><span>Role</span>1인 · 기획·개발</div>
             <div><span>Type</span>WebApp · 게임</div>
             <div><span>Year</span>2026.06.18 기획·개발 · 07.01 오픈베타</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/codex.svg" alt="Codex"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/codex.svg" alt="Codex"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.simpleicons.org/suno" alt="Suno AI"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" target="_blank" rel="noopener">플레이하기 <span class="ar">→</span></a>
         </div>
         <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" title="리듬베르 게임 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" target="_blank" rel="noopener"><span>플레이하기 →</span></a></div>
       </div>
       <div class="pd2-row2">
-        <div><div class="ovh">Overview</div><p class="body-t">노트가 판정선에 닿는 순간 키를 눌러 점수를 쌓는 1인 제작 웹 리듬 게임입니다. 키보드(D F J K)나 화면 탭으로 플레이합니다.</p></div>
-        <div><div class="ovh">Solution</div><p class="body-t">EASY–MASTER 5단계 난이도, 싱크 자동 보정·노트 속도·키 매핑 같은 본격 설정과 콤보·정확도·랭크 결과까지 갖춘 플레이 경험을 구현했습니다.</p></div>
+        <div><div class="ovh">Overview</div><p class="body-t">내가 좋아하는 곡(MP3)을 올리면 박자를 분석해 노트를 자동으로 배치해주는, 브라우저에서 바로 즐기는 4레인 리듬 게임입니다. 설치·로그인 없이 링크로 실행되고 오프라인에서도 동작하는 PWA로, 기획·디자인(UX/UI)·프론트엔드까지 1인으로 완성했습니다.</p></div>
+        <div><div class="ovh">Solution</div><p class="body-t">프레임워크 없이 순수 HTML·CSS·JavaScript 단일 파일로 구현했습니다. Web Audio로 온셋·템포를 분석해 7단계 난이도별로 자동 채보하고, 판정·콤보·정확도·SS~D 랭크, 결과 타이밍 분포 그래프와 싱크 자동 보정까지 갖췄습니다.</p></div>
+      </div>
+      <div class="pd-story textonly">
+        <div class="summary">
+          <h4>개요</h4>
+          <p>“내가 좋아하는 곡으로 바로 리듬 게임을 하고 싶다”는 생각에서 출발한 1인 프로젝트입니다. 업로드한 오디오를 분석해 박자에 맞는 노트를 자동 배치하고, 4개 레인 판정선에 노트가 닿는 순간을 맞춰 누르며 플레이합니다. 게임에 수록된 곡은 <b>Suno AI로 직접 만들어</b> 넣었습니다.</p>
+
+          <h4>핵심 기능</h4>
+          <p><b>자동 채보</b> · 업로드한 곡의 온셋·템포를 분석해 난이도에 맞춰 노트를 자동 배치</p>
+          <p><b>7단계 난이도</b> · BEGINNER → EASY → NORMAL → HARD → EXPERT → EXTREME → INSANE, 밀도·낙하 속도·롱노트 비중을 다르게 튜닝</p>
+          <p><b>판정 · 몰입 요소</b> · PERFECT/GREAT/GOOD/MISS 판정, 콤보·정확도·SS~D 랭크, 피버·라이프 게이지·미러/랜덤/히든/서든 모디파이어</p>
+          <p><b>결과 분석 · 기록</b> · 판정 타이밍 분포 그래프, 싱크 자동 보정, 곡별 베스트·레벨(XP)·업적</p>
+          <p><b>인터랙티브 마스코트 · PWA</b> · 홈 캐릭터 반응 모션, 홈 화면 설치·오프라인 캐싱</p>
+
+          <h4>디자인 &amp; UX</h4>
+          <p>파스텔 보라 글래스모피즘을 기본 톤으로, <b>직접 디자인한 오리지널 캐릭터 ‘까망베르’</b>(헤드셋을 쓴 검은 고양이+박쥐날개)를 마스코트로 삼아 스플래시·홈·프로필·게임 화면까지 하나의 톤으로 통일했습니다. 직접 플레이하며 노트 가독성(페이드인·최소 간격), 낙하 속도와 도입부 여유, 버튼 오터치 같은 문제를 반복해서 다듬었습니다.</p>
+
+          <h4>기술 구현</h4>
+          <p>Web Audio로 스펙트럴 플럭스 기반 온셋을 검출하고 박자 간격으로 템포를 추정해 비트 그리드에 스냅하는 방식으로 자동 채보합니다. requestAnimationFrame 게임 루프 위에서 Canvas로 파티클·이펙트를 렌더링하고 3D 원근 레인을 적용했으며, 고DPI 렌더링·오차 중앙값 기반 싱크 보정, Service Worker 오프라인 캐싱까지 외부 라이브러리 없이 단일 파일로 구현했습니다.</p>
+
+          <h4>결과 &amp; 배운 점</h4>
+          <p>프레임워크 없이도 오디오 분석·게임 루프·PWA까지 하나의 완결된 웹 게임을 만들 수 있음을 확인했습니다. “직접 플레이하며 고치는” 루프가 기획서보다 빠르고 정확하게 UX 문제를 드러냈고, 캐릭터·색·모션·아이콘을 일관된 톤으로 묶었을 때 제품의 완성도와 인상이 크게 달라진다는 걸 배웠습니다.</p>
+        </div>
       </div>
     </div>
   </div>
