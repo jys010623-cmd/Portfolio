@@ -202,6 +202,16 @@
   .pd2-inner .ovh{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#9a9a92; margin-bottom:14px; }
   .pd2-inner .body-t{ font-size:clamp(15px,1.6vw,18px); line-height:1.75; color:#3c3c38; }
   .pd2-inner .pd-visit{ margin-top:24px; }
+  /* 진실의 옥상 — 포스터 + 정리 요약 2단 */
+  .pd-story{ display:grid; grid-template-columns:0.82fr 1.18fr; gap:clamp(30px,4vw,60px); margin-top:clamp(40px,5vw,70px); align-items:center; }
+  .pd-story .poster img{ width:100%; height:auto; border-radius:12px; display:block; }
+  .pd-story h4{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#9a9a92; margin:24px 0 9px; }
+  .pd-story h4:first-child{ margin-top:0; }
+  .pd-story p{ font-size:15px; line-height:1.72; color:#3c3c38; margin:0 0 6px; }
+  .pd-story p b{ color:#1b1b1b; }
+  .pd-story .tags{ display:flex; flex-wrap:wrap; gap:7px; margin:8px 0 0; padding:0; list-style:none; }
+  .pd-story .tags li{ font-size:13px; color:#4a4a46; background:#f2f2ee; border-radius:14px; padding:5px 12px; }
+  @media(max-width:680px){ .pd-story{ grid-template-columns:1fr; } }
   @media(max-width:680px){ .pd2-top, .pd2-row2{ grid-template-columns:1fr; align-items:start; } }
 
   /* project detail — EX3 long-scroll case study (use inside .pd2-inner) */
@@ -526,7 +536,7 @@
 
         <div class="pcard rise" data-cat="webapp" data-open="pd-mystar"><div class="imgph" data-l="My Star Calendar"><img src="assets/projects/My-Star-Calendar/mystar_Thumbnail.jpg" alt="마이 스타 캘린더 썸네일"><span class="solo-tag">1인 프로젝트</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">마이 스타 캘린더</div><div class="pc">WebApp · 운영 중인 서비스</div><div class="pdate"><span class="py">2026</span><span class="pd">03 중순 기획 · 06.06 개발 · 06.12 오픈베타</span></div></div>
         <div class="pcard rise" data-cat="webapp" data-open="pd-rhythm"><div class="imgph" data-l="RHYTHM CAMEMBERT"><img src="assets/projects/Rhythm-Camembert/Rhythm-Camembert_Thumbnail.jpg" alt="리듬베르 썸네일"><span class="solo-tag">1인 프로젝트</span></div><div class="pt">리듬베르</div><div class="pc">WebApp · 게임</div><div class="pdate"><span class="py">2026</span><span class="pd">06.18 기획·개발 · 07.01 오픈베타</span></div></div>
-        <div class="pcard rise" data-cat="webapp" data-open="pd-truth"><div class="imgph" data-l="진실의 옥상"><span class="team-tag">TEAM</span></div><div class="pt">진실의 옥상</div><div class="pc">WebApp · 채팅 커뮤니티</div><div class="pdate"><span class="py">2026</span><span class="pd">진행 중</span></div></div>
+        <div class="pcard rise" data-cat="webapp" data-open="pd-truth"><div class="imgph" data-l="진실의 옥상"><img src="assets/projects/Truth-Rooftop/Truth-Rooftop_Thumbnail.jpg" alt="진실의 옥상 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">진실의 옥상</div><div class="pc">WebApp · 채팅 커뮤니티</div><div class="pdate"><span class="py">2026</span><span class="pd">진행 중</span></div></div>
         <div class="pcard rise" data-cat="team" data-open="pd-khan"><div class="imgph" data-l="KHAN ACADEMY"><img src="assets/projects/Khan_Academy/Khan_Academy_Thumbnail.jpg" alt="칸 아카데미 리디자인 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">칸 아카데미</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">03.30 – 04.03</span></div></div>
         <div class="pcard rise" data-cat="team" data-open="pd-holo"><div class="imgph" data-l="HOLO"><img src="assets/projects/HOLO/HOLO_Thumbnail.jpg" alt="HOLO 썸네일"><span class="team-tag">TEAM</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">HOLO</div><div class="pc">WebApp · 제작</div><div class="pdate"><span class="py">2026</span><span class="pd">04.21(예상) – 05.22 · 클로즈드 베타</span></div></div>
         <div class="pcard rise" data-cat="team" data-open="pd-sangsang"><div class="imgph" data-l="상상의 문"><img src="assets/projects/sangsang_door/sangsang_door_Thumbnail.jpg" alt="상상의 문 리디자인 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">상상의 문</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">05.29 – 06.08(예상) · 06.23 발표</span></div></div>
@@ -1063,7 +1073,7 @@
             <div><span>Role</span>1인 · 기획·개발</div>
             <div><span>Type</span>WebApp · 게임</div>
             <div><span>Year</span>2026.06.18 기획·개발 · 07.01 오픈베타</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/codex.svg" alt="Codex"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/codex.svg" alt="Codex"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" target="_blank" rel="noopener">플레이하기 <span class="ar">→</span></a>
         </div>
@@ -1091,11 +1101,42 @@
           </div>
           <a class="pd-visit" href="https://zipdooly.github.io/Truth-Rooftop/Demo/Truth-of-Rooftop.html" target="_blank" rel="noopener">데모 보기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover" data-l="진실의 옥상 — COVER 16:10"></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://zipdooly.github.io/Truth-Rooftop/Demo/Truth-of-Rooftop.html" title="진실의 옥상 데모 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://zipdooly.github.io/Truth-Rooftop/Demo/Truth-of-Rooftop.html" target="_blank" rel="noopener"><span>데모 보기 →</span></a></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">팀으로 제작 중인 웹앱 ‘진실의 옥상’입니다.</p></div>
         <div><div class="ovh">Solution</div><p class="body-t">현재 기획·디자인·개발을 진행 중이며, 완성되는 대로 내용을 업데이트할 예정입니다.</p></div>
+      </div>
+      <div class="pd-story">
+        <div class="poster"><img src="assets/projects/Truth-Rooftop/concept1.png" alt="진실의 옥상 컨셉 이미지"></div>
+        <div class="summary">
+          <h4>프로젝트 개요</h4>
+          <p>친구와 대화하다가 특정 장소로 초대해, 그 장소만의 분위기 속에서 이야기를 나누는 <b>장소 기반 메신저</b>입니다. 일반 채팅과 별개로 장소마다 다른 연출을 제공해, 친구끼리 장난스럽게 놀거나 평소와 다른 대화를 나누는 공간을 만드는 것이 목적입니다.</p>
+
+          <h4>한 줄 소개</h4>
+          <p>“야, 잠깐 옥상으로 올라올래?” — 친구들과 특별한 장소에서 만나는 감성 장소형 메신저.</p>
+
+          <h4>핵심 컨셉</h4>
+          <p><b>① 기본 채팅</b> · 친구 추가, 그룹채팅, DM, 프로필, 이모티콘 등 일반 메신저 기능.</p>
+          <p><b>② 장소 초대</b> · 채팅 중 친구에게 초대장을 보내면 상대가 ‘수락’ 또는 ‘회피’를 선택. (옥상·편의점·공원 벤치·PC방·카페·버스정류장)</p>
+          <p><b>③ 회피 시스템</b> · 단순 무시가 아니라 캐릭터가 ‘회피 행동’을 합니다. 예) 옥상은 천장으로 피신, 편의점은 냉장고 뒤에 숨기, 버스정류장은 버스 타고 사라지기.</p>
+
+          <h4>장소</h4>
+          <p>🌙 <b>옥상</b> — 밤하늘·야경 속 가장 특별한 공간, 진솔한 대화</p>
+          <p>🏪 <b>편의점 앞</b> — 컵라면 먹으며 수다·장난·아무말</p>
+          <p>🌳 <b>공원 벤치</b> — 조용한 고민상담·근황토크</p>
+          <p>🚏 <b>버스정류장</b> — 3~5분 짧은 대화, 스쳐가는 인연</p>
+          <p>🎮 <b>PC방</b> — 게임 모집·랭크 이야기 · ☕ <b>카페</b> — 잔잔한 1:1 대화</p>
+
+          <h4>입장 방식 · 캐릭터</h4>
+          <p>초대 코드가 있어야 입장하는 비밀 아지트 방식(예: <b>ROOM-YACHA-001</b>). 프로필 대신 <b>캐릭터</b>가 중심이며, 장소마다 난간 기대기·컵라면 먹기·키보드 치기 같은 행동 모션을 합니다.</p>
+
+          <h4>특별 채팅방</h4>
+          <ul class="tags"><li>5분 옥상</li><li>10분 편의점</li><li>30분 PC방</li></ul>
+
+          <h4>디자인 방향</h4>
+          <p>메인 네이비·다크블루·보라 + 포인트 노을 주황·노란 조명. 2D 캐릭터, 감성 일러스트, 밤의 도시 야경 무드.</p>
+        </div>
       </div>
     </div>
   </div>
