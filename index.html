@@ -228,6 +228,10 @@
   .pd-nav[disabled]{ opacity:.28; pointer-events:none; }
   .pd2-cover{ cursor:zoom-in; }
   .pd-slides-hint{ font-size:12px; color:var(--muted,#8a8a86); margin-top:4px; letter-spacing:.02em; }
+  /* live site auto-scroll preview */
+  .site-preview{ position:relative; overflow:hidden; cursor:default; background:#f0f0ec; }
+  .site-preview iframe{ position:absolute; top:0; left:0; width:1280px; height:800px; border:0; transform:scale(var(--sp-s,0.53)); transform-origin:top left; pointer-events:none; }
+  .site-preview::after{ content:''; position:absolute; inset:0; z-index:2; }
   @media(max-width:680px){ .pd-mkt-grid{ grid-template-columns:1fr; } .pd-slides .imgph{ flex-basis:80vw; width:80vw; } }
   /* fullscreen lightbox */
   .lbox{ position:fixed; inset:0; z-index:400; background:rgba(16,16,16,.94); display:none; align-items:center; justify-content:center; }
@@ -502,9 +506,12 @@
         <div class="pcard rise" data-cat="web" data-open="pd-naver"><div class="imgph" data-l="NAVER"><img src="assets/projects/NAVER/NAVER_Thumbnail.jpg" alt="네이버 리디자인 썸네일"></div><div class="pt">네이버</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
         <div class="pcard rise" data-cat="web" data-open="pd-smtown"><div class="imgph" data-l="SMTOWN&amp;STORE"><img src="assets/projects/SMTOWN_STORE/SMTOWN_STORE_Thumbnail.jpg" alt="SMTOWN&amp;STORE 리디자인 썸네일"></div><div class="pt">SMTOWN&amp;STORE</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
         <div class="pcard rise" data-cat="web" data-open="pd-nintendo"><div class="imgph" data-l="NINTENDO — ZELDA"><img src="assets/projects/NINTENDO/NINTENDO_Thumbnail.jpg" alt="닌텐도 젤다 리디자인 썸네일"></div><div class="pt">NINTENDO</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        <!-- TODO: 나중에 다시 넣기 (화장품 리디자인 / 웹 프로젝트 05 / 웹 프로젝트 06)
         <div class="pcard rise" data-cat="web" data-open="pd-cosmetic"><div class="imgph" data-l="COSMETIC"></div><div class="pt">화장품 리디자인</div><div class="pc">Web · 반응형 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
         <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 05"></div><div class="pt">웹 프로젝트 05</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
         <div class="pcard rise" data-cat="web"><div class="imgph" data-l="WEB 06"></div><div class="pt">웹 프로젝트 06</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span></div></div>
+        -->
+
         <div class="pcard rise" data-cat="webapp" data-open="pd-mystar"><div class="imgph" data-l="My Star Calendar"><img src="assets/projects/My-Star-Calendar/mystar_Thumbnail.jpg" alt="마이 스타 캘린더 썸네일"><span class="solo-tag">1인 프로젝트</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">마이 스타 캘린더</div><div class="pc">WebApp · 운영 중인 서비스</div><div class="pdate"><span class="py">2026</span><span class="pd">03 중순 기획 · 06.06 개발 · 06.12 오픈베타</span></div></div>
         <div class="pcard rise" data-cat="webapp" data-open="pd-rhythm"><div class="imgph" data-l="RHYTHM CAMEMBERT"><span class="solo-tag">1인 프로젝트</span></div><div class="pt">리듬베르</div><div class="pc">WebApp · 게임</div><div class="pdate"><span class="py">2026</span><span class="pd">06.18 기획·개발 · 07.01 오픈베타</span></div></div>
         <div class="pcard rise" data-cat="webapp" data-open="pd-truth"><div class="imgph" data-l="진실의 옥상"><span class="team-tag">TEAM</span></div><div class="pt">진실의 옥상</div><div class="pc">WebApp · 채팅 커뮤니티</div><div class="pdate"><span class="py">2026</span><span class="pd">진행 중</span></div></div>
@@ -696,11 +703,11 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span>Figma · HTML/CSS</div>
+            <div><span>Tools</span>Figma · HTML/CSS · JavaScript</div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover" data-l="NAVER — COVER 16:10"></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" title="네이버 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">네이버의 브랜드와 핵심 서비스를 소개하는 사이트를 ‘We the Navigators(항해)’ 콘셉트로 리디자인했습니다. 고래·웨일을 모티프로 한 풀스크린 영상 섹션으로 브랜드 무드를 전달합니다.</p></div>
@@ -724,7 +731,7 @@
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover" data-l="SMTOWN&amp;STORE — COVER 16:10"></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" title="SMTOWN&amp;STORE 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">SM 아티스트의 공식 굿즈 스토어 SMTOWN&amp;STORE를 리디자인한 커머스 프로토타입입니다. 앨범·콘서트 MD·라이프스타일 굿즈를 아티스트별 컬렉션으로 탐색하도록 구성했습니다.</p></div>
@@ -748,7 +755,7 @@
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover" data-l="ZELDA — COVER 16:10"></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" title="NINTENDO 젤다 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">젤다의 전설 40주년을 기념해 시리즈의 세계관·캐릭터·역사를 아카이빙한 브랜드 사이트입니다. 트라이포스(용기·지혜·힘)를 축으로 링크·젤다·가논돌프를 소개합니다.</p></div>
@@ -795,7 +802,7 @@
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/Khan_Academy/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover" data-l="KHAN ACADEMY — COVER 16:10"></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/Khan_Academy/Re-design/index.html" title="칸 아카데미 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">교육 플랫폼 칸 아카데미를 팀 단위로 리디자인했습니다.</p></div>
@@ -819,7 +826,7 @@
           </div>
           <a class="pd-visit" href="https://doorlove1234-coder.github.io/sangsangDoor/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover" data-l="상상의 문 — COVER 16:10"></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://doorlove1234-coder.github.io/sangsangDoor/index.html" title="상상의 문 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">방탈출 테마 카페 브랜드 ‘상상의 문’의 웹을 팀으로 리디자인했습니다. ‘문을 여는’ 콘셉트로 스토리텔링과 예약 흐름을 재구성했어요.</p></div>
@@ -1184,11 +1191,41 @@
 
     /* project detail overlays — open on "View project", close on ×/ESC */
     const overlays = document.querySelectorAll('.pdetail');
+    /* live site auto-scroll preview: fit iframe to box width + auto-scroll its content */
+    function fitSitePreviews(root){
+      (root||document).querySelectorAll('.site-preview').forEach(box=>{
+        const fr = box.querySelector('iframe'); if(!fr) return;
+        const w = box.clientWidth, h = box.clientHeight;
+        if(w>0){ const s = Math.max(w/1280, h/800) * 1.004; fr.style.setProperty('--sp-s', s.toFixed(4)); }
+        startPreviewScroll(fr);
+      });
+    }
+    function startPreviewScroll(fr){
+      if(fr.dataset.spRunning) return;               /* already animating */
+      let win; try{ win = fr.contentWindow; win.document; }catch(e){ return; } /* cross-origin (local file) → skip */
+      if(!win) return;
+      fr.dataset.spRunning = '1';
+      const PAUSE = 2200, TRIP = 14000;              /* hold at top/bottom, travel time */
+      function loop(t0, from, to){
+        const t = performance.now() - t0;
+        if(t < PAUSE){ requestAnimationFrame(()=>loop(t0, from, to)); return; }
+        const p = Math.min((t - PAUSE) / TRIP, 1);
+        const e = p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;   /* ease-in-out */
+        try{ win.scrollTo(0, from + (to-from)*e); }catch(err){ return; }
+        if(p < 1){ requestAnimationFrame(()=>loop(t0, from, to)); }
+        else { const max = Math.max(0, win.document.documentElement.scrollHeight - win.innerHeight);
+               loop(performance.now(), to, to>0 ? 0 : max); }
+      }
+      const kick = ()=>{ const max = Math.max(0, win.document.documentElement.scrollHeight - win.innerHeight);
+                         if(max>10) loop(performance.now(), 0, max); };
+      if(win.document.readyState === 'complete'){ kick(); } else { fr.addEventListener('load', kick, {once:true}); }
+    }
+    window.addEventListener('resize', ()=>fitSitePreviews());
     function closeDetail(){ overlays.forEach(o=>o.classList.remove('open')); document.body.style.overflow=''; }
     document.querySelectorAll('[data-open]').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         const ov = document.getElementById(btn.dataset.open);
-        if(ov){ ov.scrollTop=0; ov.classList.add('open'); document.body.style.overflow='hidden'; }
+        if(ov){ ov.scrollTop=0; ov.classList.add('open'); document.body.style.overflow='hidden'; fitSitePreviews(ov); }
       });
     });
     document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', closeDetail));
