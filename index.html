@@ -76,7 +76,7 @@
   .quickmeta{ display:flex; flex-direction:column; justify-content:space-between; align-self:stretch; gap:14px; margin-top:0; }
   .quickmeta .k{ font-family:var(--disp); font-weight:700; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#9a9a92; margin-bottom:7px; }
   .quickmeta .v{ font-size:15.5px; color:#333; line-height:1.45; }
-  @media(max-width:680px){ .intro-grid{ grid-template-columns:1fr; align-items:start; } .photo{ max-width:300px; } }
+  @media(max-width:860px){ .intro-grid{ grid-template-columns:1fr; align-items:start; } .photo{ max-width:300px; } }
 
   .cred-lab{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#9a9a92; margin-bottom:30px; display:flex; align-items:center; gap:9px; }
   .cred-lab::before{ content:''; width:7px; height:7px; background:var(--ink); display:inline-block; }
@@ -145,9 +145,12 @@
   .works-more[hidden]{ display:none; }
   .pcard{ display:block; text-decoration:none; color:inherit; }
   .pcard.hide{ display:none; }
-  .pcard .imgph{ aspect-ratio:4/3; border-radius:10px; transition:transform .3s ease; }
-  .pcard:hover .imgph{ transform:translateY(-4px); }
-  .pcard .pt{ font-family:var(--disp); font-weight:700; font-size:17px; margin-top:13px; letter-spacing:-0.01em; }
+  .pcard .imgph{ aspect-ratio:4/3; border-radius:10px; transition:transform .35s ease, box-shadow .35s ease; }
+  .pcard .imgph img{ transition:transform .6s cubic-bezier(.2,.6,.2,1); }
+  .pcard:hover .imgph{ transform:translateY(-5px); box-shadow:0 14px 30px rgba(0,0,0,.12); }
+  .pcard:hover .imgph img{ transform:scale(1.06); }
+  .pcard .pt{ font-family:var(--disp); font-weight:700; font-size:17px; margin-top:13px; letter-spacing:-0.01em; transition:color .2s ease; }
+  .pcard:hover .pt{ color:#000; }
   .pcard .pc{ font-size:13px; color:#8a8a86; margin-top:3px; }
   .pcard .pdate{ display:flex; align-items:baseline; gap:8px; margin-top:7px; font-family:var(--disp); font-variant-numeric:tabular-nums; }
   .pcard .py{ font-weight:700; font-size:11px; letter-spacing:0.1em; color:#6e6e68; }
@@ -192,6 +195,8 @@
   .pd2-tag{ font-family:var(--disp); font-weight:600; font-size:clamp(15px,1.7vw,21px); color:#555; letter-spacing:-0.01em; margin:0 0 18px; }
   .pd2-meta{ font-size:13.5px; color:#666; line-height:2; }
   .pd2-meta span{ color:#a2a29a; display:inline-block; width:64px; }
+  .pd2-meta .pd2-tools{ width:auto; display:inline-flex; align-items:center; gap:9px; vertical-align:middle; }
+  .pd2-tools img{ width:21px; height:21px; object-fit:contain; display:block; }
   .pd2-cover{ aspect-ratio:16/10; border-radius:8px; }
   .pd2-row2{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,4vw,56px); margin-top:clamp(40px,5vw,70px); }
   .pd2-inner .ovh{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#9a9a92; margin-bottom:14px; }
@@ -235,7 +240,10 @@
   .site-preview::before{ content:'미리보기 불러오는 중…'; position:absolute; inset:0; z-index:0; display:flex; align-items:center; justify-content:center; font-family:var(--disp); font-size:13px; letter-spacing:.05em; color:#9a9a92; }
   .site-preview iframe{ position:absolute; top:0; left:0; z-index:1; width:1280px; height:800px; border:0; transform:scale(var(--sp-s,0.53)); transform-origin:top left; pointer-events:none; opacity:0; transition:opacity .5s ease; }
   .site-preview.loaded iframe{ opacity:1; }
-  .site-preview::after{ content:''; position:absolute; inset:0; z-index:2; }
+  .site-preview .sp-open, .pd2-cover .sp-open{ position:absolute; inset:0; z-index:3; display:flex; align-items:flex-end; justify-content:flex-end; padding:16px; text-decoration:none; opacity:0; transition:opacity .3s ease; background:linear-gradient(to top, rgba(15,15,20,.44), rgba(15,15,20,0) 42%); }
+  .site-preview:hover .sp-open, .pd2-cover:hover .sp-open{ opacity:1; }
+  .site-preview .sp-open span, .pd2-cover .sp-open span{ font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:.01em; color:#fff; background:rgba(20,20,22,.82); padding:9px 15px; border-radius:18px; }
+  @media(hover:none){ .site-preview .sp-open, .pd2-cover .sp-open{ opacity:1; background:linear-gradient(to top, rgba(15,15,20,.4), rgba(15,15,20,0) 38%); } }
   @media(max-width:680px){ .pd-mkt-grid{ grid-template-columns:1fr; } .pd-slides .imgph{ flex-basis:80vw; width:80vw; } }
   /* fullscreen lightbox */
   .lbox{ position:fixed; inset:0; z-index:400; background:rgba(16,16,16,.94); display:none; align-items:center; justify-content:center; }
@@ -517,7 +525,7 @@
         -->
 
         <div class="pcard rise" data-cat="webapp" data-open="pd-mystar"><div class="imgph" data-l="My Star Calendar"><img src="assets/projects/My-Star-Calendar/mystar_Thumbnail.jpg" alt="마이 스타 캘린더 썸네일"><span class="solo-tag">1인 프로젝트</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">마이 스타 캘린더</div><div class="pc">WebApp · 운영 중인 서비스</div><div class="pdate"><span class="py">2026</span><span class="pd">03 중순 기획 · 06.06 개발 · 06.12 오픈베타</span></div></div>
-        <div class="pcard rise" data-cat="webapp" data-open="pd-rhythm"><div class="imgph" data-l="RHYTHM CAMEMBERT"><span class="solo-tag">1인 프로젝트</span></div><div class="pt">리듬베르</div><div class="pc">WebApp · 게임</div><div class="pdate"><span class="py">2026</span><span class="pd">06.18 기획·개발 · 07.01 오픈베타</span></div></div>
+        <div class="pcard rise" data-cat="webapp" data-open="pd-rhythm"><div class="imgph" data-l="RHYTHM CAMEMBERT"><img src="assets/projects/Rhythm-Camembert/Rhythm-Camembert_Thumbnail.jpg" alt="리듬베르 썸네일"><span class="solo-tag">1인 프로젝트</span></div><div class="pt">리듬베르</div><div class="pc">WebApp · 게임</div><div class="pdate"><span class="py">2026</span><span class="pd">06.18 기획·개발 · 07.01 오픈베타</span></div></div>
         <div class="pcard rise" data-cat="webapp" data-open="pd-truth"><div class="imgph" data-l="진실의 옥상"><span class="team-tag">TEAM</span></div><div class="pt">진실의 옥상</div><div class="pc">WebApp · 채팅 커뮤니티</div><div class="pdate"><span class="py">2026</span><span class="pd">진행 중</span></div></div>
         <div class="pcard rise" data-cat="team" data-open="pd-khan"><div class="imgph" data-l="KHAN ACADEMY"><img src="assets/projects/Khan_Academy/Khan_Academy_Thumbnail.jpg" alt="칸 아카데미 리디자인 썸네일"><span class="team-tag">TEAM</span></div><div class="pt">칸 아카데미</div><div class="pc">Web · 리디자인</div><div class="pdate"><span class="py">2026</span><span class="pd">03.30 – 04.03</span></div></div>
         <div class="pcard rise" data-cat="team" data-open="pd-holo"><div class="imgph" data-l="HOLO"><img src="assets/projects/HOLO/HOLO_Thumbnail.jpg" alt="HOLO 썸네일"><span class="team-tag">TEAM</span><span class="feat-tag">FEATURED ↑</span></div><div class="pt">HOLO</div><div class="pc">WebApp · 제작</div><div class="pdate"><span class="py">2026</span><span class="pd">04.21(예상) – 05.22 · 클로즈드 베타</span></div></div>
@@ -707,11 +715,11 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span>Figma · HTML/CSS · JavaScript</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" title="네이버 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" title="네이버 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" target="_blank" rel="noopener"><span>실제 사이트 보기 →</span></a></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">네이버의 브랜드와 핵심 서비스를 소개하는 사이트를 ‘We the Navigators(항해)’ 콘셉트로 리디자인했습니다. 고래·웨일을 모티프로 한 풀스크린 영상 섹션으로 브랜드 무드를 전달합니다.</p></div>
@@ -731,11 +739,11 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span>Figma · HTML/CSS</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" title="SMTOWN&amp;STORE 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" title="SMTOWN&amp;STORE 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" target="_blank" rel="noopener"><span>실제 사이트 보기 →</span></a></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">SM 아티스트의 공식 굿즈 스토어 SMTOWN&amp;STORE를 리디자인한 커머스 프로토타입입니다. 앨범·콘서트 MD·라이프스타일 굿즈를 아티스트별 컬렉션으로 탐색하도록 구성했습니다.</p></div>
@@ -755,11 +763,11 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span>Figma · HTML/CSS</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" title="NINTENDO 젤다 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" title="NINTENDO 젤다 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" target="_blank" rel="noopener"><span>실제 사이트 보기 →</span></a></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">젤다의 전설 40주년을 기념해 시리즈의 세계관·캐릭터·역사를 아카이빙한 브랜드 사이트입니다. 트라이포스(용기·지혜·힘)를 축으로 링크·젤다·가논돌프를 소개합니다.</p></div>
@@ -779,7 +787,7 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span>Figma · HTML/CSS</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></span></div>
           </div>
         </div>
         <div class="imgph pd2-cover" data-l="COSMETIC — COVER 16:10"></div>
@@ -802,11 +810,11 @@
             <div><span>Role</span>Team Lead · UI/UX</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span>Figma · HTML/CSS</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/Khan_Academy/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/Khan_Academy/Re-design/index.html" title="칸 아카데미 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/Khan_Academy/Re-design/index.html" title="칸 아카데미 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://jys010623-cmd.github.io/Khan_Academy/Re-design/index.html" target="_blank" rel="noopener"><span>실제 사이트 보기 →</span></a></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">교육 플랫폼 칸 아카데미를 팀 단위로 리디자인했습니다.</p></div>
@@ -826,11 +834,11 @@
             <div><span>Role</span>UI/UX · 팀</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026.05.29 – 06.08(예상) · 06.23 발표</div>
-            <div><span>Tools</span>Figma · HTML/CSS</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://doorlove1234-coder.github.io/sangsangDoor/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover site-preview"><iframe src="https://doorlove1234-coder.github.io/sangsangDoor/index.html" title="상상의 문 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://doorlove1234-coder.github.io/sangsangDoor/index.html" title="상상의 문 리디자인 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://doorlove1234-coder.github.io/sangsangDoor/index.html" target="_blank" rel="noopener"><span>실제 사이트 보기 →</span></a></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">방탈출 테마 카페 브랜드 ‘상상의 문’의 웹을 팀으로 리디자인했습니다. ‘문을 여는’ 콘셉트로 스토리텔링과 예약 흐름을 재구성했어요.</p></div>
@@ -852,7 +860,7 @@
             <div><span>Type</span>Marketing · 공모전</div>
             <div><span>Award</span>제1회 전국 대학생 대상 메타버스 기반 홍보 마케팅 공모전 은상 · (사)한국글로컬마케터양성협회 · 2022.07.27</div>
             <div><span>Year</span>2022</div>
-            <div><span>Tools</span>PowerPoint · Keynote</div>
+            <div><span>Tools</span>PowerPoint · Google Forms · Gather Town</div>
           </div>
         </div>
         <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"><img src="assets/projects/Marketing/paikdabang/%EA%B4%91%EA%B3%A0%EC%8B%A4%EB%AC%B4%ED%95%99%EC%8A%B5%EB%A1%A0%20%EC%B5%9C%EC%A2%85%20-%2010%EC%A1%B0%20%EB%B0%95%EC%88%98%EC%A0%95%2C%20%EC%A0%84%EC%A7%80%EC%9C%A4%2C%20%EC%A0%95%EC%98%81%EC%8B%AC%20%28%EB%B9%BD%EB%8B%A4%EB%B0%A9%29_page-0001.jpg" alt="빽다방 표지"></div>
@@ -922,7 +930,7 @@
             <div><span>Role</span>기획 · 팀</div>
             <div><span>Type</span>Marketing · 기획서</div>
             <div><span>Year</span>2021</div>
-            <div><span>Tools</span>PowerPoint · Keynote</div>
+            <div><span>Tools</span>PowerPoint</div>
           </div>
         </div>
         <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"><img src="assets/projects/Marketing/iloom/%5B%EB%94%94%EC%A7%80%ED%84%B8%EB%AF%B8%EB%94%94%EC%96%B4%EB%A1%A0%5D%206%EC%A1%B0%20%EC%9D%BC%EB%A3%B8%20%EC%BA%90%EC%8A%A4%ED%84%B0%EB%84%A4%EC%B8%A0%20%28%EC%B5%9C%EC%A2%85%29_page-0001.jpg" alt="일룸 표지"></div>
@@ -994,7 +1002,7 @@
             <div><span>Role</span>기획 · 팀</div>
             <div><span>Type</span>Marketing · 기획서</div>
             <div><span>Year</span>2021</div>
-            <div><span>Tools</span>PowerPoint · Keynote</div>
+            <div><span>Tools</span>PowerPoint · Google Forms</div>
           </div>
         </div>
         <div class="imgph pd2-cover" data-l="표지 — COVER 16:10"><img src="assets/projects/Marketing/geumsan/geumsan_page-0001.jpg" alt="금산 표지"></div>
@@ -1055,11 +1063,11 @@
             <div><span>Role</span>1인 · 기획·개발</div>
             <div><span>Type</span>WebApp · 게임</div>
             <div><span>Year</span>2026.06.18 기획·개발 · 07.01 오픈베타</div>
-            <div><span>Tools</span>JavaScript · 바이브코딩</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/codex.svg" alt="Codex"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" target="_blank" rel="noopener">플레이하기 <span class="ar">→</span></a>
         </div>
-        <div class="imgph pd2-cover" data-l="RHYTHM CAMEMBERT — COVER 16:10"></div>
+        <div class="imgph pd2-cover site-preview"><iframe src="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" title="리듬베르 게임 미리보기" scrolling="no" loading="lazy" tabindex="-1" aria-hidden="true"></iframe><a class="sp-open" href="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" target="_blank" rel="noopener"><span>플레이하기 →</span></a></div>
       </div>
       <div class="pd2-row2">
         <div><div class="ovh">Overview</div><p class="body-t">노트가 판정선에 닿는 순간 키를 눌러 점수를 쌓는 1인 제작 웹 리듬 게임입니다. 키보드(D F J K)나 화면 탭으로 플레이합니다.</p></div>
@@ -1079,7 +1087,7 @@
             <div><span>Role</span>팀</div>
             <div><span>Type</span>WebApp</div>
             <div><span>Year</span>2026 · 진행 중</div>
-            <div><span>Tools</span>Figma · ChatGPT · Claude · HTML · CSS · JavaScript</div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://zipdooly.github.io/Truth-Rooftop/Demo/Truth-of-Rooftop.html" target="_blank" rel="noopener">데모 보기 <span class="ar">→</span></a>
         </div>
