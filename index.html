@@ -211,6 +211,56 @@
   .pd-story p b{ color:#1b1b1b; }
   .pd-story .tags{ display:flex; flex-wrap:wrap; gap:7px; margin:8px 0 0; padding:0; list-style:none; }
   .pd-story .tags li{ font-size:13px; color:#4a4a46; background:#f2f2ee; border-radius:14px; padding:5px 12px; }
+  .pd-gallery{ display:flex; flex-direction:column; gap:14px; }
+  .pd-gallery .imgph{ border-radius:12px; overflow:hidden; }
+  .pd-gallery .imgph img{ width:100%; height:auto; display:block; }
+  .cam-sec-label{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#9a9a92; margin:38px 0 14px; }
+  .cam-gallery{ columns:3; column-gap:14px; }
+  .cam-gallery img{ width:100%; display:block; border-radius:12px; margin:0 0 14px; break-inside:avoid; }
+  @media(max-width:900px){ .cam-gallery{ columns:2; } }
+  @media(max-width:560px){ .cam-gallery{ columns:1; } }
+  /* character intro blocks (까망베르 / 베르) */
+  .char-intro{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:clamp(24px,3.5vw,52px); align-items:center; margin-top:clamp(30px,4vw,56px); }
+  .char-intro.flip .ci-media{ order:2; }
+  .char-intro .ci-media{ border-radius:18px; overflow:hidden; background:#f3f0f8; }
+  .char-intro .ci-media img{ width:100%; height:auto; display:block; }
+  .char-intro .ci-eyebrow{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#a78bd0; margin-bottom:10px; }
+  .char-intro h3{ font-family:var(--disp); font-weight:800; font-size:clamp(23px,2.8vw,34px); margin:0 0 6px; color:#1b1b1b; }
+  .char-intro .ci-sub{ font-size:13px; color:#9a9a92; letter-spacing:.02em; margin:0 0 14px; }
+  .char-intro p{ font-size:15px; line-height:1.75; color:#3c3c38; margin:0 0 8px; }
+  .char-intro p b{ color:#1b1b1b; }
+  @media(max-width:720px){ .char-intro,.char-intro.flip{ grid-template-columns:1fr; } .char-intro.flip .ci-media{ order:0; } }
+  /* 베르 project — one hero + small thumbnails */
+  .ber-hero{ border-radius:16px; overflow:hidden; margin-top:16px; position:relative; }
+  .ber-hero img{ width:100%; height:auto; display:block; }
+  .ber-cats{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:28px 24px; margin-top:16px; }
+  .ber-cat{ min-width:0; }
+  .ber-cat .ber-sub{ margin-top:0; }
+  .ber-thumbs{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
+  .ber-thumbs img{ width:clamp(120px,11vw,150px); aspect-ratio:3/4; object-fit:cover; border-radius:10px; display:block; }
+  @media(max-width:720px){ .ber-cats{ grid-template-columns:1fr; } }
+  .ber-row5{ margin-top:26px; }
+  .ber-row5 .r5-labels{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:8px; }
+  .ber-row5 .r5-labels .ber-sub{ margin:0; }
+  .ber-row5 .r5-imgs{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; }
+  .ber-row5 .r5-imgs img{ width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:10px; display:block; }
+  .ber-row5 .r5-imgs img.wide2{ grid-column:span 2; aspect-ratio:auto; height:100%; }
+  .ber-row5.c4 .r5-labels, .ber-row5.c4 .r5-imgs{ grid-template-columns:repeat(4,1fr); }
+  .ber-row5.c3 .r5-labels, .ber-row5.c3 .r5-imgs{ grid-template-columns:repeat(3,1fr); }
+  .ber-row5.land2 .r5-labels, .ber-row5.land2 .r5-imgs{ grid-template-columns:repeat(2,1fr); }
+  .ber-row5.land2 .r5-imgs img{ aspect-ratio:3/2; }
+  @media(max-width:720px){ .ber-row5 .r5-labels{ display:flex; flex-wrap:wrap; gap:14px; } .ber-row5 .r5-imgs{ grid-template-columns:repeat(3,1fr); } }
+  .ber-sub{ font-family:var(--disp); font-weight:700; font-size:12.5px; letter-spacing:.04em; color:#5b4b78; margin:26px 0 10px; display:flex; align-items:center; gap:8px; }
+  .ber-sub::before{ content:""; width:14px; height:2px; background:#c8b6e8; display:inline-block; }
+  .ber-banner{ border-radius:14px; overflow:hidden; margin:16px 0 4px; }
+  .ber-banner img{ width:100%; display:block; }
+  /* 까망베르 × 베르 crossover */
+  .cross{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+  .cross img, .cross video{ width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:14px; display:block; }
+  .cross-cap{ font-size:14px; line-height:1.7; color:#3c3c38; margin:14px 0 0; }
+  .cam-restored{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:16px; }
+  .cam-restored img{ width:100%; aspect-ratio:3/2; object-fit:contain; border-radius:14px; background:#f3f0f8; display:block; }
+  @media(max-width:720px){ .cross{ grid-template-columns:1fr; } .cam-restored{ grid-template-columns:1fr; } }
   @media(max-width:680px){ .pd-story{ grid-template-columns:1fr; } }
   .pd-shots{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(16px,2vw,26px); margin-top:clamp(26px,3vw,44px); }
   .pd-shots img{ width:100%; height:auto; border-radius:10px; display:block; }
@@ -444,7 +494,7 @@
             <div class="skill-row">
               <span class="sk-cat">Design</span>
               <div class="chips">
-                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="">Figma</span>
+                <span class="chip"><img src="assets/icons/figma.svg" alt="">Figma</span>
                 <span class="chip"><img src="assets/icons/photoshop.svg" alt="">Photoshop</span>
                 <span class="chip"><img src="assets/icons/illustrator.svg" alt="">Illustrator</span>
               </div>
@@ -452,9 +502,9 @@
             <div class="skill-row">
               <span class="sk-cat">Web</span>
               <div class="chips">
-                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML5</span>
-                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">CSS3</span>
-                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</span>
+                <span class="chip"><img src="assets/icons/html5.svg" alt="">HTML5</span>
+                <span class="chip"><img src="assets/icons/css3.svg" alt="">CSS3</span>
+                <span class="chip"><img src="assets/icons/javascript.svg" alt="">JavaScript</span>
               </div>
             </div>
             <div class="skill-row">
@@ -463,23 +513,23 @@
                 <span class="chip"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="">Gemini</span>
                 <span class="chip"><img src="assets/icons/chatgpt.svg" alt="">ChatGPT</span>
                 <span class="chip"><img src="assets/icons/midjourney.svg" alt="">Midjourney</span>
-                <span class="chip"><img src="https://cdn.simpleicons.org/suno" alt="" onerror="this.style.display='none'">Suno</span>
+                <span class="chip"><img src="assets/icons/suno.svg" alt="" onerror="this.style.display='none'">Suno</span>
               </div>
             </div>
             <div class="skill-row">
               <span class="sk-cat">Vibe<br>Coding</span>
               <div class="chips">
-                <span class="chip"><img src="https://cdn.simpleicons.org/claude" alt="">Claude</span>
+                <span class="chip"><img src="assets/icons/claude.svg" alt="">Claude</span>
                 <span class="chip"><img src="assets/icons/codex.svg" alt="">Codex</span>
-                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="">GitHub</span>
-                <span class="chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="">VS Code</span>
+                <span class="chip"><img src="assets/icons/github.svg" alt="">GitHub</span>
+                <span class="chip"><img src="assets/icons/vscode.svg" alt="">VS Code</span>
               </div>
             </div>
             <div class="skill-row">
               <span class="sk-cat">Backend<br>&amp; Deploy</span>
               <div class="chips">
-                <span class="chip"><img src="https://cdn.simpleicons.org/supabase" alt="">Supabase</span>
-                <span class="chip"><img src="https://cdn.simpleicons.org/vercel" alt="">Vercel</span>
+                <span class="chip"><img src="assets/icons/supabase.svg" alt="">Supabase</span>
+                <span class="chip"><img src="assets/icons/vercel.svg" alt="">Vercel</span>
               </div>
             </div>
           </div>
@@ -512,6 +562,16 @@
             <span class="br-view" data-open="pd-holo">View project →</span>
           </div>
           <div class="imgph rise" data-open="pd-holo" data-l="HOLO — COVER 16:10"><img src="assets/projects/HOLO/HOLO_Thumbnail_main.jpg" alt="HOLO 썸네일"></div>
+        </div>
+        <div class="big-row">
+          <div class="txt rise">
+            <div class="br-num">03 — Featured</div>
+            <div class="br-title">까망베르</div>
+            <div class="br-desc">고양이 캐릭터 ‘까망베르’와, 그를 인간화한 AI 가상 연예인 ‘베르(BEREU)’로 이루어진 오리지널 캐릭터 IP입니다. ‘AI로 나만의 캐릭터를 만든다’는 흐름에 착안해, 마스코트부터 인간 페르소나·컨셉 화보까지 하나의 세계관으로 직접 기획하고 AI로 제작했습니다.</div>
+            <div class="br-meta">1인 프로젝트&nbsp;&nbsp;|&nbsp;&nbsp;AI 캐릭터 · 가상 연예인&nbsp;&nbsp;|&nbsp;&nbsp;2026</div>
+            <span class="br-view" data-open="pd-camembert">View project →</span>
+          </div>
+          <div class="imgph rise" data-open="pd-camembert" data-l="까망베르 — CHARACTER"><img src="assets/projects/Camembert/Camembert_Thumbnail.png" alt="까망베르 캐릭터 프로젝트 썸네일"></div>
         </div>
       </div>
     </div>
@@ -604,14 +664,14 @@
               <div class="r"><span class="k">Work</span><span class="v">100% Personal Project</span></div>
               <div class="r"><span class="k">Tool</span>
                 <span class="msc-tools">
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"></span>
+                  <span class="tl"><img src="assets/icons/figma.svg" alt="Figma"></span>
                   <span class="tl"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></span>
-                  <span class="tl"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span>
+                  <span class="tl"><img src="assets/icons/vscode.svg" alt="VS Code"></span>
+                  <span class="tl"><img src="assets/icons/github.svg" alt="GitHub"></span>
+                  <span class="tl"><img src="assets/icons/claude.svg" alt="Claude"></span>
+                  <span class="tl"><img src="assets/icons/html5.svg" alt="HTML5"></span>
+                  <span class="tl"><img src="assets/icons/css3.svg" alt="CSS3"></span>
+                  <span class="tl"><img src="assets/icons/javascript.svg" alt="JavaScript"></span>
                 </span>
               </div>
             </div>
@@ -678,18 +738,18 @@
               <div class="r"><span class="k">Work</span><span class="v">Team Project · 조장(Team Lead)</span></div>
               <div class="r"><span class="k">Tool</span>
                 <span class="msc-tools">
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"></span>
+                  <span class="tl"><img src="assets/icons/figma.svg" alt="Figma"></span>
                   <span class="tl"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"></span>
                   <span class="tl"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"></span>
                   <span class="tl"><img src="assets/icons/illustrator.svg" alt="Illustrator"></span>
-                  <span class="tl"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code"></span>
-                  <span class="tl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></span>
-                  <span class="tl"><img src="https://cdn.simpleicons.org/supabase" alt="Supabase"></span>
-                  <span class="tl"><img src="https://cdn.simpleicons.org/vercel" alt="Vercel"></span>
+                  <span class="tl"><img src="assets/icons/claude.svg" alt="Claude"></span>
+                  <span class="tl"><img src="assets/icons/html5.svg" alt="HTML5"></span>
+                  <span class="tl"><img src="assets/icons/css3.svg" alt="CSS3"></span>
+                  <span class="tl"><img src="assets/icons/javascript.svg" alt="JavaScript"></span>
+                  <span class="tl"><img src="assets/icons/vscode.svg" alt="VS Code"></span>
+                  <span class="tl"><img src="assets/icons/github.svg" alt="GitHub"></span>
+                  <span class="tl"><img src="assets/icons/supabase.svg" alt="Supabase"></span>
+                  <span class="tl"><img src="assets/icons/vercel.svg" alt="Vercel"></span>
                 </span>
               </div>
             </div>
@@ -759,7 +819,7 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/figma.svg" alt="Figma"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/css3.svg" alt="CSS3"><img src="assets/icons/javascript.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/NAVER/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
@@ -783,7 +843,7 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/figma.svg" alt="Figma"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/css3.svg" alt="CSS3"><img src="assets/icons/javascript.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/SMTOWN_STORE/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
@@ -807,7 +867,7 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/figma.svg" alt="Figma"><img src="assets/icons/Google_Gemini_icon_2025.svg.png" alt="Gemini"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/css3.svg" alt="CSS3"><img src="assets/icons/javascript.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/NINTENDO/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
@@ -831,7 +891,7 @@
             <div><span>Role</span>UI/UX · 개인</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/figma.svg" alt="Figma"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/css3.svg" alt="CSS3"></span></div>
           </div>
         </div>
         <div class="imgph pd2-cover" data-l="COSMETIC — COVER 16:10"></div>
@@ -854,7 +914,7 @@
             <div><span>Role</span>Team Lead · UI/UX</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/figma.svg" alt="Figma"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/css3.svg" alt="CSS3"><img src="assets/icons/javascript.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/Khan_Academy/Re-design/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
@@ -878,7 +938,7 @@
             <div><span>Role</span>UI/UX · 팀</div>
             <div><span>Type</span>Web · 리디자인</div>
             <div><span>Year</span>2026.05.29 – 06.08(예상) · 06.23 발표</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/figma.svg" alt="Figma"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/css3.svg" alt="CSS3"><img src="assets/icons/javascript.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://doorlove1234-coder.github.io/sangsangDoor/index.html" target="_blank" rel="noopener">사이트 바로가기 <span class="ar">→</span></a>
         </div>
@@ -1107,7 +1167,7 @@
             <div><span>Role</span>1인 · 기획·개발</div>
             <div><span>Type</span>WebApp · 게임</div>
             <div><span>Year</span>2026.06.18 기획·개발 · 07.01 오픈베타</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/codex.svg" alt="Codex"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.simpleicons.org/suno" alt="Suno AI"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/codex.svg" alt="Codex"><img src="assets/icons/claude.svg" alt="Claude"><img src="assets/icons/suno.svg" alt="Suno AI"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/javascript.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" target="_blank" rel="noopener">플레이하기 <span class="ar">→</span></a>
         </div>
@@ -1142,6 +1202,98 @@
     </div>
   </div>
 
+  <div class="pdetail" id="pd-camembert" role="dialog" aria-modal="true" aria-label="까망베르 상세">
+    <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
+    <div class="pd2-inner">
+      <div class="pd2-top">
+        <div>
+          <div class="pd2-num">AI Character · Virtual Persona</div>
+          <div class="pd2-title">까망베르 <span style="display:block; font-weight:700; font-size:0.5em; color:#9a9a92; letter-spacing:0; margin-top:6px;">Camembert × 베르 BEREU</span></div>
+          <div class="pd2-meta">
+            <div><span>Role</span>1인 · 캐릭터 기획 · AI 제작</div>
+            <div><span>Type</span>AI 오리지널 캐릭터 · AI 가상 연예인</div>
+            <div><span>Year</span>2026</div>
+          </div>
+          <a class="pd-visit" href="https://jys010623-cmd.github.io/Rhythm-Camembert/rhythm-game.html" target="_blank" rel="noopener">리듬베르에서 만나기 <span class="ar">→</span></a>
+        </div>
+        <div class="imgph pd2-cover" style="aspect-ratio:3/2"><img src="assets/projects/Camembert/Camembert_Thumbnail.png" alt="까망베르 캐릭터 프로젝트 썸네일" loading="lazy" style="object-fit:cover"></div>
+      </div>
+      <div class="pd2-row2">
+        <div><div class="ovh">Overview</div><p class="body-t">고양이 캐릭터 <b>까망베르</b>와, 그를 인간화한 AI 가상 연예인 <b>베르(BEREU)</b>로 이루어진 오리지널 캐릭터 IP입니다. ‘AI로 나만의 캐릭터를 만든다’는 흐름에 착안해, 마스코트부터 인간 페르소나·컨셉 화보까지 하나의 세계관으로 직접 기획하고 AI로 제작했습니다.</p></div>
+        <div><div class="ovh">Approach</div><p class="body-t">까망베르의 상징색과 무드를 베르에게도 이어, 긴 흑발·블랙 톤 룩이라는 일관된 시그니처를 잡았습니다. 컨셉이 달라져도 같은 인물로 보이도록 얼굴·분위기를 맞춰, ‘실재하는 연예인’처럼 세계관을 넓혔습니다.</p></div>
+      </div>
+
+      <!-- ① 까망베르 소개 -->
+      <div class="cam-sec-label">Character</div>
+      <div class="char-intro">
+        <div class="ci-media"><img src="assets/projects/Camembert/Camembert/idle_01.png" alt="까망베르 캐릭터" loading="lazy"></div>
+        <div class="ci-txt">
+          <div class="ci-eyebrow">Mascot Character</div>
+          <h3>까망베르</h3>
+          <div class="ci-sub">Camembert · 검은 고양이 마스코트</div>
+          <p>박쥐 날개를 단 <b>검은 고양이</b> 캐릭터입니다. 밤·보라·치즈(까망베르)에서 이름과 무드를 따온, 이 세계관의 시작점이 되는 마스코트예요.</p>
+          <p>동글동글한 실루엣과 보라빛 포인트로 친근하면서도 개성 있게 잡았고, 리듬 게임 ‘리듬베르’에도 그대로 등장합니다.</p>
+        </div>
+      </div>
+
+      <!-- ② 베르 소개 -->
+      <div class="char-intro flip">
+        <div class="ci-media"><img src="assets/projects/Camembert/BEREU_ID_photo.png" alt="베르 프로필" loading="lazy"></div>
+        <div class="ci-txt">
+          <div class="ci-eyebrow">Virtual Persona</div>
+          <h3>베르 <span style="font-weight:700;font-size:0.6em;color:#9a9a92;">BEREU</span></h3>
+          <div class="ci-sub">까망베르를 인간화한 AI 가상 연예인</div>
+          <p>까망베르를 사람으로 옮긴 <b>AI 가상 연예인 ‘베르’</b>입니다. 긴 흑발과 블랙 톤 룩, 초커라는 시그니처로 어떤 컨셉에서도 ‘베르’로 인지되도록 했어요.</p>
+          <p>캐릭터의 일관성을 지키는 것이 AI 제작에서 가장 신경 쓴 부분이었고, 그 위에서 실제 연예인처럼 다양한 활동을 이어갑니다.</p>
+        </div>
+      </div>
+
+      <!-- ③ 베르 컨셉 화보 (배너 + 메인 + 이름별 2열) -->
+      <div class="cam-sec-label">베르 컨셉 화보 · BEREU Works</div>
+      <div class="ber-hero"><img src="assets/projects/Camembert/BEREU_concept2.png" alt="베르 메인 컷" loading="lazy"></div>
+
+      <div class="ber-row5">
+        <div class="r5-labels">
+          <div class="ber-sub" style="grid-column:1">액티브 · Active</div>
+          <div class="ber-sub" style="grid-column:2 / 6">데일리 · Daily Selfie</div>
+        </div>
+        <div class="r5-imgs">
+          <img src="assets/projects/Camembert/BEREU_pure_concept1.png" alt="베르 액티브" loading="lazy">
+          <img src="assets/projects/Camembert/BEREU_selfie_concept1.png" alt="베르 데일리 1" loading="lazy">
+          <img src="assets/projects/Camembert/BEREU_selfie_concept2.png" alt="베르 데일리 2" loading="lazy">
+          <img src="assets/projects/Camembert/BEREU_selfie_concept3.png" alt="베르 데일리 3" loading="lazy">
+          <img src="assets/projects/Camembert/BEREU_selfie_concept4.png" alt="베르 데일리 4" loading="lazy">
+        </div>
+      </div>
+
+      <div class="ber-row5 land2">
+        <div class="r5-labels">
+          <div class="ber-sub" style="grid-column:1">코스메틱 · Cosmetic</div>
+          <div class="ber-sub" style="grid-column:2">뮤직비디오 · Music Video</div>
+        </div>
+        <div class="r5-imgs">
+          <img src="assets/projects/Camembert/BEREU_Cosmetic_concept1.png" alt="베르 코스메틱" loading="lazy">
+          <img src="assets/projects/Camembert/BEREU_mv_concept1.png" alt="베르 뮤직비디오" loading="lazy">
+        </div>
+      </div>
+
+      <!-- ④ 까망베르 × 베르 -->
+      <div class="cam-sec-label">까망베르 × 베르</div>
+      <div class="cross">
+        <img src="assets/projects/Camembert/BEREU_Camembert_concept1.png" alt="베르가 까망베르를 안고 있는 컷 1" loading="lazy">
+        <img src="assets/projects/Camembert/BEREU_Camembert_concept2.png" alt="베르가 까망베르를 안고 있는 컷 2" loading="lazy">
+      </div>
+      <p class="cross-cap">캐릭터(까망베르)와 사람(베르)이 한 프레임에서 만나는 순간. 마스코트와 페르소나가 같은 세계관을 공유한다는 걸 보여주는 컷입니다.</p>
+
+      <div class="cam-sec-label">굿즈 · Goods</div>
+      <div class="cam-restored">
+        <img src="assets/projects/Camembert/Camembert_goods_set1_ko.png" alt="까망베르 굿즈 세트 1 (국문)" loading="lazy">
+        <img src="assets/projects/Camembert/Camembert_goods_set1_en.png" alt="까망베르 굿즈 세트 1 (영문)" loading="lazy">
+        <img src="assets/projects/Camembert/Camembert_goods_set2.png" alt="까망베르 굿즈 세트 2" loading="lazy">
+      </div>
+    </div>
+  </div>
+
   <div class="pdetail" id="pd-truth" role="dialog" aria-modal="true" aria-label="진실의 옥상 상세">
     <button class="pd-close" data-close aria-label="뒤로 가기"><span class="ar">←</span> Back</button>
     <div class="pd2-inner">
@@ -1153,7 +1305,7 @@
             <div><span>Role</span>팀</div>
             <div><span>Type</span>WebApp</div>
             <div><span>Year</span>2026 · 진행 중</div>
-            <div><span>Tools</span><span class="pd2-tools"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="https://cdn.simpleicons.org/claude/D97757" alt="Claude"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"></span></div>
+            <div><span>Tools</span><span class="pd2-tools"><img src="assets/icons/figma.svg" alt="Figma"><img src="assets/icons/chatgpt.svg" alt="ChatGPT"><img src="assets/icons/claude.svg" alt="Claude"><img src="assets/icons/html5.svg" alt="HTML5"><img src="assets/icons/css3.svg" alt="CSS3"><img src="assets/icons/javascript.svg" alt="JavaScript"></span></div>
           </div>
           <a class="pd-visit" href="https://zipdooly.github.io/Truth-Rooftop/Demo/Truth-of-Rooftop.html" target="_blank" rel="noopener">데모 보기 <span class="ar">→</span></a>
         </div>
