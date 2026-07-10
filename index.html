@@ -230,6 +230,51 @@
   .char-intro p{ font-size:15px; line-height:1.75; color:#3c3c38; margin:0 0 8px; }
   .char-intro p b{ color:#1b1b1b; }
   @media(max-width:720px){ .char-intro,.char-intro.flip{ grid-template-columns:1fr; } .char-intro.flip .ci-media{ order:0; } }
+  /* 까망베르 데스크톱 펫 */
+  .cam-pet{ display:flex; flex-direction:column; align-items:center; text-align:center; margin-top:clamp(24px,3.2vw,44px); }
+  .cam-pet-media{ width:min(300px,72vw); border-radius:18px; overflow:hidden; background:#f3f0f8; box-shadow:0 10px 30px rgba(90,60,140,.10); }
+  .cam-pet-media video{ width:100%; height:auto; display:block; }
+  .cam-pet-eyebrow{ font-family:var(--disp); font-weight:700; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#a78bd0; }
+  .cam-pet-cap{ max-width:520px; margin-top:14px; }
+  .cam-pet-cap p{ font-size:15px; line-height:1.75; color:#3c3c38; margin:8px 0 0; }
+  .cam-pet-cap p b{ color:#1b1b1b; }
+  /* 까망베르 데스크톱 컴패니언 case study */
+  .dc-lede{ font-family:var(--disp); font-weight:800; font-size:clamp(18px,2.2vw,26px); line-height:1.5; color:#1b1b1b; margin:0 0 12px; }
+  .dc-lede .bar{ color:#a78bd0; margin-right:6px; }
+  .dc-hero{ display:grid; grid-template-columns:0.8fr 1.2fr; gap:clamp(24px,3.2vw,48px); align-items:center; margin-top:clamp(18px,2.4vw,30px); }
+  .dc-hero .dc-media{ border-radius:18px; overflow:hidden; background:#f3f0f8; box-shadow:0 10px 30px rgba(90,60,140,.10); }
+  .dc-hero .dc-media video{ width:100%; height:auto; display:block; }
+  .dc-hero p{ font-size:15px; line-height:1.75; color:#3c3c38; margin:0; }
+  .dc-hero p b{ color:#1b1b1b; }
+  @media(max-width:720px){ .dc-hero{ grid-template-columns:1fr; } }
+  .dc-meta{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+  .dc-meta div{ background:#f3f0f8; border-radius:10px; padding:9px 14px; font-size:13px; color:#3c3c38; line-height:1.5; }
+  .dc-meta div span{ display:block; font-family:var(--disp); font-weight:700; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#a78bd0; margin-bottom:3px; }
+  .dc-block{ margin-top:clamp(26px,3vw,40px); }
+  .dc-block > h4{ font-family:var(--disp); font-weight:800; font-size:clamp(17px,2vw,21px); color:#1b1b1b; margin:0 0 6px; display:flex; align-items:baseline; gap:9px; }
+  .dc-block > h4 .n{ color:#a78bd0; font-size:0.92em; }
+  .dc-block > .dc-sub{ font-size:14px; line-height:1.7; color:#5b5b54; margin:0 0 14px; }
+  .dc-block > .dc-sub b{ color:#1b1b1b; }
+  .dc-list{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+  .dc-list li{ padding:12px 16px; background:#faf8fd; border:1px solid #efe9f7; border-radius:12px; font-size:14.5px; line-height:1.72; color:#3c3c38; }
+  .dc-list li b{ color:#1b1b1b; }
+  .dc-list li strong{ color:#5b4b78; font-weight:700; }
+  .dc-quote{ border-left:3px solid #c8b6e8; padding:2px 0 2px 16px; margin:16px 0 0; font-size:14.5px; line-height:1.75; color:#3c3c38; }
+  .dc-quote b{ color:#1b1b1b; }
+  .dc-outro{ margin-top:clamp(26px,3vw,40px); background:linear-gradient(135deg,#f6f2fc,#f2eefb); border-radius:16px; padding:clamp(20px,2.6vw,30px); }
+  .dc-outro h4{ font-family:var(--disp); font-weight:800; font-size:clamp(16px,1.9vw,20px); color:#1b1b1b; margin:0 0 8px; }
+  .dc-outro p{ font-size:15px; line-height:1.8; color:#3c3c38; margin:0; }
+  .dc-outro p b{ color:#1b1b1b; }
+  /* 캐릭터 토글 (까망베르 / 베르) */
+  .cam-toggle{ display:inline-flex; gap:4px; padding:4px; background:#f0ecf8; border-radius:999px; margin:clamp(34px,4vw,52px) 0 6px; }
+  .cam-tg-btn{ font-family:var(--disp); font-weight:700; font-size:14px; letter-spacing:.02em; color:#8a82a0; background:transparent; border:0; padding:9px 22px; border-radius:999px; cursor:pointer; transition:color .2s ease, background .2s ease, box-shadow .2s ease; display:inline-flex; align-items:baseline; gap:6px; }
+  .cam-tg-btn span{ font-size:0.72em; font-weight:700; color:#b3a9c8; letter-spacing:.06em; }
+  .cam-tg-btn:hover{ color:#5b4b78; }
+  .cam-tg-btn.active{ color:#fff; background:linear-gradient(135deg,#a78bd0,#8f6fc4); box-shadow:0 6px 16px rgba(120,80,180,.28); }
+  .cam-tg-btn.active span{ color:#e9defb; }
+  .cam-tab{ display:none; }
+  .cam-tab.active{ display:block; animation:camFade .35s ease; }
+  @keyframes camFade{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
   /* 베르 project — one hero + small thumbnails */
   .ber-hero{ border-radius:16px; overflow:hidden; margin-top:16px; position:relative; }
   .ber-hero img{ width:100%; height:auto; display:block; }
@@ -1217,7 +1262,7 @@
             <div><span>Type</span>AI 오리지널 캐릭터 · AI 가상 연예인</div>
             <div><span>Year</span>2026</div>
           </div>
-          <a class="pd-visit" href="https://rhythm-camembert.web.app/" target="_blank" rel="noopener">리듬베르에서 만나기 <span class="ar">→</span></a>
+          <a class="pd-visit" href="#pd-rhythm">리듬베르 보러가기 <span class="ar">→</span></a>
         </div>
         <div class="imgph pd2-cover" style="aspect-ratio:3/2"><img src="assets/projects/Camembert/Camembert_Thumbnail.png" alt="까망베르 캐릭터 프로젝트 썸네일" loading="lazy" style="object-fit:cover"></div>
       </div>
@@ -1226,6 +1271,14 @@
         <div><div class="ovh">Approach</div><p class="body-t">까망베르의 상징색과 무드를 베르에게도 이어, 긴 흑발·블랙 톤 룩이라는 일관된 시그니처를 잡았습니다. 컨셉이 달라져도 같은 인물로 보이도록 얼굴·분위기를 맞춰, ‘실재하는 연예인’처럼 세계관을 넓혔습니다.</p></div>
       </div>
 
+      <!-- 캐릭터 토글 (까망베르 / 베르) -->
+      <div class="cam-toggle" role="tablist" aria-label="캐릭터 전환">
+        <button type="button" class="cam-tg-btn active" role="tab" aria-selected="true" data-tab="camembert">까망베르</button>
+        <button type="button" class="cam-tg-btn" role="tab" aria-selected="false" data-tab="bereu">베르 <span>BEREU</span></button>
+      </div>
+
+      <!-- 까망베르 탭 -->
+      <div class="cam-tab active" data-panel="camembert">
       <!-- ① 까망베르 소개 -->
       <div class="cam-sec-label">Character</div>
       <div class="char-intro">
@@ -1239,9 +1292,74 @@
         </div>
       </div>
 
+      <!-- ①-b 까망베르 데스크톱 컴패니언 (개발 케이스 스터디) -->
+      <div class="cam-sec-label">Desktop Companion</div>
+      <p class="dc-lede"><span class="bar">▎</span>“곁에 있어주는 존재”를 만들고 싶었습니다.</p>
+
+      <div class="dc-hero">
+        <div class="dc-media">
+          <video src="assets/projects/Camembert/Camembert-desktop_pet/Camembert_desktop_pet_video.mp4" autoplay loop muted playsinline preload="metadata" aria-label="까망베르 데스크톱 컴패니언 영상"></video>
+        </div>
+        <div>
+          <p>까망베르는 바탕화면 한쪽에 앉아 나와 함께 있어 주는 <b>작은 캐릭터</b>예요. 리듬게임 ‘리듬베르’의 마스코트를, 화면 속에서 진짜로 살아 움직이게 만들어 보고 싶었어요.</p>
+          <p style="margin-top:10px;">캐릭터의 성격을 정하는 일부터 그림, 움직임, 반응, 컴퓨터와 연결되는 부분까지 — <b>처음부터 끝까지 혼자</b> 만들었어요.</p>
+          <div class="dc-meta">
+            <div><span>Role</span>기획 · 캐릭터 설계 · 프론트/앱 개발 (1인)</div>
+            <div><span>Stack</span>Electron · TypeScript · Vite · Canvas · Web Audio · IPC</div>
+          </div>
+          <a class="pd-visit" href="assets/projects/Camembert/Camembert-desktop_pet/demo.html" target="_blank" rel="noopener" style="margin-top:18px;">데모 실행해보기 <span class="ar">→</span></a>
+        </div>
+      </div>
+
+      <!-- 1. 캐릭터 기획 -->
+      <div class="dc-block">
+        <h4><span class="n">01</span> 성격부터 정했어요</h4>
+        <p class="dc-sub">그냥 ‘귀여운 캐릭터’가 아니라, 앱이든 굿즈든 SNS든 <b>어디에 나와도 같은 까망베르</b>로 보이게, 성격과 규칙을 먼저 정리했어요.</p>
+        <ul class="dc-list">
+          <li><strong>어떤 아이?</strong> — 머리가 큰 2등신 검은 고양이. 소리를 따라 바탕화면으로 찾아와, 내 작업 리듬에 맞춰 조용히 곁을 지켜 주는 친구예요</li>
+          <li><strong>성격 정하기</strong> — 조용하고, 귀엽고, 순하고, 호기심 많고, 음악을 좋아하고, 응원을 잘하고, 혼자서도 잘 노는 7가지 성격을 정하고, ‘얼마나 활발한지 · 얼마나 표현이 큰지’까지 정해 행동의 기준을 만들었어요</li>
+          <li><strong>말투</strong> — 말은 거의 안 하고 “냐…♪”, “천천히 해도 돼…”처럼 담백하게. 오버하는 리액션은 안 하도록 했어요</li>
+          <li><strong>바꿔도 되는 것 vs 안 되는 것</strong> — 얼굴 비율·눈 색·기본 색감은 절대 안 바꾸고, 표정·포즈·소품만 바꾸도록 정했어요</li>
+        </ul>
+        <p class="dc-quote"><span style="color:#a78bd0;font-weight:700;">▎</span> 이렇게 ‘무엇을 바꿔도 되고, 무엇은 절대 안 되는지’를 먼저 정해 둔 게, 이후 그림을 그리고 만드는 내내 <b>흔들리지 않는 기준</b>이 됐어요.</p>
+      </div>
+
+      <!-- 2. 기능 -->
+      <div class="dc-block">
+        <h4><span class="n">02</span> 살아있는 것처럼</h4>
+        <ul class="dc-list">
+          <li><strong>바탕화면 위에 떠 있어요</strong> — 배경 없이 화면 맨 앞에 보이고, 마우스로 잡아 옮기거나 클릭하면 반응해요</li>
+          <li><strong>아무도 안 건드려도 스스로 놀아요</strong> — 가만히 있다가 기분을 표현하고, 음악에 맞춰 춤추고, 걷고, 졸다가 잠들어요. 하품하다 꾸벅꾸벅 졸고 잠드는 식으로 자연스럽게 이어져요</li>
+          <li><strong>다마고치처럼 키워요</strong> — 시간이 지나면 배고파지고 지치고 기분도 변해서, 피곤하면 더 자주 졸아요. 먹이도 주고 놀아 줄 수 있어요</li>
+          <li><strong>말풍선으로 말을 걸어요</strong> — 앞에서 정한 말투 그대로, 인사할 때·클릭했을 때·기분이 바뀔 때마다 다른 말이 떠요</li>
+          <li><strong>컴퓨터와도 이어져요</strong> — 음악이 들리면 박자에 맞춰 춤추고, 마우스를 따라오고, 화면 끝에 기대 쉬고, 정각 알림이나 배터리 상태도 알아차려요</li>
+        </ul>
+      </div>
+
+      <!-- 3. 기술적으로 공들인 부분 -->
+      <div class="dc-block">
+        <h4><span class="n">03</span> 특히 신경 쓴 부분</h4>
+        <ul class="dc-list">
+          <li><strong>투명한 부분은 안 눌리게</strong> — 캐릭터의 실제 그림 부분만 정확히 잡히도록 했어요. 눈에 안 보이는 빈 공간을 눌러도 펫이 잡히지 않아요</li>
+          <li><strong>움직여도 크기가 안 튀게</strong> — 동작이 바뀔 때 캐릭터가 갑자기 커졌다 작아졌다 하지 않도록, 모든 동작의 크기 기준을 하나로 맞췄어요</li>
+          <li><strong>행동이 서로 안 부딪히게</strong> — 마우스 따라오기, 화면 끝에 기대기, 음악에 춤추기 같은 동작이 스스로 하는 행동과 겹쳐 어색해지지 않도록, 하나가 켜지면 다른 하나는 잠깐 멈추게 했어요</li>
+          <li><strong>그림이 아직 없어도 돌아가게</strong> — 완성된 그림이 없어도 임시 화면으로 전체 움직임이 먼저 돌아가서, 기획·그림·개발을 동시에 진행할 수 있었어요</li>
+          <li><strong>그림만 넣으면 끝</strong> — 정해진 폴더에 그림 파일만 넣으면 복잡한 과정 없이 바로 펫에 반영되도록 만들었어요</li>
+        </ul>
+      </div>
+
+      <!-- 마무리 -->
+      <div class="dc-outro">
+        <h4>마무리 — 배운 것</h4>
+        <p>‘귀엽다’, ‘함께 있다’ 같은 느낌을 하나하나 규칙으로 바꿔 프로그램으로 옮기면서, 처음에 <b>무엇을 정하고 시작하느냐</b>가 결과를 크게 좌우한다는 걸 배웠어요. 잘 정리한 기획이 곧 좋은 결과물의 밑그림이 된다는 걸 느낀 프로젝트였어요.</p>
+      </div>
+      </div><!-- /까망베르 탭 -->
+
+      <!-- 베르 탭 -->
+      <div class="cam-tab" data-panel="bereu">
       <!-- ② 베르 소개 -->
       <div class="char-intro flip">
-        <div class="ci-media"><img src="assets/projects/Camembert/BEREU_ID_photo.jpg" alt="베르 프로필" loading="lazy"></div>
+        <div class="ci-media"><img src="assets/projects/Camembert/Camembert_BEREU/BEREU_ID_photo.jpg" alt="베르 프로필" loading="lazy"></div>
         <div class="ci-txt">
           <div class="ci-eyebrow">Virtual Persona</div>
           <h3>베르 <span style="font-weight:700;font-size:0.6em;color:#9a9a92;">BEREU</span></h3>
@@ -1253,7 +1371,7 @@
 
       <!-- ③ 베르 컨셉 화보 (배너 + 메인 + 이름별 2열) -->
       <div class="cam-sec-label">베르 컨셉 화보 · BEREU Works</div>
-      <div class="ber-hero"><img src="assets/projects/Camembert/BEREU_concept2.jpg" alt="베르 메인 컷" loading="lazy"></div>
+      <div class="ber-hero"><img src="assets/projects/Camembert/Camembert_BEREU/BEREU_concept2.jpg" alt="베르 메인 컷" loading="lazy"></div>
 
       <div class="ber-row5">
         <div class="r5-labels">
@@ -1261,11 +1379,11 @@
           <div class="ber-sub" style="grid-column:2 / 6">데일리 · Daily Selfie</div>
         </div>
         <div class="r5-imgs">
-          <img src="assets/projects/Camembert/BEREU_pure_concept1.jpg" alt="베르 액티브" loading="lazy">
-          <img src="assets/projects/Camembert/BEREU_selfie_concept1.jpg" alt="베르 데일리 1" loading="lazy">
-          <img src="assets/projects/Camembert/BEREU_selfie_concept2.jpg" alt="베르 데일리 2" loading="lazy">
-          <img src="assets/projects/Camembert/BEREU_selfie_concept3.jpg" alt="베르 데일리 3" loading="lazy">
-          <img src="assets/projects/Camembert/BEREU_selfie_concept4.jpg" alt="베르 데일리 4" loading="lazy">
+          <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_pure_concept1.jpg" alt="베르 액티브" loading="lazy">
+          <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_selfie_concept1.jpg" alt="베르 데일리 1" loading="lazy">
+          <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_selfie_concept2.jpg" alt="베르 데일리 2" loading="lazy">
+          <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_selfie_concept3.jpg" alt="베르 데일리 3" loading="lazy">
+          <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_selfie_concept4.jpg" alt="베르 데일리 4" loading="lazy">
         </div>
       </div>
 
@@ -1275,16 +1393,18 @@
           <div class="ber-sub" style="grid-column:2">뮤직비디오 · Music Video</div>
         </div>
         <div class="r5-imgs">
-          <img src="assets/projects/Camembert/BEREU_Cosmetic_concept1.jpg" alt="베르 코스메틱" loading="lazy">
-          <img src="assets/projects/Camembert/BEREU_mv_concept1.jpg" alt="베르 뮤직비디오" loading="lazy">
+          <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_Cosmetic_concept1.jpg" alt="베르 코스메틱" loading="lazy">
+          <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_mv_concept1.jpg" alt="베르 뮤직비디오" loading="lazy">
         </div>
       </div>
+      </div><!-- /베르 탭 -->
 
+      <!-- 공통 영역 (탭 무관 항상 표시): 까망베르 × 베르 + 굿즈 -->
       <!-- ④ 까망베르 × 베르 -->
       <div class="cam-sec-label">까망베르 × 베르</div>
       <div class="cross">
-        <img src="assets/projects/Camembert/BEREU_Camembert_concept1.jpg" alt="베르가 까망베르를 안고 있는 컷 1" loading="lazy">
-        <img src="assets/projects/Camembert/BEREU_Camembert_concept2.jpg" alt="베르가 까망베르를 안고 있는 컷 2" loading="lazy">
+        <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_Camembert_concept1.jpg" alt="베르가 까망베르를 안고 있는 컷 1" loading="lazy">
+        <img src="assets/projects/Camembert/Camembert_BEREU/BEREU_Camembert_concept2.jpg" alt="베르가 까망베르를 안고 있는 컷 2" loading="lazy">
       </div>
       <p class="cross-cap">캐릭터(까망베르)와 사람(베르)이 한 프레임에서 만나는 순간. 마스코트와 페르소나가 같은 세계관을 공유한다는 걸 보여주는 컷입니다.</p>
 
@@ -1477,6 +1597,18 @@
       });
     });
     document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click', closeDetail));
+    /* 까망베르 상세: 까망베르 / 베르 탭 토글 */
+    document.querySelectorAll('.cam-toggle').forEach(tg=>{
+      const btns = tg.querySelectorAll('.cam-tg-btn');
+      const scope = tg.closest('.pd2-inner') || document;
+      btns.forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const key = btn.dataset.tab;
+          btns.forEach(b=>{ const on = b===btn; b.classList.toggle('active', on); b.setAttribute('aria-selected', on?'true':'false'); });
+          scope.querySelectorAll('.cam-tab').forEach(p=>p.classList.toggle('active', p.dataset.panel===key));
+        });
+      });
+    });
     /* deep-link: #pd-... 해시로 상세를 바로 열기 (STUDIO 등 외부에서 연결) */
     function openByHash(){
       const id = decodeURIComponent(location.hash.slice(1));
